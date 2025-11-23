@@ -1,3 +1,8 @@
+// React Imports
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
+
 // Next Imports
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -173,10 +178,10 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Content */}
-            <div className="mt-5 md:mt-6 lg:mt-9">
-              <p className="font-iranYekan text-[#4C4C4C] text-justify leading-7 lg:leading-8 text-sm md:text-base">
+            <div className="mt-5 md:mt-6 lg:mt-9 font-iranYekan text-[#4C4C4C] text-justify leading-7 lg:leading-8 text-sm md:text-base prose prose-h2:text-2xl prose-h3:text-xl prose-p:leading-7 rtl">
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
                 {blog.content}
-              </p>
+              </ReactMarkdown>
             </div>
           </div>
 
