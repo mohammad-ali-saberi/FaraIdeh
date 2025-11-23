@@ -17,6 +17,7 @@ import LockIcon from '@/component/icons/blogs/LockIcon';
 import TickCircleIcon from '@/component/icons/blogs/TickCircleIcon';
 import Modal from '@/component/Modal';
 import BlogInfoModalContent from '@/component/dashboard/BlogInfoModalContent';
+import PlusIcon from '@/component/icons/blogs/PlusIcon';
 
 // Types
 import { AdminBlog } from '@/types/AdminBlogType';
@@ -74,7 +75,7 @@ const MainBlogs = ({ blogs }: MainBlogsProps) => {
 
   return (
     <>
-      <div className="px-12 mt-12">
+      <div className="px-12 mt-12 relative">
         <div className="h-176 overflow-y-scroll grid grid-cols-3 gap-y-9 gap-x-12 pb-2">
           {blogList.map((blog) => (
             <div key={blog.id} className="bg-white shadow rounded-xl h-130 relative">
@@ -182,6 +183,17 @@ const MainBlogs = ({ blogs }: MainBlogsProps) => {
               </div>
             </div>
           ))}
+
+          <div className="absolute bottom-0 right-5 z-10">
+            <Link href="/admin/blogs/add">
+              <div className="bg-primary rounded-full p-4 border-2 border-white group hover:bg-transparent hover:border-primary hover:-translate-y-1 transition-all duration-200">
+                <PlusIcon
+                  size="20"
+                  className="text-white group-hover:text-primary transition-all duration-200"
+                />
+              </div>
+            </Link>
+          </div>
         </div>
       </div>
 
