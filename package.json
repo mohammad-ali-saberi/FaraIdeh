@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@prisma/client": "^6.16.2",
+    "@uiw/react-md-editor": "^4.0.8",
     "bcryptjs": "^3.0.3",
     "cookies": "^0.9.1",
     "jose": "^6.1.2",
