@@ -13,7 +13,18 @@ interface InputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const Input = ({ type, label, name, id, htmlFor, placeholder, required, disabled }: InputProps) => {
+const Input = ({
+  type,
+  label,
+  name,
+  id,
+  htmlFor,
+  placeholder,
+  required,
+  disabled,
+  value,
+  onChange,
+}: InputProps) => {
   return (
     <div
       className={`flex items-center justify-center pr-4 w-full bg-white rounded-lg transition ring-0
@@ -32,6 +43,8 @@ const Input = ({ type, label, name, id, htmlFor, placeholder, required, disabled
           placeholder={placeholder || ' '}
           required={required}
           disabled={disabled}
+          value={value}
+          onChange={onChange}
         />
 
         <label
