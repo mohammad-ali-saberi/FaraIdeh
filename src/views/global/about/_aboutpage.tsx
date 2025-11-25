@@ -12,7 +12,7 @@ import Achievements from './Achievements';
 // Types
 import { Slide } from '@/types/SlidesType';
 import { TeamMemberType } from '@/types/TeamMemberType';
-import type { AchievementType } from '@/types/AchievementType';
+import { AchievementType } from '@/types/AchievementType';
 
 const AboutPageWrapper = ({
   slides,

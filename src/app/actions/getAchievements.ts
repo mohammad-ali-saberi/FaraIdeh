@@ -1,17 +1,10 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
+import { AchievementType } from '@/types/AchievementType';
 import type { Achievement } from '@prisma/client';
 
-export type AchievementDTO = {
-  id: number;
-  photo: string;
-  title: string;
-  description: string;
-  year: number;
-};
-
-export async function getAchievements(): Promise<AchievementDTO[]> {
+export async function getAchievements(): Promise<AchievementType[]> {
   const rows: Achievement[] = await prisma.achievement.findMany({
     orderBy: [{ year: 'desc' }, { createdAt: 'desc' }],
   });
