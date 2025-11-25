@@ -119,7 +119,7 @@ export default function ContentEditor({ value, onChange, height = 450 }: IConten
 
       {/* Helper Text */}
       <p className="text-gray-500 text-xs mt-3 font-iranYekan ltr">
-        **Bold** | *Italic* | # Header | [Link](url) | `Code`
+        **Bold** | *Italic* | # Header | (url)[Link] | `Code`
       </p>
     </div>
   );
