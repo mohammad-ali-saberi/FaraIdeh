@@ -1,3 +1,6 @@
+// Types
+import type { Metadata } from 'next';
+
 // Libs
 import { prisma } from '@/lib/prisma';
 
@@ -7,6 +10,12 @@ import { getAchievements } from '@/app/actions/getAchievements';
 
 // Components
 import AboutPageWrapper from '@/views/global/about/_aboutpage';
+
+export const metadata: Metadata = {
+  title: 'درباره ما',
+  description:
+    'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
+};
 
 const AboutPage = async () => {
   const [slides, members, achievements] = await Promise.all([

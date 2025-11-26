@@ -7,10 +7,17 @@ import { getProjects } from '@/app/actions/getProjects';
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
 import { ProjectCategory } from '@/features/projects/categories';
+import { Metadata } from 'next';
 
 interface PageProps {
   searchParams: Promise<{ category?: string }>;
 }
+
+export const metadata: Metadata = {
+  title: 'پروژه ‌ها',
+  description:
+    'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',
+};
 
 const ProjectsPage = async ({ searchParams }: PageProps) => {
   const params = await searchParams;
