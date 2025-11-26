@@ -1,7 +1,7 @@
 'use client';
 
 // React Imports
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Components
@@ -14,7 +14,7 @@ import Toast from '@/component/Toast';
 import { formatDate } from '@/utils/formatDate';
 
 // Types
-import { CreateBlogInput, CreateBlogResponse } from '@/types/BlogsType';
+import { BlogPostWithLabels, UpdateBlogInput, UpdateBlogResponse } from '@/types/BlogsType';
 
 interface IBlogFormData {
   featuredImage: string;
@@ -27,13 +27,14 @@ interface IBlogFormData {
   content: string;
 }
 
-interface MainAddBlogsProps {
-  createBlogAction: (data: CreateBlogInput) => Promise<CreateBlogResponse>;
+interface MainEditBlogsProps {
+  blog: BlogPostWithLabels;
+  updateBlogAction: (data: UpdateBlogInput) => Promise<UpdateBlogResponse>;
 }
 
-const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
+const MainEditBlogs = ({ blog, updateBlogAction }: MainEditBlogsProps) => {
   const router = useRouter();
-  const [labels, setLabels] = useState<string[]>(['']);
+  const [labels, setLabels] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{
     show: boolean;
@@ -56,7 +57,24 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
     content: '',
   });
 
-  const todayDate = useMemo(() => formatDate(new Date()), []);
+  const createdDate = useMemo(() => formatDate(blog.createdAt), [blog.createdAt]);
+
+  // Initialize form with blog data
+  useEffect(() => {
+    setFormData({
+      featuredImage: blog.featuredImage || '',
+      category: blog.category,
+      readingTimeMinutes: blog.readingTimeMinutes.toString(),
+      title: blog.title,
+      slug: blog.slug,
+      excerpt: blog.excerpt || '',
+      author: blog.author,
+      content: blog.content,
+    });
+
+    // Set labels (ensure at least one empty field)
+    setLabels(blog.labels.length > 0 ? blog.labels : ['']);
+  }, [blog]);
 
   const handleAddLabel = () => {
     setLabels([...labels, '']);
@@ -70,25 +88,10 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-
-    // Auto-generate slug from title if slug is empty
-    if (name === 'title' && !formData.slug) {
-      const autoSlug = value
-        .toLowerCase()
-        .replace(/\s+/g, '-')
-        .replace(/[^\w\-\u0600-\u06FF]+/g, '');
-
-      setFormData((prev) => ({
-        ...prev,
-        title: value,
-        slug: autoSlug,
-      }));
-    } else {
-      setFormData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleContentChange = (value: string) => {
@@ -127,7 +130,8 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
         return;
       }
 
-      const blogData: CreateBlogInput = {
+      const blogData: UpdateBlogInput = {
+        id: blog.id,
         title: formData.title,
         slug: formData.slug,
         excerpt: formData.excerpt,
@@ -140,23 +144,10 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
       };
 
       // Send to server
-      const result = await createBlogAction(blogData);
+      const result = await updateBlogAction(blogData);
 
       if (result.success) {
         showToast(result.message, 'success');
-
-        // Clear form
-        setFormData({
-          featuredImage: '',
-          category: '',
-          readingTimeMinutes: '',
-          title: '',
-          slug: '',
-          excerpt: '',
-          author: '',
-          content: '',
-        });
-        setLabels(['']);
 
         // Redirect to blogs list after 1.5 seconds
         setTimeout(() => {
@@ -166,7 +157,7 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
         showToast(result.message, 'error');
       }
     } catch (error) {
-      console.error('Error submitting blog:', error);
+      console.error('Error updating blog:', error);
       showToast('خطایی غیرمنتظره رخ داد. لطفاً دوباره تلاش کنید.', 'error');
     } finally {
       setIsSubmitting(false);
@@ -281,7 +272,7 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
             name="date"
             id="date"
             placeholder=" "
-            label={todayDate}
+            label={`تاریخ ایجاد: ${createdDate}`}
             htmlFor="date"
             disabled={true}
           />
@@ -331,7 +322,7 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
               className="px-8 py-4 bg-orange font-iranYekan outline-none text-lg text-white rounded-lg cursor-pointer border-b-4 border-[#a33f00] hover:border-transparent hover:translate-y-1 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'در حال ثبت...' : 'ثبت اطلاعات'}
+              {isSubmitting ? 'در حال به‌روزرسانی...' : 'به‌روزرسانی اطلاعات'}
             </button>
           </div>
         </form>
@@ -340,4 +331,4 @@ const MainAddBlogs = ({ createBlogAction }: MainAddBlogsProps) => {
   );
 };
 
-export default MainAddBlogs;
+export default MainEditBlogs;

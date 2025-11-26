@@ -80,3 +80,9 @@ export interface UpdateBlogResponse {
     published: boolean;
   };
 }
+
+export interface GetBlogResponse {
+  success: boolean;
+  message: string;
+  data: BlogPostWithLabels | null;
+}
