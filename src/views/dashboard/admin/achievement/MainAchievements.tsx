@@ -74,95 +74,91 @@ const MainAchievements = ({ initialAchievements }: MainAchievementsProps) => {
     setTimeout(() => setToast({ show: false, message: '', type: 'success' }), 3000);
   };
 
-  if (achievements.length === 0) {
-    return (
-      <div className="px-12 mt-12">
-        <div className="h-176 flex flex-col gap-3 items-center justify-center">
-          <Image
-            src="https://s6.uupload.ir/files/image_8_mict-removebg-preview_kxug.png"
-            alt="EmptyImage"
-            width={300}
-            height={300}
-          />
-          <p className="font-iranYekan text-[#BCBCBC] text-xl">هیچ دستاوردی ایجاد نشده است!</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <>
       <div className="px-12 mt-12 relative">
         <div className="h-176 overflow-y-scroll grid grid-cols-3 gap-y-9 gap-x-12 pb-2">
-          {achievements.map((achievement) => (
-            <div key={achievement.id} className="bg-white shadow rounded-xl h-114 relative">
-              {/* Image & Year Achievement */}
-              <div className="relative w-full h-64 overflow-hidden rounded-t-xl">
-                {/* Image */}
-                <Image
-                  src={achievement.photo}
-                  alt={achievement.title}
-                  fill
-                  className="object-center object-cover"
-                />
-
-                {/* Year */}
-                <div className="flex gap-2 rounded-lg bg-black/50 absolute top-5 left-5 z-20 px-4 py-2">
-                  <span className="font-yekanBakhFaNum text-white font-medium">
-                    {achievement.year}
-                  </span>
-                </div>
-              </div>
-
-              {/* Detail */}
-              <div className="px-8 pt-7">
-                {/* Title */}
-                <p className="text-[#6B7A99] font-iranYekan font-extrabold text-2xl line-clamp-1">
-                  {achievement.title}
-                </p>
-
-                {/* Description */}
-                <p className="text-[#ADB8CC] font-iranYekan leading-8 mt-3 line-clamp-2">
-                  {achievement.description}
-                </p>
-              </div>
-
-              {/* Action Buttons */}
-              <div className="grid grid-cols-2 gap-5 px-8 absolute bottom-7 w-full">
-                {/* Delete Button */}
-                <button
-                  onClick={() => handleDeleteClick(achievement.id)}
-                  disabled={isPending}
-                  className="text-primary font-iranYekan border border-primary outline-none rounded-md flex items-center justify-center gap-2 py-2.5 group hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  <TrashIcon
-                    size="24"
-                    className="text-primary group-hover:text-white transition-all duration-200"
-                  />
-                  حذف
-                </button>
-
-                {/* Edit Button */}
-                <Link
-                  href={`/admin/achievement/edit/${achievement.id}`}
-                  className="text-primary font-iranYekan border border-primary rounded-md flex items-center justify-center gap-2 py-2.5 group hover:bg-primary hover:text-white transition-all duration-200"
-                >
-                  <EditIcon
-                    size="22"
-                    className="text-primary group-hover:text-white transition-all duration-200"
-                  />
-                  ویرایش
-                </Link>
-              </div>
-
-              {/* Loading Overlay */}
-              {isPending && (
-                <div className="absolute inset-0 bg-white/50 flex items-center justify-center rounded-xl">
-                  <WifiLoader />
-                </div>
-              )}
+          {achievements.length === 0 ? (
+            <div className="col-span-3 flex flex-col items-center justify-center h-full">
+              <Image
+                src="https://s6.uupload.ir/files/image_8_mict-removebg-preview_kxug.png"
+                alt="EmptyImage"
+                width={300}
+                height={300}
+              />
+              <p className="font-iranYekan text-[#BCBCBC] text-xl">هیچ دستاوردی ایجاد نشده است!</p>
             </div>
-          ))}
+          ) : (
+            achievements.map((achievement) => (
+              <div key={achievement.id} className="bg-white shadow rounded-xl h-114 relative">
+                {/* Image & Year Achievement */}
+                <div className="relative w-full h-64 overflow-hidden rounded-t-xl">
+                  {/* Image */}
+                  <Image
+                    src={achievement.photo}
+                    alt={achievement.title}
+                    fill
+                    className="object-center object-cover"
+                  />
+
+                  {/* Year */}
+                  <div className="flex gap-2 rounded-lg bg-black/50 absolute top-5 left-5 z-20 px-4 py-2">
+                    <span className="font-yekanBakhFaNum text-white font-medium">
+                      {achievement.year}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Detail */}
+                <div className="px-8 pt-7">
+                  {/* Title */}
+                  <p className="text-[#6B7A99] font-iranYekan font-extrabold text-2xl line-clamp-1">
+                    {achievement.title}
+                  </p>
+
+                  {/* Description */}
+                  <p className="text-[#ADB8CC] font-iranYekan leading-8 mt-3 line-clamp-2">
+                    {achievement.description}
+                  </p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="grid grid-cols-2 gap-5 px-8 absolute bottom-7 w-full">
+                  {/* Delete Button */}
+                  <button
+                    onClick={() => handleDeleteClick(achievement.id)}
+                    disabled={isPending}
+                    className="text-primary font-iranYekan border border-primary outline-none rounded-md flex items-center justify-center gap-2 py-2.5 group hover:bg-primary hover:text-white transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    <TrashIcon
+                      size="24"
+                      className="text-primary group-hover:text-white transition-all duration-200"
+                    />
+                    حذف
+                  </button>
+
+                  {/* Edit Button */}
+                  <Link
+                    href={`/admin/achievement/edit/${achievement.id}`}
+                    className="text-primary font-iranYekan border border-primary rounded-md flex items-center justify-center gap-2 py-2.5 group hover:bg-primary hover:text-white transition-all duration-200"
+                  >
+                    <EditIcon
+                      size="22"
+                      className="text-primary group-hover:text-white transition-all duration-200"
+                    />
+                    ویرایش
+                  </Link>
+                </div>
+
+                {/* Loading Overlay */}
+                {isPending && (
+                  <div className="absolute inset-0 bg-white/50 flex items-center justify-center rounded-xl">
+                    <WifiLoader />
+                  </div>
+                )}
+              </div>
+            ))
+          )}
 
           {/* Add Button */}
           <div className="absolute bottom-0 right-5 z-10">
