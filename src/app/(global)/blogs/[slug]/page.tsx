@@ -170,7 +170,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Image */}
             <div className="w-full h-52 md:h-72 lg:h-115 overflow-hidden relative rounded-2xl lg:mt-6 mt-2 sm:mt-3">
               <Image
-                src={blog.featuredImage || '/placeholder-blog.jpg'}
+                src={blog.featuredImage || 'https://s6.uupload.ir/files/images_eusf.png'}
                 alt="BlogImage"
                 fill
                 className="object-cover object-center"
@@ -199,7 +199,10 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                       {/* Image */}
                       <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
                         <Image
-                          src={relatedBlog.featuredImage || '/placeholder-blog.jpg'}
+                          src={
+                            relatedBlog.featuredImage ||
+                            'https://s6.uupload.ir/files/images_eusf.png'
+                          }
                           alt={relatedBlog.title}
                           fill
                           className="object-cover object-center"

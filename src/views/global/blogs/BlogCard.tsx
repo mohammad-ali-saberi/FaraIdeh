@@ -31,7 +31,7 @@ const BlogCards = ({ blogs }: IBlogCardsProps) => {
             {/* Image Blog */}
             <div className="relative w-full h-64">
               <Image
-                src={blog.featuredImage || '/placeholder-blog.jpg'}
+                src={blog.featuredImage || 'https://s6.uupload.ir/files/images_eusf.png'}
                 alt={blog.title}
                 fill
                 className="object-cover object-center rounded-2xl"
