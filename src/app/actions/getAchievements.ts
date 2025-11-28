@@ -16,6 +16,8 @@ export async function getAchievements(): Promise<AchievementType[]> {
     title: a.title,
     description: a.description,
     year: a.year,
+    createdAt: a.createdAt,
+    updatedAt: a.updatedAt,
   }));
 }
 
