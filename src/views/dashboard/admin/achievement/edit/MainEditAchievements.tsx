@@ -1,15 +1,22 @@
 'use client';
 
 // React Imports
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 // Components
 import Input from '@/component/Input';
 import Toast from '@/component/Toast';
 
+// Utils
+import { formatDate } from '@/utils/formatDate';
+
 // Types
-import { CreateAchievementInput, CreateAchievementResponse } from '@/types/AchievementType';
+import {
+  AchievementType,
+  UpdateAchievementInput,
+  UpdateAchievementResponse,
+} from '@/types/AchievementType';
 
 interface IAchievementFormData {
   photo: string;
@@ -18,11 +25,15 @@ interface IAchievementFormData {
   description: string;
 }
 
-interface MainAddAchievementsProps {
-  createAchievementAction: (data: CreateAchievementInput) => Promise<CreateAchievementResponse>;
+interface MainEditAchievementsProps {
+  achievement: AchievementType;
+  updateAchievementAction: (data: UpdateAchievementInput) => Promise<UpdateAchievementResponse>;
 }
 
-const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsProps) => {
+const MainEditAchievements = ({
+  achievement,
+  updateAchievementAction,
+}: MainEditAchievementsProps) => {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{
@@ -41,6 +52,21 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
     year: '',
     description: '',
   });
+
+  const createdDate = useMemo(
+    () => (achievement.createdAt ? formatDate(achievement.createdAt) : ''),
+    [achievement.createdAt],
+  );
+
+  // Initialize form with achievement data
+  useEffect(() => {
+    setFormData({
+      photo: achievement.photo || '',
+      title: achievement.title,
+      year: achievement.year.toString(),
+      description: achievement.description,
+    });
+  }, [achievement]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -82,7 +108,8 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
         return;
       }
 
-      const achievementData: CreateAchievementInput = {
+      const achievementData: UpdateAchievementInput = {
+        id: achievement.id,
         photo: formData.photo,
         title: formData.title,
         description: formData.description,
@@ -90,18 +117,10 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
       };
 
       // Send to server
-      const result = await createAchievementAction(achievementData);
+      const result = await updateAchievementAction(achievementData);
 
       if (result.success) {
         showToast(result.message, 'success');
-
-        // Clear form
-        setFormData({
-          photo: '',
-          title: '',
-          year: '',
-          description: '',
-        });
 
         // Redirect to achievements list after 1 seconds
         setTimeout(() => {
@@ -111,7 +130,7 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
         showToast(result.message, 'error');
       }
     } catch (error) {
-      console.error('Error submitting achievement:', error);
+      console.error('Error updating achievement:', error);
       showToast('خطایی غیرمنتظره رخ داد. لطفاً دوباره تلاش کنید.', 'error');
     } finally {
       setIsSubmitting(false);
@@ -168,6 +187,19 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
             onChange={handleInputChange}
           />
 
+          {/* Date */}
+          {createdDate && (
+            <Input
+              type="text"
+              name="date"
+              id="date"
+              placeholder=" "
+              label={`تاریخ ایجاد: ${createdDate}`}
+              htmlFor="date"
+              disabled={true}
+            />
+          )}
+
           {/* Description */}
           <div className="col-span-2">
             <Input
@@ -199,7 +231,7 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
               className="px-8 py-4 bg-orange font-iranYekan outline-none text-lg text-white rounded-lg cursor-pointer border-b-4 border-[#a33f00] hover:border-transparent hover:translate-y-1 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
               disabled={isSubmitting}
             >
-              {isSubmitting ? 'در حال ثبت...' : 'ثبت اطلاعات'}
+              {isSubmitting ? 'در حال به‌روزرسانی...' : 'به‌روزرسانی اطلاعات'}
             </button>
           </div>
         </form>
@@ -208,4 +240,4 @@ const MainAddAchievements = ({ createAchievementAction }: MainAddAchievementsPro
   );
 };
 
-export default MainAddAchievements;
+export default MainEditAchievements;

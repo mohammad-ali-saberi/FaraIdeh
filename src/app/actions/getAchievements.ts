@@ -61,3 +61,28 @@ export async function deleteAchievement(id: number): Promise<DeleteAchievementRe
     };
   }
 }
+
+export async function getAchievementById(id: number): Promise<AchievementType | null> {
+  try {
+    const achievement = await prisma.achievement.findUnique({
+      where: { id },
+    });
+
+    if (!achievement) {
+      return null;
+    }
+
+    return {
+      id: achievement.id,
+      photo: achievement.photo,
+      title: achievement.title,
+      description: achievement.description,
+      year: achievement.year,
+      createdAt: achievement.createdAt,
+      updatedAt: achievement.updatedAt,
+    };
+  } catch (error) {
+    console.error('Error fetching achievement:', error);
+    return null;
+  }
+}

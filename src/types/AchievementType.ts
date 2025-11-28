@@ -4,8 +4,8 @@ export interface AchievementType {
   title: string;
   description: string;
   year: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface CreateAchievementInput {
@@ -21,4 +21,17 @@ export interface CreateAchievementResponse {
   data?: {
     id: number;
   };
+}
+
+export interface UpdateAchievementInput {
+  id: number;
+  photo: string;
+  title: string;
+  description: string;
+  year: number;
+}
+
+export interface UpdateAchievementResponse {
+  success: boolean;
+  message: string;
 }

@@ -76,6 +76,15 @@ const MainAchievements = ({ initialAchievements }: MainAchievementsProps) => {
 
   return (
     <>
+      {/* Toast Notification */}
+      {toast.show && (
+        <Toast
+          message={toast.message}
+          type={toast.type}
+          onClose={() => setToast({ ...toast, show: false })}
+        />
+      )}
+
       <div className="px-12 mt-12 relative">
         <div className="h-176 overflow-y-scroll grid grid-cols-3 gap-y-9 gap-x-12 pb-2">
           {achievements.length === 0 ? (
@@ -197,15 +206,6 @@ const MainAchievements = ({ initialAchievements }: MainAchievementsProps) => {
           آیا از حذف این دستاورد اطمینان دارید؟ این عملیات قابل بازگشت نیست.
         </p>
       </Modal>
-
-      {/* Toast Notification */}
-      {toast.show && (
-        <Toast
-          message={toast.message}
-          type={toast.type}
-          onClose={() => setToast({ ...toast, show: false })}
-        />
-      )}
     </>
   );
 };
