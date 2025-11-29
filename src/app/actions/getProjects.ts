@@ -55,7 +55,7 @@ export async function getProjects(category?: string): Promise<ProjectsType[]> {
       year: String(p.year),
       viewCount: String(p.viewCount ?? 0),
       projectLink: p.projectLink ?? null,
-      photo: photos[0] || '/images/placeholders/project.png',
+      photo: photos[0] || 'https://s6.uupload.ir/files/images_eusf.png',
       category: p.category,
     };
   });
