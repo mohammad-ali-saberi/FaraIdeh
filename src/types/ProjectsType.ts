@@ -26,3 +26,20 @@ export type AdminProject = {
   createdAt: Date;
   updatedAt: Date;
 };
+
+export interface CreateProjectInput {
+  name: string;
+  description: string;
+  year: number;
+  category: string;
+  projectLink: string | null;
+  requesterName: string | null;
+  technologies: string[];
+  photos: string[];
+}
+
+export interface CreateProjectResponse {
+  success: boolean;
+  message: string;
+  projectId?: number;
+}

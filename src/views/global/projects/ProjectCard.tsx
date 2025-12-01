@@ -82,8 +82,12 @@ const ProjectCard = ({
           </div>
         </div>
         <div className="py-5 px-7 rtl">
-          <p className="text-[#6B7A99] font-iranYekan font-extrabold text-xl">{name}</p>
-          <p className="text-[#ADB8CC] font-iranYekan font-medium mt-2 leading-8">{description}</p>
+          <p className="text-[#6B7A99] font-iranYekan font-extrabold text-xl line-clamp-1">
+            {name}
+          </p>
+          <p className="text-[#ADB8CC] font-iranYekan font-medium mt-2 leading-8 line-clamp-2">
+            {description}
+          </p>
           {requesterName && (
             <p className="text-[#ADB8CC] font-iranYekan mt-3">{`درخواست کننده: ${requesterName}`}</p>
           )}
