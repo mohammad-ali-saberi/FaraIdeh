@@ -43,3 +43,20 @@ export interface CreateProjectResponse {
   message: string;
   projectId?: number;
 }
+
+export interface UpdateProjectInput {
+  id: number;
+  name: string;
+  description: string;
+  year: number;
+  category: string;
+  projectLink: string | null;
+  requesterName: string | null;
+  technologies: string[];
+  photos: string[];
+}
+
+export interface UpdateProjectResponse {
+  success: boolean;
+  message: string;
+}
