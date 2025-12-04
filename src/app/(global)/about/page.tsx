@@ -1,5 +1,6 @@
 // Types
 import type { Metadata } from 'next';
+import type { SlidePublic } from '@/types/SlidesType';
 
 // Libs
 import { prisma } from '@/lib/prisma';
@@ -23,7 +24,7 @@ const AboutPage = async () => {
       where: { isActive: true },
       orderBy: [{ sortOrder: 'asc' }, { createdAt: 'asc' }],
       select: { id: true, photo: true, caption: true },
-    }),
+    }) as Promise<SlidePublic[]>,
     getTeamMembers(),
     getAchievements(),
   ]);

@@ -10,7 +10,7 @@ import Line from '@/component/Line';
 import Achievements from './Achievements';
 
 // Types
-import { Slide } from '@/types/SlidesType';
+import { SlidePublic } from '@/types/SlidesType';
 import { TeamMemberType } from '@/types/TeamMemberType';
 import { AchievementType } from '@/types/AchievementType';
 
@@ -19,7 +19,7 @@ const AboutPageWrapper = ({
   members,
   achievements,
 }: {
-  slides: Slide[];
+  slides: SlidePublic[];
   members: TeamMemberType[];
   achievements: AchievementType[];
 }) => {

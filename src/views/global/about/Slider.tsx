@@ -11,12 +11,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 // Types
-import { Slide } from '@/types/SlidesType';
+import { SlidePublic } from '@/types/SlidesType';
 
 // Components
 import Container from '@/component/Container';
 
-const Slider = ({ slides }: { slides: Slide[] }) => {
+const Slider = ({ slides }: { slides: SlidePublic[] }) => {
   if (!slides?.length) return null;
 
   return (
