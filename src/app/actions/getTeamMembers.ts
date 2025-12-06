@@ -6,7 +6,7 @@ import type { TeamMember } from '@prisma/client';
 
 export async function getTeamMembers(): Promise<TeamMemberType[]> {
   const rows: TeamMember[] = await prisma.teamMember.findMany({
-    orderBy: { createdAt: 'desc' },
+    orderBy: { createdAt: 'asc' },
   });
 
   return rows.map((m) => ({
