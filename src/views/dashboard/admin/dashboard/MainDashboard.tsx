@@ -4,7 +4,7 @@
 import Link from 'next/link';
 
 // Components
-import TeamMemberIcon from '@/component/icons/dashboard/TeamMemberIcon';
+import UsersIcon from '@/component/icons/dashboard/UsersIcon';
 import ThreeWingsSVG from '@/component/icons/SVG/ThreeWingsSVG';
 import ProjectsIcon from '@/component/icons/dashboard/ProjectsIcon';
 import BlogsIcon from '@/component/icons/dashboard/BlogsIcon';
@@ -20,6 +20,7 @@ import { NewsletterSubscription } from '@/types/NewsletterSubscriptionType';
 
 // Utils
 import { formatNumberShort } from '@/utils/formatNumber';
+import TeamIcon from '@/component/icons/dashboard/TeamIcon';
 
 interface MainDashboardProps {
   stats: DashboardStats;
@@ -35,31 +36,31 @@ const MainDashboard = ({ stats, newsletterSubs }: MainDashboardProps) => {
       link: '#',
     },
     {
-      icon: <TeamMemberIcon />,
+      icon: <TeamIcon size="40" />,
       title: 'اعضای تیم',
       count: formatNumberShort(stats.teamMembers, 'en'),
       link: '/admin/ourteam',
     },
     {
-      icon: <ProjectsIcon className="text-black" size="40" />,
+      icon: <ProjectsIcon size="40" />,
       title: 'پروژه ها',
       count: formatNumberShort(stats.projects, 'en'),
       link: '/admin/projects',
     },
     {
-      icon: <BlogsIcon className="text-black" size="40" />,
+      icon: <BlogsIcon size="40" />,
       title: 'وبلاگ',
       count: formatNumberShort(stats.blogs, 'en'),
       link: '/admin/blogs',
     },
     {
-      icon: <OrdersIcon className="text-black" size="40" />,
+      icon: <OrdersIcon size="40" />,
       title: 'سفارشات',
       count: formatNumberShort(stats.orders, 'en'),
       link: '/admin/orders',
     },
     {
-      icon: <FeedbackIcon className="text-black" size="40" />,
+      icon: <FeedbackIcon size="40" />,
       title: 'بازخورد ها',
       count: formatNumberShort(stats.contacts, 'en'),
       link: '/admin/feedbacks',

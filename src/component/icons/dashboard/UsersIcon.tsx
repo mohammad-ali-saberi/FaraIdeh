@@ -1,6 +1,6 @@
 'use client';
 
-const TeamMemberIcon = () => {
+const UsersIcon = () => {
   return (
     <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_209_694)">
@@ -38,4 +38,4 @@ const TeamMemberIcon = () => {
   );
 };
 
-export default TeamMemberIcon;
+export default UsersIcon;
