@@ -6,5 +6,5 @@ export type TeamMemberType = {
   githubLink?: string | null;
   linkedinLink?: string | null;
   instagramLink?: string | null;
-  resumeFile: string;
+  resumeFile?: string | null;
 };

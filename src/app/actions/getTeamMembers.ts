@@ -17,6 +17,6 @@ export async function getTeamMembers(): Promise<TeamMemberType[]> {
     githubLink: m.githubLink ?? null,
     linkedinLink: m.linkedinLink ?? null,
     instagramLink: m.instagramLink ?? null,
-    resumeFile: m.resumeFile,
+    resumeFile: m.resumeFile ?? null,
   }));
 }

@@ -68,7 +68,7 @@ model TeamMember {
   githubLink    String?
   linkedinLink  String?
   instagramLink String?
-  resumeFile    String // URL or path to the resume file
+  resumeFile    String? // URL or path to the resume file
   viewCount     Int      @default(0) // track number of resume views
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
