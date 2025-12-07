@@ -27,3 +27,34 @@ export interface CreateTeamMemberResponse {
     id: number;
   };
 }
+
+export interface AdminTeamMember {
+  id: number;
+  photo: string;
+  firstName: string;
+  lastName: string;
+  jobTitles: string[];
+  githubLink?: string | null;
+  linkedinLink?: string | null;
+  instagramLink?: string | null;
+  resumeFile?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
+export interface UpdateTeamMemberInput {
+  id: number;
+  photo: string;
+  firstName: string;
+  lastName: string;
+  jobTitles: string[];
+  githubLink?: string | null;
+  linkedinLink?: string | null;
+  instagramLink?: string | null;
+  resumeFile?: string | null;
+}
+
+export interface UpdateTeamMemberResponse {
+  success: boolean;
+  message: string;
+}
