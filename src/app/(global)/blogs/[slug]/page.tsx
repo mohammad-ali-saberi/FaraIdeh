@@ -1,3 +1,8 @@
+// React Imports
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
+
 // Next Imports
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
@@ -5,6 +10,7 @@ import Link from 'next/link';
 
 // Actions
 import { getBlogBySlug, getRelatedBlogs } from '@/app/actions/getBlogs';
+import { trackBlogView } from '@/app/actions/trackBlogViews';
 
 // Components
 import Container from '@/component/Container';
@@ -17,6 +23,7 @@ import InstagramIcon from '@/component/icons/InstagramIcon';
 import TelegramIcon from '@/component/icons/TelegramIcon';
 import LinkedInIcon from '@/component/icons/LinkedInIcon';
 import FacebookIcon from '@/component/icons/FacebookIcon';
+import EyeStrockIcon from '@/component/icons/blogs/EyeStrockIcon';
 
 // Utils
 import { formatDate } from '@/utils/formatDate';
@@ -37,6 +44,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
   if (!blog) {
     notFound();
   }
+
+  // Track view
+  await trackBlogView(blog.id);
 
   // Get related blogs
   const relatedBlogs = await getRelatedBlogs(blog.category, blog.slug, 3);
@@ -86,6 +96,14 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </p>
               </div>
 
+              {/* Views */}
+              <div className="flex gap-2 items-center">
+                <EyeStrockIcon size="25" className="text-black" />
+                <p className="font-iranYekan">
+                  <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
+                </p>
+              </div>
+
               {/* Author */}
               <div className="flex gap-3 items-center">
                 <div className="rounded-full border-2 border-text-primary">
@@ -126,6 +144,14 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                 </p>
               </div>
 
+              {/* Views */}
+              <div className="flex gap-2 items-center">
+                <EyeStrockIcon size="20" className="text-black" />
+                <p className="font-iranYekan text-sm text-nowrap">
+                  <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
+                </p>
+              </div>
+
               {/* Author */}
               <div className="flex gap-2 items-center">
                 <div className="rounded-full border-2 border-text-primary w-[25px] h-[25px]">
@@ -144,7 +170,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Image */}
             <div className="w-full h-52 md:h-72 lg:h-115 overflow-hidden relative rounded-2xl lg:mt-6 mt-2 sm:mt-3">
               <Image
-                src={blog.featuredImage || '/placeholder-blog.jpg'}
+                src={blog.featuredImage || 'https://s6.uupload.ir/files/images_eusf.png'}
                 alt="BlogImage"
                 fill
                 className="object-cover object-center"
@@ -152,10 +178,10 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Content */}
-            <div className="mt-5 md:mt-6 lg:mt-9">
-              <p className="font-iranYekan text-[#4C4C4C] text-justify leading-7 lg:leading-8 text-sm md:text-base">
+            <div className="mt-5 md:mt-6 lg:mt-9 font-iranYekan text-[#4C4C4C] text-justify leading-7 lg:leading-8 text-sm md:text-base prose prose-h2:text-2xl prose-h3:text-xl prose-p:leading-7 rtl">
+              <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
                 {blog.content}
-              </p>
+              </ReactMarkdown>
             </div>
           </div>
 
@@ -173,7 +199,10 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                       {/* Image */}
                       <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
                         <Image
-                          src={relatedBlog.featuredImage || '/placeholder-blog.jpg'}
+                          src={
+                            relatedBlog.featuredImage ||
+                            'https://s6.uupload.ir/files/images_eusf.png'
+                          }
                           alt={relatedBlog.title}
                           fill
                           className="object-cover object-center"
@@ -257,7 +286,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
                 >
-                  <LinkedInIcon className="text-[#383838]" size={23} />
+                  <LinkedInIcon className="text-[#383838]" size={24} />
                 </Link>
 
                 <Link
@@ -266,7 +295,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
                 >
-                  <TelegramIcon className="text-[#383838]" width={24} height={24} />
+                  <TelegramIcon className="text-[#383838]" size="24" />
                 </Link>
 
                 <Link

@@ -6,7 +6,7 @@ type Props = {
   title?: string;
 };
 
-export default function InstagramIcon({ size = 44, className, title = 'Instagram icon' }: Props) {
+export default function InstagramIcon({ size = 44, className, title = 'Instagram' }: Props) {
   const dimension = typeof size === 'number' ? `${size}px` : size;
   return (
     <svg

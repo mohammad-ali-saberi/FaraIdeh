@@ -6,8 +6,8 @@ import Link from 'next/link';
 // Components
 import Container from './Container';
 import PlusIcon from './icons/PlusIcon';
-import PlaceAnOrderSVGCenter from './icons/SVG/PlaceAnOrderSVGCenter';
-import PlaceAnOrderSVGLeft from './icons/SVG/PlaceAnOrderSVGLeft';
+import OrderCenterDecoration from './icons/SVG/OrderCenterDecoration';
+import OrderLeftDecoration from './icons/SVG/OrderLeftDecoration';
 
 const PlaceAnOrder = () => {
   return (
@@ -35,11 +35,11 @@ const PlaceAnOrder = () => {
         </Link>
 
         <div className="absolute bottom-3 right-96 2xl:right-[500px] hidden xl:block">
-          <PlaceAnOrderSVGCenter />
+          <OrderCenterDecoration />
         </div>
 
         <div className="absolute top-12 2xl:top-8 left-24 hidden xl:block">
-          <PlaceAnOrderSVGLeft />
+          <OrderLeftDecoration />
         </div>
       </div>
     </Container>

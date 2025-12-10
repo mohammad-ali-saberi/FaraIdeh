@@ -1,11 +1,11 @@
 'use client';
 
 // React Imports
-import { useState, useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Components
 import Container from '@/component/Container';
-import OurStoryHome from '@/component/icons/SVG/OurStoryHome';
+import HomeStoryDecoration from '@/component/icons/SVG/HomeStoryDecoration';
 import LargeLabel from '@/component/LargeLabel';
 import SmallLabel from '@/component/SmallLabel';
 import BlogCard from './BlogCard';
@@ -102,7 +102,7 @@ const Blogs = ({ blogs, setBlogs, hasMore: initialHasMore }: IBlogsProps) => {
         )}
 
         <div className="hidden xl:block absolute top-0 right-0 xl:right-52 2xl:right-90 scale-50 lg:scale-100 origin-top-right">
-          <OurStoryHome width="124" height="104" />
+          <HomeStoryDecoration width="124" height="104" />
         </div>
       </div>
     </Container>

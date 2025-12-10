@@ -38,6 +38,7 @@ export async function getBlogs(params?: GetBlogsParams) {
       featuredImage: blog.featuredImage,
       readingTimeMinutes: blog.readingTimeMinutes,
       labels: typeof blog.labels === 'string' ? blog.labels : JSON.stringify(blog.labels),
+      views: blog.views,
       createdAt: blog.createdAt,
       updatedAt: blog.updatedAt,
     }));
@@ -82,6 +83,7 @@ export async function getBlogBySlug(slug: string) {
       featuredImage: blog.featuredImage,
       readingTimeMinutes: blog.readingTimeMinutes,
       labels: typeof blog.labels === 'string' ? blog.labels : JSON.stringify(blog.labels),
+      views: blog.views,
       createdAt: blog.createdAt,
       updatedAt: blog.updatedAt,
     };
@@ -117,6 +119,7 @@ export async function getRelatedBlogs(category: string, currentSlug: string, lim
         category: true,
         featuredImage: true,
         readingTimeMinutes: true,
+        views: true,
         createdAt: true,
       },
     });
@@ -130,6 +133,7 @@ export async function getRelatedBlogs(category: string, currentSlug: string, lim
       category: blog.category,
       featuredImage: blog.featuredImage,
       readingTimeMinutes: blog.readingTimeMinutes,
+      views: blog.views,
       createdAt: blog.createdAt,
     }));
 

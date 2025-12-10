@@ -2,7 +2,7 @@
 import { Suspense, use } from 'react';
 
 // Components
-import LandingPageWrapper from '@/views/global/home/_homepage';
+import LandingPageWrapper from '@/views/global/home/HomePage';
 import WifiLoader from '@/component/WifiLoader';
 
 // Actions
@@ -18,9 +18,9 @@ function ProjectsSection() {
     name: p.name,
     description: p.description,
     requesterName: p.requesterName ?? undefined,
-    technologies: p.technologiesLabel,
-    year: p.yearLabel,
-    viewCount: p.viewCountLabel,
+    technologies: p.technologies,
+    year: p.year,
+    viewCount: p.viewCount,
     projectLink: p.projectLink ?? undefined,
     photo: p.photo,
     category: p.category,

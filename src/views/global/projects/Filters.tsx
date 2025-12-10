@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // Components
-import CategoryAll from '@/component/icons/CategoryAll';
+import CategoryAllIcon from '@/component/icons/CategoryAllIcon';
 
 // Types
 import type { ProjectCategory } from '@/features/projects/categories';
@@ -22,7 +22,7 @@ const Filters = ({ selectedCategory }: FiltersProps) => {
     {
       key: PROJECT_CATEGORIES.all,
       label: categoryLabels.all,
-      icon: CategoryAll,
+      icon: CategoryAllIcon,
     },
     {
       key: PROJECT_CATEGORIES.website,

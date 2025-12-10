@@ -17,10 +17,10 @@ import InstagramIcon from './icons/InstagramIcon';
 import TelegramIcon from './icons/TelegramIcon';
 import LinkedInIcon from './icons/LinkedInIcon';
 import ArrNewsletterIcon from './icons/ArrNewsletterIcon';
-import FooterSVG from './icons/SVG/FooterSVG';
-import FooterSVGright from './icons/SVG/FooterSVGright';
-import FooterShadowSVG from './icons/SVG/FooterShadowSVG';
-import ArrToTop from './icons/ArrToTop';
+import Decoration from './icons/SVG/FooterDecoration';
+import FooterRightDecoration from './icons/SVG/FooterRightDecoration';
+import FooterShapeDecoration from './icons/SVG/FooterShapeDecoration';
+import ArrToTopIcon from './icons/ArrToTopIcon';
 import Toast from './Toast';
 
 // Actions
@@ -83,9 +83,8 @@ const Footer = () => {
 
               <p className="text-white font-iranYekan text-justify leading-8 mt-5">
                 اینجا جایی‌ست که ایده‌ها جان می‌گیرند. ما کنار شماییم تا مسیر را کوتاه، شفاف و
-                هیجان‌انگیز کنیم. با وسواس به جزئیات و احترام به زمان کاربر، هر قدم را مستند و
-                سنجش‌پذیر برمی‌داریم. نتیجه برای ما فقط تحویل نیست؛ تجربه‌ای است که کار کند و در
-                خاطر بماند.
+                هیجان‌انگیز کنیم. با حساسیت به جزئیات در کمترین زمان ایده های شما را اجرایی می‌کنیم.
+                نتیجه برای ما فقط تحویل پروژه نیست؛ تجربه‌ای است کارآمد و خاطره انگیز.
               </p>
             </div>
 
@@ -155,8 +154,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
                     <TelegramIcon
-                      width={30}
-                      height={30}
+                      size="30"
                       className="text-white transition-all duration-200 group-hover:-translate-y-2"
                     />
                   </Link>
@@ -198,8 +196,7 @@ const Footer = () => {
                 <li>
                   <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
                     <TelegramIcon
-                      width={40}
-                      height={40}
+                      size="40"
                       className="text-white transition-all duration-200 group-hover:-translate-y-2"
                     />
                   </Link>
@@ -262,19 +259,19 @@ const Footer = () => {
 
         {/* SVGs */}
         <div className="absolute top-0 left-0 hidden xl:block">
-          <FooterSVG />
+          <Decoration />
         </div>
 
         <div className="absolute bottom-0 right-0 hidden xl:block">
-          <FooterSVGright />
+          <FooterRightDecoration />
         </div>
 
         <div className="absolute top-2 right-60 hidden xl:block">
-          <FooterShadowSVG />
+          <FooterShapeDecoration />
         </div>
 
         <div className="absolute bottom-0 left-96 hidden xl:block">
-          <FooterShadowSVG />
+          <FooterShapeDecoration />
         </div>
 
         {/* Desktop Scroll to Top */}
@@ -283,7 +280,7 @@ const Footer = () => {
           onClick={handleScrollTop}
           className="lg:flex items-center justify-center bg-primary p-4 border-4 border-white rounded-full absolute -top-10 right-12 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group hidden"
         >
-          <ArrToTop className="text-white transition-colors duration-200 group-hover:text-primary" />
+          <ArrToTopIcon className="text-white transition-colors duration-200 group-hover:text-primary" />
         </button>
 
         {/* Mobile Scroll to Top */}
@@ -292,7 +289,7 @@ const Footer = () => {
           onClick={handleScrollTop}
           className="flex items-center justify-center bg-primary p-3 border-4 border-white rounded-full absolute -top-8 left-8 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group lg:hidden"
         >
-          <ArrToTop
+          <ArrToTopIcon
             size="30"
             className="text-white transition-colors duration-200 group-hover:text-primary"
           />

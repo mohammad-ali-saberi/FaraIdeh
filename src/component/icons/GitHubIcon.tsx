@@ -1,14 +1,12 @@
 'use client';
 
-import React from 'react';
-
 type Props = {
   size?: number | string;
   className?: string;
   title?: string;
 };
 
-export default function GitHubIcon({ size = 40, className, title = 'GitHub icon' }: Props) {
+export default function GitHubIcon({ size = 40, className, title = 'GitHub' }: Props) {
   const dimension = typeof size === 'number' ? `${size}px` : size;
   return (
     <svg

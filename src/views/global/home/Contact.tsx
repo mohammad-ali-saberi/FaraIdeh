@@ -9,7 +9,7 @@ import EmailIcon from '@/component/icons/contact/EmailIcon';
 import MessageIcon from '@/component/icons/contact/MessageIcon';
 import PhoneIcon from '@/component/icons/contact/PhoneIcon';
 import UserIcon from '@/component/icons/contact/UserIcon';
-import ContactHome from '@/component/icons/SVG/ContactHome';
+import HomeContactDecoration from '@/component/icons/SVG/HomeContactDecoration';
 import LargeLabel from '@/component/LargeLabel';
 import SmallLabel from '@/component/SmallLabel';
 import Toast from '@/component/Toast';
@@ -63,7 +63,7 @@ const Contact = () => {
           </p>
 
           <div className="absolute -top-16 -left-12 hidden xl:block">
-            <ContactHome />
+            <HomeContactDecoration />
           </div>
 
           {/* Form */}

@@ -55,7 +55,7 @@ const SelectCategory = ({ selectedCategories, onCategoriesChange }: SelectCatego
         <div className="absolute top-16 lg:top-24 right-0 w-44 lg:w-52">
           <div className="border-2 border-primary rounded-full w-8 lg:w-11"></div>
           <p className="font-iranYekan font-semibold text-lg lg:text-2xl mt-4">
-            دسته‌بندی پروژه‌تون را انتخاب کنید
+            دسته‌بندی پروژه‌ را انتخاب کنید
           </p>
         </div>
       </div>

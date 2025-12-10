@@ -5,10 +5,10 @@ import { useState } from 'react';
 
 // Components
 import Container from '@/component/Container';
-import SelectCategory from './SelectCategory';
-import FormRequest from './FormRequest';
-import ServicesSVGAbout from '@/component/icons/SVG/ServicesSVGAbout';
+import AboutServicesDecoration from '@/component/icons/SVG/AboutServicesDecoration';
 import Toast from '@/component/Toast';
+import FormRequest from './FormRequest';
+import SelectCategory from './SelectCategory';
 
 // Actions
 import { createOrder } from '@/app/actions/createOrder';
@@ -92,7 +92,7 @@ const SubmitRequest = () => {
         </Container>
 
         <div className="absolute right-0 -top-20 hidden xl:block">
-          <ServicesSVGAbout />
+          <AboutServicesDecoration />
         </div>
       </div>
     </>

@@ -11,7 +11,7 @@ import PhoneIcon from '@/component/icons/services/PhoneIcon';
 import SiteIcon from '@/component/icons/services/SiteIcon';
 import StartUpIcon from '@/component/icons/services/StartUpIcon';
 import UiUxIcon from '@/component/icons/services/UiUxIcon';
-import ServicesSVGAbout from '@/component/icons/SVG/ServicesSVGAbout';
+import AboutServicesDecoration from '@/component/icons/SVG/AboutServicesDecoration';
 
 const Services = () => {
   const services = [
@@ -102,7 +102,7 @@ const Services = () => {
       </Container>
 
       <div className="absolute right-0 -top-20 hidden xl:block">
-        <ServicesSVGAbout />
+        <AboutServicesDecoration />
       </div>
     </div>
   );

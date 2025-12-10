@@ -8,7 +8,7 @@ import EmailIcon from '@/component/icons/contact/EmailIcon';
 import MessageIcon from '@/component/icons/contact/MessageIcon';
 import PhoneIcon from '@/component/icons/contact/PhoneIcon';
 import UserIcon from '@/component/icons/contact/UserIcon';
-import ContactHome from '@/component/icons/SVG/ContactHome';
+import HomeContactDecoration from '@/component/icons/SVG/HomeContactDecoration';
 
 interface FormRequestProps {
   onSubmit: (formData: {
@@ -283,7 +283,7 @@ const FormRequest = ({ onSubmit, isSubmitting }: FormRequestProps) => {
           </button>
 
           <div className="absolute -top-12 -left-42 hidden xl:block">
-            <ContactHome className="w-[160px] h-[100px]" />
+            <HomeContactDecoration className="w-[160px] h-[100px]" />
           </div>
         </div>
       </form>

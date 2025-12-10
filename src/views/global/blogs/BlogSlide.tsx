@@ -23,7 +23,7 @@ const BlogSlide = ({ blog }: IBlogSlideProps) => {
     <Link href={`/blogs/${blog.slug}`}>
       <div className="w-full h-72 lg:h-96 rounded-2xl overflow-hidden relative">
         <Image
-          src={blog.featuredImage || '/placeholder-blog.jpg'}
+          src={blog.featuredImage || 'https://s6.uupload.ir/files/images_eusf.png'}
           alt={blog.title}
           fill
           className="absolute object-cover object-center -z-10"

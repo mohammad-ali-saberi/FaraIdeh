@@ -10,7 +10,7 @@ import Link from 'next/link';
 import AchievementIcon from '@/component/icons/AchievementIcon';
 import OrderIcon from '@/component/icons/OrderIcon';
 import ProjectIcon from '@/component/icons/ProjectIcon';
-import UnionSVGInformation from '@/component/icons/UnionSVGInformation';
+import InformationBackdrop from '@/component/icons/SVG/InformationBackdrop';
 import UsersIcon from '@/component/icons/UsersIcon';
 
 // Server Actions
@@ -63,7 +63,7 @@ const Information = () => {
     <div className="absolute inset-x-0 -bottom-52 sm:-bottom-10 h-auto lg:h-[156px] z-10">
       {/* Desktop SVG Background */}
       <div className="hidden lg:block absolute inset-0 w-full h-full pointer-events-none">
-        <UnionSVGInformation />
+        <InformationBackdrop />
       </div>
 
       {/* Mobile/Tablet */}

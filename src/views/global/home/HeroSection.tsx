@@ -42,7 +42,7 @@ const HeroSection = () => {
             ایده بسپار؛ اجرا با ما
           </h1>
           <p className="text-text font-iranYekan text-sm sm:text-base md:text-lg mt-3 sm:mt-4 rtl leading-6.5">
-            در فراایده، ایده‌ها به تجربه‌ی واقعی کاربر تبدیل می‌شوند؛ از استراتژی تا اجرا کنار شما
+            در فراایده، ایده‌ها به تجربۀ واقعی کاربر تبدیل می‌شوند؛ از استراتژی تا اجرا در کنار شما
             هستیم.
           </p>
 
@@ -62,7 +62,7 @@ const HeroSection = () => {
             <span>•</span>
             <span>تحویل به‌موقع</span>
             <span>•</span>
-            <span>قرارداد شفاف</span>
+            <span>پشتیبانی</span>
           </div>
         </div>
       </div>

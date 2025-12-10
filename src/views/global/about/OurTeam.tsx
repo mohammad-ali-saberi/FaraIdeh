@@ -11,7 +11,7 @@ import SmallLabel from '@/component/SmallLabel';
 import GitHubIcon from '@/component/icons/GitHubIcon';
 import InstagramIcon from '@/component/icons/InstagramIcon';
 import LinkedInIcon from '@/component/icons/LinkedInIcon';
-import OurTeamSVGAbout from '@/component/icons/SVG/OurTeamSVGAbout';
+import AboutOurTeamDecoration from '@/component/icons/SVG/AboutOurTeamDecoration';
 
 // Types
 import { TeamMemberType } from '@/types/TeamMemberType';
@@ -65,12 +65,12 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
                       <div className="flex gap-3">
                         {m.githubLink && (
                           <Link href={m.githubLink} className="group" target="_blank">
-                            <GitHubIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5 mt-0.5" />
+                            <GitHubIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5" />
                           </Link>
                         )}
                         {m.instagramLink && (
                           <Link href={m.instagramLink} className="group" target="_blank">
-                            <InstagramIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5 mt-0.5" />
+                            <InstagramIcon className="text-white transition-transform duration-200 group-hover:scale-125 w-5 h-5" />
                           </Link>
                         )}
                         {m.linkedinLink && (
@@ -89,7 +89,7 @@ const OurTeam = ({ members }: { members: TeamMemberType[] }) => {
       </Container>
 
       <div className="absolute top-20 left-0 hidden xl:block">
-        <OurTeamSVGAbout />
+        <AboutOurTeamDecoration />
       </div>
     </div>
   );

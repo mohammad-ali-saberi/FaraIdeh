@@ -2,8 +2,8 @@
 
 // Components
 import Container from '@/component/Container';
-import HeroSVGAbout from '@/component/icons/SVG/HeroSVGAbout';
-import HandSVGAbout from '@/component/icons/SVG/HandSVGAbout';
+import AboutHeroDecoration from '@/component/icons/SVG/AboutHeroDecoration';
+import AboutHandIcon from '@/component/icons/SVG/AboutHandIcon';
 import Header from '@/component/Header';
 
 const HeroSection = () => {
@@ -16,35 +16,34 @@ const HeroSection = () => {
         <div className="lg:mt-30 mt-32 flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-10">
           {/* Desktop */}
           <div className="flex-1 hidden xl:block">
-            <HeroSVGAbout />
+            <AboutHeroDecoration />
           </div>
 
           {/* Tablet */}
           <div className="flex-1 hidden lg:block xl:hidden">
-            <HeroSVGAbout width="450" height="450" />
+            <AboutHeroDecoration width="450" height="450" />
           </div>
 
           {/* Mobile */}
           <div className="flex-1 lg:hidden">
-            <HeroSVGAbout width="300" height="300" />
+            <AboutHeroDecoration width="300" height="300" />
           </div>
 
           <div className="rtl flex-1">
             <div className="flex items-end">
               <h5 className="text-text-primary font-iranYekan">سلام! ما تیم فراایده هستیم.</h5>
-              <HandSVGAbout />
+              <AboutHandIcon />
             </div>
 
             <p className="font-iranYekan text-2xl lg:text-4xl font-semibold text-justify leading-10 lg:leading-14 w-full xl::w-3/4 mt-4">
-              ما تیمی کوچک و چابک در ایرانیم که ایده‌ها را به تجربهٔ واقعی کاربر تبدیل می‌کنیم.{' '}
-              <br />
-              از کشف مسئله و استراتژی تا طراحی و توسعه، کنار شما می‌سازیم.
+              ما تیمی کوچک و چابک در ایرانیم که ایده‌ها را به تجربه‌ای واقعی تبدیل می‌کنیم. <br />
+              از کشف مسئله و استراتژی تا طراحی و توسعه، کنار شما هستیم.
             </p>
             <p className="text-text-description font-iranYekan leading-7 text-justify lg:mt-6 mt-4">
               برای ما نتیجه فقط تحویل نیست؛ تجربه‌ای است که کار کند و در خاطر بماند. با گفت‌وگوی
-              شفاف، مستندسازی و بهبودِ مستمر پیش می‌رویم؛ هر قدم قابل‌سنجش و همسو با اهداف شماست. به
-              جزئیات وسواس داریم، به زمان کاربر احترام می‌گذاریم و راه‌حل‌های ساده و قابلِ نگهداری
-              را ترجیح می‌دهیم.
+              شفاف، مستندسازی و بهبودِ مستمر پیش می‌رویم؛ هر قدم قابل‌سنجش و همسو با اهداف شماست. در
+              جزئیات حساس هستیم، به زمان کاربر احترام می‌گذاریم و راه‌حل‌های ساده و قابلِ نگهداری را
+              ترجیح می‌دهیم.
             </p>
           </div>
         </div>

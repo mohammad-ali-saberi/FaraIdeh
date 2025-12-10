@@ -2,19 +2,7 @@ import 'server-only';
 import { Prisma } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { unstable_noStore as noStore } from 'next/cache';
-
-export type ProjectCardDTO = {
-  id: number;
-  name: string;
-  description: string;
-  requesterName?: string | null;
-  technologiesLabel: string; // joined with " | "
-  yearLabel: string;
-  viewCountLabel: string;
-  projectLink?: string | null;
-  photo: string;
-  category: string;
-};
+import { ProjectsType } from '@/types/ProjectsType';
 
 /**
  * Fetch active projects with an optional category filter.
@@ -25,7 +13,7 @@ export type ProjectCardDTO = {
  * DB index recommendation (optional but good for performance):
  *   @@index([isActive, category, createdAt])
  */
-export async function getProjects(category?: string): Promise<ProjectCardDTO[]> {
+export async function getProjects(category?: string): Promise<ProjectsType[]> {
   noStore();
 
   // Strongly-typed where to satisfy ESLint rule: no-explicit-any
@@ -63,11 +51,11 @@ export async function getProjects(category?: string): Promise<ProjectCardDTO[]> 
       name: p.name,
       description: p.description,
       requesterName,
-      technologiesLabel: techs.join(' | '),
-      yearLabel: String(p.year),
-      viewCountLabel: String(p.viewCount ?? 0),
+      technologies: techs.join(' | '),
+      year: String(p.year),
+      viewCount: String(p.viewCount ?? 0),
       projectLink: p.projectLink ?? null,
-      photo: photos[0] || '/images/placeholders/project.png',
+      photo: photos[0] || 'https://s6.uupload.ir/files/images_eusf.png',
       category: p.category,
     };
   });

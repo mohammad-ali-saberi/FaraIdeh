@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 type Props = {
   size?: number | string;
   strokeWidth?: number;
@@ -14,7 +12,7 @@ export default function SearchIcon({
   size = 24,
   strokeWidth = 2,
   className,
-  title = 'Search icon',
+  title = 'Search',
   color = '#000000',
 }: Props) {
   const dimension = typeof size === 'number' ? `${size}px` : size;

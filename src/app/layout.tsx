@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Toaster } from 'sonner';
+import PageViewTracker from '@/component/PageViewTracker';
 
 const iranYekan = localFont({
   src: [
@@ -55,21 +55,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${iranYekan.variable} ${yekanBakhFaNum.variable}`}>
       <body>
+        <PageViewTracker />
         {children}
-        <Toaster
-          richColors
-          position="top-right"
-          dir="rtl"
-          closeButton
-          duration={4000}
-          toastOptions={{
-            classNames: {
-              toast: 'font-iranYekan',
-              title: 'font-iranYekan',
-              description: 'font-iranYekan',
-            },
-          }}
-        />
       </body>
     </html>
   );

@@ -7,6 +7,21 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String?  @unique
+  password  String   // Hashed
+  fullName  String
+  role      String   @default("admin")
+  isActive  Boolean  @default(true)
+  lastLogin DateTime?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([username])
+}
+
 model Blogs {
   id                 Int      @id @default(autoincrement())
   slug               String   @unique
@@ -20,11 +35,28 @@ model Blogs {
   featuredImage      String?
   readingTimeMinutes Int      @default(1)
   labels             Json     @default("[]")
+  views              Int      @default(0)
   createdAt          DateTime @default(now())
   updatedAt          DateTime @updatedAt
 
+  // Relation to BlogViews
+  blogViews          BlogView[]
+
   @@index([slug])
   @@index([published, createdAt])
+}
+
+model BlogView {
+  id        Int      @id @default(autoincrement())
+  blogId    Int
+  blog      Blogs    @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  ipAddress String
+  userAgent String?
+  viewedAt  DateTime @default(now())
+
+  @@unique([blogId, ipAddress])
+  @@index([blogId])
+  @@index([viewedAt])
 }
 
 model TeamMember {
@@ -36,7 +68,7 @@ model TeamMember {
   githubLink    String?
   linkedinLink  String?
   instagramLink String?
-  resumeFile    String // URL or path to the resume file
+  resumeFile    String? // URL or path to the resume file
   viewCount     Int      @default(0) // track number of resume views
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
@@ -113,4 +145,14 @@ model Newsletter {
 
   @@index([email])
   @@index([isActive])
+}
+
+model PageView {
+  id        Int      @id @default(autoincrement())
+  ipAddress String
+  userAgent String?
+  visitedAt DateTime @default(now())
+  
+  @@index([ipAddress, visitedAt])
+  @@index([visitedAt])
 }
