@@ -77,18 +77,16 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* Mobile/Tablet Menu Button and Search */}
+        {/* CTA Button */}
         <div className="flex items-center gap-2">
-          <button
-            type="button"
-            className="p-1.5 sm:p-2 rounded-full hover:bg-gray-100 transition-colors duration-200 cursor-pointer"
-          >
-            <SearchIcon
-              size={32}
-              strokeWidth={1}
-              className="sm:w-[32px] sm:h-[32px] lg:w-[35px] lg:h-[35px]"
-            />
-          </button>
+          <Link href="/order-form">
+            <button
+              type="button"
+              className="bg-orange text-white border border-white font-iranYekan font-medium px-5 py-2.5 rounded-md hover:bg-white hover:text-orange hover:border-orange transition-all duration-200 text-sm whitespace-nowrap cursor-pointer"
+            >
+              ثبت سفارش
+            </button>
+          </Link>
         </div>
       </div>
 
