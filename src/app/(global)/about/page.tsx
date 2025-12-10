@@ -10,7 +10,7 @@ import { getTeamMembers } from '@/app/actions/getTeamMembers';
 import { getAchievements } from '@/app/actions/getAchievements';
 
 // Components
-import AboutPageWrapper from '@/views/global/about/_aboutpage';
+import AboutPageWrapper from '@/views/global/about/AboutPage';
 
 export const metadata: Metadata = {
   title: 'درباره ما',

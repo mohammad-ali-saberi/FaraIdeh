@@ -3,7 +3,7 @@
 // Components
 import Container from '@/component/Container';
 import Header from '@/component/Header';
-import HeroSectionSVGOrderForm from '@/component/icons/SVG/HeroSectionSVGOrderForm';
+import OrderFormHeroDecoration from '@/component/icons/SVG/OrderFormHeroDecoration';
 
 const HeroSection = () => {
   return (
@@ -14,7 +14,7 @@ const HeroSection = () => {
         {/* Hero Section */}
         <div className="xl:mt-52 lg:mt-48 mt-32 sm:mt-40 flex flex-col lg:flex-row items-start justify-between gap-x-28 gap-y-10 relative">
           <div className="absolute top-0 left-0 z-10">
-            <HeroSectionSVGOrderForm className="w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] lg:w-[300px] lg:h-[300px] xl:w-[372px] xl:h-[372px]" />
+            <OrderFormHeroDecoration className="w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] lg:w-[300px] lg:h-[300px] xl:w-[372px] xl:h-[372px]" />
           </div>
 
           <div className="w-full rtl mt-32 sm:mt-0">

@@ -2,7 +2,7 @@
 import { Suspense, use } from 'react';
 
 // Components
-import LandingPageWrapper from '@/views/global/home/_homepage';
+import LandingPageWrapper from '@/views/global/home/HomePage';
 import WifiLoader from '@/component/WifiLoader';
 
 // Actions

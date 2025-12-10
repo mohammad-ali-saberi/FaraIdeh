@@ -1,5 +1,5 @@
 // Components
-import AddProjectsPageWrapper from '@/views/dashboard/admin/projects/add/_addprojectspage';
+import AddProjectsPageWrapper from '@/views/dashboard/admin/projects/add/AddProjectPage';
 
 // Actions
 import { createProject } from '@/app/actions/createProject';

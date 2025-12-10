@@ -1,5 +1,5 @@
 // Components
-import AddBlogsPageWrapper from '@/views/dashboard/admin/blogs/add/_addblogspage';
+import AddBlogsPageWrapper from '@/views/dashboard/admin/blogs/add/AddBlogPage';
 
 // Actions
 import { createBlog } from '@/app/actions/createBlog';

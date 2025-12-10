@@ -2,9 +2,9 @@
 
 // Components
 import Container from '@/component/Container';
-import HeroSectionSVGProjects from '@/component/icons/SVG/HeroSectionSVGProjects';
-import HeroSectionCircleSVGProjects from '@/component/icons/SVG/HeroSectionCircleSVGProjects';
-import HeroSectionSquareSVGProjects from '@/component/icons/SVG/HeroSectionSquareSVGProjects';
+import ProjectsHeroDecoration from '@/component/icons/SVG/ProjectsHeroDecoration';
+import ProjectsCircleDecoration from '@/component/icons/SVG/ProjectsCircleDecoration';
+import ProjectsSquareDecoration from '@/component/icons/SVG/ProjectsSquareDecoration';
 import Header from '@/component/Header';
 
 const HeroSection = () => {
@@ -16,14 +16,14 @@ const HeroSection = () => {
         {/* Hero Section */}
         <div className="lg:mt-56 mt-32 flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-10">
           <div className="w-full relative hidden lg:block">
-            <HeroSectionSVGProjects />
+            <ProjectsHeroDecoration />
 
             <div className="absolute -top-24 right-8">
-              <HeroSectionSquareSVGProjects />
+              <ProjectsSquareDecoration />
             </div>
 
             <div className="absolute -bottom-3 -left-12">
-              <HeroSectionCircleSVGProjects />
+              <ProjectsCircleDecoration />
             </div>
           </div>
 

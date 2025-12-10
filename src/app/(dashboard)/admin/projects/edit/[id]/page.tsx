@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 // Components
-import EditProjectsPageWrapper from '@/views/dashboard/admin/projects/edit/_editprojectspage';
+import EditProjectsPageWrapper from '@/views/dashboard/admin/projects/edit/EditProjectPage';
 
 // Actions
 import { getProjectByIdAdmin } from '@/app/actions/getProjectByIdAdmin';

@@ -1,5 +1,5 @@
 // Components
-import LoginPageWrapper from '@/views/auth/login/_loginpage';
+import LoginPageWrapper from '@/views/auth/login/LoginPage';
 
 // Types
 import { Metadata } from 'next';

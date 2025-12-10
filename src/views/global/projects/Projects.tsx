@@ -10,7 +10,7 @@ import type { ProjectsType } from '@/types/ProjectsType';
 import { ProjectCategory } from '@/features/projects/categories';
 
 // Utils
-import { columnise } from '@/utils/columnise';
+import { columnize } from '@/utils/columnize';
 
 const columnOffsetClasses = ['md:mt-16', '', 'md:mt-28'];
 
@@ -21,7 +21,7 @@ interface ProjectsProps {
 
 const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
   const hasData = projects.length > 0;
-  const columnisedProjects = hasData ? columnise(projects, 3) : [];
+  const columnizedProjects = hasData ? columnize(projects, 3) : [];
 
   return (
     <>
@@ -49,7 +49,7 @@ const Projects = ({ projects, selectedCategory }: ProjectsProps) => {
 
               {/* Desktop */}
               <div className="hidden lg:grid lg:grid-cols-3 lg:gap-x-10 rtl">
-                {columnisedProjects.map((columnProjects, columnIndex) => (
+                {columnizedProjects.map((columnProjects, columnIndex) => (
                   <div
                     key={`column-${columnIndex}`}
                     className={`flex flex-col gap-10 ${columnOffsetClasses[columnIndex]}`}

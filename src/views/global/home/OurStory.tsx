@@ -5,9 +5,9 @@ import Link from 'next/link';
 
 // Components
 import Container from '@/component/Container';
-import SmallLabel from '@/component/SmallLabel';
 import LargeLabel from '@/component/LargeLabel';
-import OurStoryHome from '@/component/icons/SVG/OurStoryHome';
+import SmallLabel from '@/component/SmallLabel';
+import HomeStoryDecoration from '@/component/icons/SVG/HomeStoryDecoration';
 
 const OurStory = () => {
   return (
@@ -28,7 +28,7 @@ const OurStory = () => {
         </Link>
 
         <div className="hidden xl:block absolute top-0 right-0 2xl:right-16 scale-50 lg:scale-100 origin-top-right">
-          <OurStoryHome />
+          <HomeStoryDecoration />
         </div>
       </div>
     </Container>

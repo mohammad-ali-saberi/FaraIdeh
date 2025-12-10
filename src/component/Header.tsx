@@ -78,16 +78,15 @@ const Header = ({ colorIcon, heroSectionHeight = 600 }: IHeaderProps) => {
 
           <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
             <TelegramIcon
-              width={16}
-              height={16}
-              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-[18px] sm:h-[18px] md:w-5 md:h-5`}
+              size="18"
+              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
             />
           </Link>
 
           <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
             <LinkedInIcon
-              size={17}
-              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-[19px] sm:h-[19px] md:w-[21px] md:h-[21px]`}
+              size={18}
+              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
             />
           </Link>
         </div>

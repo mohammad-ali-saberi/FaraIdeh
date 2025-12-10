@@ -1,5 +1,5 @@
 // Components
-import DashboardPageWrapper from '@/views/dashboard/admin/dashboard/_dashboardpage';
+import DashboardPageWrapper from '@/views/dashboard/admin/dashboard/DashboardPage';
 
 // Actions
 import { getDashboardStats } from '@/app/actions/getDashboardStats';

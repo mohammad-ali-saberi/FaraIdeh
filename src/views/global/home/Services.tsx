@@ -4,7 +4,7 @@
 import Container from '@/component/Container';
 import SmallLabel from '@/component/SmallLabel';
 import LargeLabel from '@/component/LargeLabel';
-import ServicesHome from '@/component/icons/SVG/ServicesHome';
+import HomeServicesDecoration from '@/component/icons/SVG/HomeServicesDecoration';
 import WebsiteDesign from './services/WebsiteDesign';
 import StartUp from './services/StartUp';
 import ApplicationDesign from './services/ApplicationDesign';
@@ -26,7 +26,7 @@ const Services = () => {
 
         {/* Decorative SVG - hidden on mobile */}
         <div className="hidden xl:block absolute bottom-6 left-32 2xl:left-60">
-          <ServicesHome />
+          <HomeServicesDecoration />
         </div>
       </div>
 

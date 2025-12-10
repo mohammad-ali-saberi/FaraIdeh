@@ -1,5 +1,5 @@
 // Components
-import BlogsPageWrapper from '@/views/global/blogs/_blogspage';
+import BlogsPageWrapper from '@/views/global/blogs/BlogsPage';
 
 // Actions
 import { getBlogs } from '@/app/actions/getBlogs';

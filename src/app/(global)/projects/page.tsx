@@ -1,5 +1,5 @@
 // Components
-import ProjectsPageWrapper from '@/views/global/projects/_projectspage';
+import ProjectsPageWrapper from '@/views/global/projects/ProjectsPage';
 
 // Actions
 import { getProjects } from '@/app/actions/getProjects';

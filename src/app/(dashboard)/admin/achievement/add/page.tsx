@@ -1,5 +1,5 @@
 // Components
-import AddAchievementsPageWrapper from '@/views/dashboard/admin/achievement/add/_addachievementspage';
+import AddAchievementsPageWrapper from '@/views/dashboard/admin/achievement/add/AddAchievementPage';
 
 // Actions
 import { createAchievement } from '@/app/actions/createAchievement';

@@ -1,5 +1,5 @@
 // Components
-import OrderFormPageWrapper from '@/views/global/order-form/_orderformpage';
+import OrderFormPageWrapper from '@/views/global/order-form/OrderFormPage';
 
 // Types
 import { Metadata } from 'next';

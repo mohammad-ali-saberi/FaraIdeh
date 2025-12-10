@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 // Components
-import EditAchievementsPageWrapper from '@/views/dashboard/admin/achievement/edit/_editachievementspage';
+import EditAchievementsPageWrapper from '@/views/dashboard/admin/achievement/edit/EditAchievementPage';
 
 // Actions
 import { getAchievementById } from '@/app/actions/getAchievements';

@@ -286,7 +286,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
                 >
-                  <LinkedInIcon className="text-[#383838]" size={23} />
+                  <LinkedInIcon className="text-[#383838]" size={24} />
                 </Link>
 
                 <Link
@@ -295,7 +295,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                   rel="noopener noreferrer"
                   className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
                 >
-                  <TelegramIcon className="text-[#383838]" width={24} height={24} />
+                  <TelegramIcon className="text-[#383838]" size="24" />
                 </Link>
 
                 <Link

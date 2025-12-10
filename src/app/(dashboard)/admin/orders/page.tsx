@@ -1,5 +1,5 @@
 // Components
-import OrdersPageWrapper from '@/views/dashboard/admin/orders/_orderspage';
+import OrdersPageWrapper from '@/views/dashboard/admin/orders/OrdersPage';
 
 // Actions
 import { getOrders } from '@/app/actions/getOrders';

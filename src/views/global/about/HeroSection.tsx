@@ -2,8 +2,8 @@
 
 // Components
 import Container from '@/component/Container';
-import HeroSVGAbout from '@/component/icons/SVG/HeroSVGAbout';
-import HandSVGAbout from '@/component/icons/SVG/HandSVGAbout';
+import AboutHeroDecoration from '@/component/icons/SVG/AboutHeroDecoration';
+import AboutHandIcon from '@/component/icons/SVG/AboutHandIcon';
 import Header from '@/component/Header';
 
 const HeroSection = () => {
@@ -16,23 +16,23 @@ const HeroSection = () => {
         <div className="lg:mt-30 mt-32 flex flex-col lg:flex-row items-center justify-between gap-x-28 gap-y-10">
           {/* Desktop */}
           <div className="flex-1 hidden xl:block">
-            <HeroSVGAbout />
+            <AboutHeroDecoration />
           </div>
 
           {/* Tablet */}
           <div className="flex-1 hidden lg:block xl:hidden">
-            <HeroSVGAbout width="450" height="450" />
+            <AboutHeroDecoration width="450" height="450" />
           </div>
 
           {/* Mobile */}
           <div className="flex-1 lg:hidden">
-            <HeroSVGAbout width="300" height="300" />
+            <AboutHeroDecoration width="300" height="300" />
           </div>
 
           <div className="rtl flex-1">
             <div className="flex items-end">
               <h5 className="text-text-primary font-iranYekan">سلام! ما تیم فراایده هستیم.</h5>
-              <HandSVGAbout />
+              <AboutHandIcon />
             </div>
 
             <p className="font-iranYekan text-2xl lg:text-4xl font-semibold text-justify leading-10 lg:leading-14 w-full xl::w-3/4 mt-4">

@@ -1,5 +1,5 @@
 // Components
-import OurTeamPageWrapper from '@/views/dashboard/admin/ourteam/_ourteampage';
+import OurTeamPageWrapper from '@/views/dashboard/admin/ourteam/TeamPage';
 
 // Actions
 import { getTeamMembers } from '@/app/actions/getTeamMembers';

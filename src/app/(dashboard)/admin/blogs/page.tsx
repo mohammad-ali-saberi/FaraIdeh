@@ -1,5 +1,5 @@
 // Components
-import BlogsPageWrapper from '@/views/dashboard/admin/blogs/_blogspage';
+import AdminBlogsPageWrapper from '@/views/dashboard/admin/blogs/AdminBlogsPage';
 
 // Actions
 import { getAdminBlogs } from '@/app/actions/getAdminBlogs';
@@ -7,7 +7,7 @@ import { getAdminBlogs } from '@/app/actions/getAdminBlogs';
 const BlogsPage = async () => {
   const blogs = await getAdminBlogs();
 
-  return <BlogsPageWrapper blogs={blogs} />;
+  return <AdminBlogsPageWrapper blogs={blogs} />;
 };
 
 export default BlogsPage;

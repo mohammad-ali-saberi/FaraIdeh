@@ -4,20 +4,20 @@
 import Container from '@/component/Container';
 import LargeLabel from '@/component/LargeLabel';
 import SmallLabel from '@/component/SmallLabel';
-import ProjectsHome from '@/component/icons/SVG/ProjectsHome';
+import HomeProjectsDecoration from '@/component/icons/SVG/HomeProjectsDecoration';
 import ProjectCard from '../projects/ProjectCard';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
 
 // Utils
-import { columnise } from '@/utils/columnise';
+import { columnize } from '@/utils/columnize';
 
 const columnOffsetClasses = ['md:mt-16', '', 'md:mt-28'];
 
 const Projects = ({ projects }: { projects: ProjectsType[] }) => {
   const hasData = projects.length > 0;
-  const columnisedProjects = hasData ? columnise(projects, 3) : [];
+  const columnizedProjects = hasData ? columnize(projects, 3) : [];
 
   return (
     <div className="relative w-full">
@@ -52,7 +52,7 @@ const Projects = ({ projects }: { projects: ProjectsType[] }) => {
 
               {/* Desktop */}
               <div className="hidden md:grid md:grid-cols-3 md:gap-x-10 rtl">
-                {columnisedProjects.map((columnProjects, columnIndex) => (
+                {columnizedProjects.map((columnProjects, columnIndex) => (
                   <div
                     key={`column-${columnIndex}`}
                     className={`flex flex-col gap-10 ${columnOffsetClasses[columnIndex]}`}
@@ -69,7 +69,7 @@ const Projects = ({ projects }: { projects: ProjectsType[] }) => {
       </Container>
 
       <div className="absolute top-44 right-0 hidden xl:block">
-        <ProjectsHome />
+        <HomeProjectsDecoration />
       </div>
     </div>
   );

@@ -2,14 +2,14 @@
 import Link from 'next/link';
 
 // Components
-import NotFoundSVG from '@/component/icons/SVG/NotFoundSVG';
+import NotFoundDecoration from '@/component/icons/SVG/NotFoundDecoration';
 
 const notFound = () => {
   return (
     <>
       {/* Desktop */}
       <div className="hidden md:flex flex-col items-center justify-center w-full h-screen">
-        <NotFoundSVG size="550" />
+        <NotFoundDecoration size="550" />
 
         <p className="font-iranYekan text-black rtl text-lg mt-1">
           متاسفانه صفحه مورد نظر پیدا نشد!
@@ -25,7 +25,7 @@ const notFound = () => {
 
       {/* Mobile */}
       <div className="md:hidden flex flex-col items-center justify-center w-full h-screen">
-        <NotFoundSVG size="250" />
+        <NotFoundDecoration size="250" />
 
         <p className="font-iranYekan text-black rtl mt-2">متاسفانه صفحه مورد نظر پیدا نشد!</p>
 

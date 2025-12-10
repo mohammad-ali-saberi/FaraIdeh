@@ -1,13 +1,13 @@
 // Components
-import ProjectsPageWrapper from '@/views/dashboard/admin/projects/_projectspage';
+import AdminProjectsPageWrapper from '@/views/dashboard/admin/projects/AdminProjectsPage';
 
 // Actions
 import { getAdminProjects } from '@/app/actions/getAdminProjects';
 
-const ProjectsPage = async () => {
+const AdminProjectsPage = async () => {
   const projects = await getAdminProjects();
 
-  return <ProjectsPageWrapper projects={projects} />;
+  return <AdminProjectsPageWrapper projects={projects} />;
 };
 
-export default ProjectsPage;
+export default AdminProjectsPage;

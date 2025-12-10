@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 // Components
-import EditBlogsPageWrapper from '@/views/dashboard/admin/blogs/edit/_editblogspage';
+import EditBlogsPageWrapper from '@/views/dashboard/admin/blogs/edit/EditBlogPage';
 
 // Actions
 import { getBlogBySlug } from '@/app/actions/getBlogBySlugAdmin';

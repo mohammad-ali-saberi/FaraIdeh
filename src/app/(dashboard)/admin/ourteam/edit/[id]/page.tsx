@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 
 // Components
-import EditTeamMemberPageWrapper from '@/views/dashboard/admin/ourteam/edit/_editteammemberpage';
+import EditTeamMemberPageWrapper from '@/views/dashboard/admin/ourteam/edit/EditTeamMemberPage';
 
 // Actions
 import { getTeamMemberById } from '@/app/actions/getTeamMembers';

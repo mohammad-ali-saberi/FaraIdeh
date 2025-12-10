@@ -34,16 +34,15 @@ const Footer = () => {
 
         <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
           <TelegramIcon
-            width={16}
-            height={16}
-            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-[18px] sm:h-[18px] md:w-5 md:h-5`}
+            size="18"
+            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
           />
         </Link>
 
         <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
           <LinkedInIcon
-            size={17}
-            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-[19px] sm:h-[19px] md:w-[20px] md:h-[20px]`}
+            size={18}
+            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
           />
         </Link>
       </div>
