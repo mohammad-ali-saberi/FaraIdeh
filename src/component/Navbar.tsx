@@ -13,6 +13,7 @@ import Logo from '@/assets/images/Logo.png';
 
 // Components
 import SearchIcon from './icons/SearchIcon';
+import PlaceOrderIcon from './icons/PlaceOrderIcon';
 
 const Navbar = () => {
   const pathname = usePathname();
@@ -77,14 +78,20 @@ const Navbar = () => {
           </ul>
         </nav>
 
-        {/* CTA Button */}
+        {/* Mobile/Desktop CTA Button */}
         <div className="flex items-center gap-2">
-          <Link href="/order-form">
+          <Link href="/order-form" className="hidden lg:block">
             <button
               type="button"
               className="bg-orange text-white border border-white font-iranYekan font-medium px-5 py-2.5 rounded-md hover:bg-white hover:text-orange hover:border-orange transition-all duration-200 text-sm whitespace-nowrap cursor-pointer"
             >
               ثبت سفارش
+            </button>
+          </Link>
+
+          <Link href="/order-form" className="lg:hidden">
+            <button type="button" className="bg-orange p-2.5 rounded-md">
+              <PlaceOrderIcon size="24" className="text-white" />
             </button>
           </Link>
         </div>
