@@ -17,6 +17,19 @@ export interface BlogPost {
   updatedAt: Date;
 }
 
+// Related Blog (subset of BlogPost for related articles)
+export interface RelatedBlog {
+  id: number;
+  slug: string;
+  title: string;
+  excerpt: string | null;
+  category: string;
+  featuredImage: string | null;
+  readingTimeMinutes: number;
+  views: number;
+  createdAt: Date;
+}
+
 // Blog Post with parsed labels
 export interface BlogPostWithLabels extends Omit<BlogPost, 'labels'> {
   labels: string[];

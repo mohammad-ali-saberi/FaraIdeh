@@ -1,6 +1,6 @@
+export const dynamic = 'force-dynamic';
 import { getAuthUser } from '@/lib/auth';
 import { redirect } from 'next/navigation';
-import React from 'react';
 import { Metadata } from 'next';
 
 interface AdminLayoutProps {

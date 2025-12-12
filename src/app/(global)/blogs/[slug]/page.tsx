@@ -28,6 +28,9 @@ import EyeStrockIcon from '@/component/icons/blogs/EyeStrockIcon';
 // Utils
 import { formatDate } from '@/utils/formatDate';
 
+// Types
+import { RelatedBlog } from '@/types/BlogsType';
+
 interface IBlogDetailPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -193,7 +196,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Related Articles */}
             <div className="lg:mt-8 mt-6 flex flex-col gap-y-5 lg:max-xl:grid lg:max-xl:grid-cols-2 lg:max-xl:gap-x-7 lg:max-xl:gap-y-3">
               {relatedBlogs.length > 0 ? (
-                relatedBlogs.map((relatedBlog) => (
+                relatedBlogs.map((relatedBlog: RelatedBlog) => (
                   <Link key={relatedBlog.id} href={`/blogs/${relatedBlog.slug}`}>
                     <div className="flex items-center gap-x-5 rounded-xl pb-1.5 px-1.5 border-b-2 border-transparent hover:border-text-primary hover:-translate-y-1 transition-all duration-200">
                       {/* Image */}
