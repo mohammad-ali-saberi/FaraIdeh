@@ -10,7 +10,6 @@ import Link from 'next/link';
 // Components
 import CustomIconEmoji from '@/component/icons/CustomIconEmoji';
 import Header from '@/component/Header';
-import Information from './Information';
 
 // Images
 import heroImage from '@/assets/images/bg-HeroSection.png';
@@ -68,8 +67,6 @@ const HeroSection = () => {
       </div>
 
       <Header colorIcon="white" heroSectionHeight={heroHeight} />
-
-      <Information />
     </div>
   );
 };

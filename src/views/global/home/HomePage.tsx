@@ -7,7 +7,7 @@ import Services from './Services';
 import Projects from './Projects';
 import Contact from './Contact';
 import Footer from '@/component/Footer';
-import Line from '@/component/Line';
+import Information from './Information';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
@@ -16,7 +16,7 @@ const LandingPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
   return (
     <>
       <HeroSection />
-      <Line className="mt-56 sm:mt-12 md:mt-14 lg:mt-10" />
+      <Information />
       <OurStory />
       <Services />
       <Projects projects={projects} />
