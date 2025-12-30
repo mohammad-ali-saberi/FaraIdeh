@@ -19,6 +19,9 @@
 
 # production
 /build
+ecosystem.config.js
+pnpm-workspace.yaml
+yamaha.x86_64
 
 # misc
 .DS_Store
