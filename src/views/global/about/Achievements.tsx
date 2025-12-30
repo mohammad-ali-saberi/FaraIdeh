@@ -39,7 +39,7 @@ const Achievements = ({ achievements }: { achievements: AchievementType[] }) => 
                     alt={a.title}
                     width={256}
                     height={256}
-                    className="shadow-xl lg:absolute lg:-top-7 lg:-right-6 lg:w-64 w-full rounded object-cover"
+                    className="shadow-xl lg:absolute lg:-top-7 lg:-right-6 lg:w-64 w-full lg:h-46 h-52 rounded-md object-cover object-center"
                   />
 
                   <div className="lg:pr-60 relative h-full lg:pl-2 p-5 lg:p-0">
