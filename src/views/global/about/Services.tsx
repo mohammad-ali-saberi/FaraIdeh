@@ -87,7 +87,7 @@ const Services = () => {
               <p className="font-iranYekan font-semibold text-2xl lg:text-4xl leading-8 lg:leading-14 pt-2">
                 چطور ایده شما را زنده می‌کنیم؟
               </p>
-              <p className="text-text-description font-iranYekan leading-7 text-justify mt-3 lg:mt-5">
+              <p className="text-text-description font-iranYekan leading-7 text-justify mt-3">
                 ما با <span className="font-extrabold">گوش دادن</span> شروع می‌کنیم. مسئله واقعی شما
                 چیست؟ مخاطب‌تان کیست؟ موفقیت برای شما چه معنایی دارد؟
                 <br />

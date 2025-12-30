@@ -35,9 +35,9 @@ const HeroSection = () => {
               <AboutHandIcon />
             </div>
 
-            <p className="font-iranYekan text-2xl lg:text-4xl font-semibold text-justify leading-10 lg:leading-14 w-full xl::w-3/4 mt-4">
-              ما تیمی کوچک و چابک در ایرانیم که ایده‌ها را به تجربه‌ای واقعی تبدیل می‌کنیم. <br />
-              از کشف مسئله و استراتژی تا طراحی و توسعه، کنار شما هستیم.
+            <p className="font-iranYekan text-2xl lg:text-3xl font-extrabold text-justify leading-10 lg:leading-12 w-full xl::w-3/4 mt-4">
+              ما تیمی کوچک و چابک در ایرانیم که ایده‌ها را به تجربه‌ای واقعی تبدیل می‌کنیم. از کشف
+              مسئله و استراتژی تا طراحی و توسعه، کنار شما هستیم.
             </p>
             <p className="text-text-description font-iranYekan leading-7 text-justify lg:mt-6 mt-4">
               برای ما نتیجه فقط تحویل نیست؛ تجربه‌ای است که کار کند و در خاطر بماند. با گفت‌وگوی
