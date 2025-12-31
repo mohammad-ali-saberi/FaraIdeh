@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { revalidatePath } from 'next/cache';
 
 export async function toggleProjectActive(projectId: number, currentStatus: boolean) {

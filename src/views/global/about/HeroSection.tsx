@@ -1,10 +1,10 @@
 'use client';
 
 // Components
-import Container from '@/component/Container';
-import AboutHeroDecoration from '@/component/icons/SVG/AboutHeroDecoration';
-import AboutHandIcon from '@/component/icons/SVG/AboutHandIcon';
-import Header from '@/component/Header';
+import Container from '@/components/Container';
+import Header from '@/components/Header';
+import AboutHandIcon from '@/components/icons/SVG/AboutHandIcon';
+import AboutHeroDecoration from '@/components/icons/SVG/AboutHeroDecoration';
 
 const HeroSection = () => {
   return (

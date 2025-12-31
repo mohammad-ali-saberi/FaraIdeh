@@ -1,19 +1,19 @@
 'use client';
 
 // React Imports
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 
 // Swiper Imports
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Swiper Styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 // Components
-import Header from '@/component/Header';
+import Header from '@/components/Header';
 import BlogSlide from './BlogSlide';
 
 // Types

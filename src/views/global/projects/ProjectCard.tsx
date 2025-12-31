@@ -4,14 +4,14 @@
 import { useEffect, useState } from 'react';
 
 // Next Imports
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Types
 import { ProjectsType } from '@/types/ProjectsType';
 
 // Components
-import EyeIcon from '@/component/icons/EyeIcon';
+import EyeIcon from '@/components/icons/EyeIcon';
 
 // Actions
 import { trackProjectView } from '@/app/actions/trackProjectView';

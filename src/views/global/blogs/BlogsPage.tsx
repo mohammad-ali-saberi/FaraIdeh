@@ -4,9 +4,9 @@
 import { useState } from 'react';
 
 // Components
-import HeroSection from './HeroSection';
+import Footer from '@/components/Footer';
 import Blogs from './Blogs';
-import Footer from '@/component/Footer';
+import HeroSection from './HeroSection';
 
 // Types
 import { BlogPost } from '@/types/BlogsType';

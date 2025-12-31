@@ -1,11 +1,11 @@
 'use client';
 
 // Components
-import Container from '@/component/Container';
-import ProjectsHeroDecoration from '@/component/icons/SVG/ProjectsHeroDecoration';
-import ProjectsCircleDecoration from '@/component/icons/SVG/ProjectsCircleDecoration';
-import ProjectsSquareDecoration from '@/component/icons/SVG/ProjectsSquareDecoration';
-import Header from '@/component/Header';
+import Container from '@/components/Container';
+import Header from '@/components/Header';
+import ProjectsCircleDecoration from '@/components/icons/SVG/ProjectsCircleDecoration';
+import ProjectsHeroDecoration from '@/components/icons/SVG/ProjectsHeroDecoration';
+import ProjectsSquareDecoration from '@/components/icons/SVG/ProjectsSquareDecoration';
 
 const HeroSection = () => {
   return (

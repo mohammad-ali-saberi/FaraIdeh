@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { Feedback } from '@/types/FeedbacksType';
 
 export async function getFeedbacks(): Promise<Feedback[]> {

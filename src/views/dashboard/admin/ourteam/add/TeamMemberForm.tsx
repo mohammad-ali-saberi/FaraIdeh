@@ -1,13 +1,13 @@
 'use client';
 
 // React Imports
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 // Components
-import Input from '@/component/Input';
-import PlusIcon from '@/component/icons/blogs/PlusIcon';
-import Toast from '@/component/Toast';
+import PlusIcon from '@/components/icons/blogs/PlusIcon';
+import Input from '@/components/Input';
+import Toast from '@/components/Toast';
 
 // Types
 import { CreateTeamMemberInput, CreateTeamMemberResponse } from '@/types/TeamMemberType';

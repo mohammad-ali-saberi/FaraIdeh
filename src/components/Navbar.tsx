@@ -12,7 +12,6 @@ import { usePathname } from 'next/navigation';
 import Logo from '@/assets/images/Logo.png';
 
 // Components
-import SearchIcon from './icons/SearchIcon';
 import PlaceOrderIcon from './icons/PlaceOrderIcon';
 
 const Navbar = () => {

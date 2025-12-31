@@ -1,11 +1,11 @@
 'use client';
 
 // Next Imports
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Components
-import Container from '@/component/Container';
+import Container from '@/components/Container';
 
 // Types
 import type { AchievementType } from '@/types/AchievementType';

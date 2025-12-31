@@ -8,16 +8,16 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
-import CloseCircleIcon from '@/component/icons/blogs/CloseCircleIcon';
-import EditIcon from '@/component/icons/blogs/EditIcon';
-import EyeStrockIcon from '@/component/icons/blogs/EyeStrockIcon';
-import InformationIcon from '@/component/icons/blogs/InformationIcon';
-import UnlockIcon from '@/component/icons/blogs/UnlockIcon';
-import LockIcon from '@/component/icons/blogs/LockIcon';
-import TickCircleIcon from '@/component/icons/blogs/TickCircleIcon';
-import PlusIcon from '@/component/icons/blogs/PlusIcon';
-import Modal from '@/component/Modal';
-import ProjectInfoModalContent from '@/component/dashboard/ProjectInfoModalContent';
+import ProjectInfoModalContent from '@/components/dashboard/ProjectInfoModalContent';
+import CloseCircleIcon from '@/components/icons/blogs/CloseCircleIcon';
+import EditIcon from '@/components/icons/blogs/EditIcon';
+import EyeStrockIcon from '@/components/icons/blogs/EyeStrockIcon';
+import InformationIcon from '@/components/icons/blogs/InformationIcon';
+import LockIcon from '@/components/icons/blogs/LockIcon';
+import PlusIcon from '@/components/icons/blogs/PlusIcon';
+import TickCircleIcon from '@/components/icons/blogs/TickCircleIcon';
+import UnlockIcon from '@/components/icons/blogs/UnlockIcon';
+import Modal from '@/components/Modal';
 
 // Types
 import { AdminProject } from '@/types/ProjectsType';

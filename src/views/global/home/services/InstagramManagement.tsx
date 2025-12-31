@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import InstagramIcon from '@/component/icons/services/InstagramIcon';
+import InstagramIcon from '@/components/icons/services/InstagramIcon';
 
 const InstagramManagement = () => {
   return (

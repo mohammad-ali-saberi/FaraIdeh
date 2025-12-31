@@ -7,8 +7,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 // Components
-import EyeIcon from '@/component/icons/dashboard/EyeIcon';
-import EyeSlashIcon from '@/component/icons/login/EyeSlashIcon';
+import EyeIcon from '@/components/icons/dashboard/EyeIcon';
+import EyeSlashIcon from '@/components/icons/login/EyeSlashIcon';
 
 // Actions
 import { loginUser } from '@/app/actions/login';

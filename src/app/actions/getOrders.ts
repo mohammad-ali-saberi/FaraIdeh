@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { Order } from '@/types/OrdersType';
 
 export async function getOrders(): Promise<Order[]> {

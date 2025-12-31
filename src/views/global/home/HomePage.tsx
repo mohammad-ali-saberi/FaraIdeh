@@ -1,13 +1,13 @@
 'use client';
 
 // Components
-import HeroSection from './HeroSection';
-import OurStory from './OurStory';
-import Services from './Services';
-import Projects from './Projects';
+import Footer from '@/components/Footer';
 import Contact from './Contact';
-import Footer from '@/component/Footer';
+import HeroSection from './HeroSection';
 import Information from './Information';
+import OurStory from './OurStory';
+import Projects from './Projects';
+import Services from './Services';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';

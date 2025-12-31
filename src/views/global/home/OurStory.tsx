@@ -4,10 +4,10 @@
 import Link from 'next/link';
 
 // Components
-import Container from '@/component/Container';
-import LargeLabel from '@/component/LargeLabel';
-import SmallLabel from '@/component/SmallLabel';
-import HomeStoryDecoration from '@/component/icons/SVG/HomeStoryDecoration';
+import Container from '@/components/Container';
+import LargeLabel from '@/components/LargeLabel';
+import SmallLabel from '@/components/SmallLabel';
+import HomeStoryDecoration from '@/components/icons/SVG/HomeStoryDecoration';
 
 const OurStory = () => {
   return (

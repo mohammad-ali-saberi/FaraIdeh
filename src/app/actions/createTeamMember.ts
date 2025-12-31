@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { CreateTeamMemberInput, CreateTeamMemberResponse } from '@/types/TeamMemberType';
 import { revalidatePath } from 'next/cache';
 

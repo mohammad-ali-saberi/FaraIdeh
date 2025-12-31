@@ -1,12 +1,12 @@
 'use client';
 
 // React Imports
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 // Components
-import Input from '@/component/Input';
-import Toast from '@/component/Toast';
+import Input from '@/components/Input';
+import Toast from '@/components/Toast';
 
 // Types
 import { CreateAchievementInput, CreateAchievementResponse } from '@/types/AchievementType';

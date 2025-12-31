@@ -1,7 +1,7 @@
 'use server';
-import { prisma } from '@/lib/prisma';
-import { getTotalPageViews } from './trackPageView';
+import { prisma } from '@/libs/prisma';
 import { DashboardStats } from '@/types/DashboardStatsType';
+import { getTotalPageViews } from './trackPageView';
 
 /**
  * Fetches all statistics needed for the admin dashboard

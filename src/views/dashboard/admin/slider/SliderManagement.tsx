@@ -7,10 +7,10 @@ import { useState, useTransition } from 'react';
 import Image from 'next/image';
 
 // Components
-import Input from '@/component/Input';
-import TrashIcon from '@/component/icons/dashboard/TrashIcon';
-import LockIcon from '@/component/icons/blogs/LockIcon';
-import UnlockIcon from '@/component/icons/blogs/UnlockIcon';
+import Input from '@/components/Input';
+import LockIcon from '@/components/icons/blogs/LockIcon';
+import UnlockIcon from '@/components/icons/blogs/UnlockIcon';
+import TrashIcon from '@/components/icons/dashboard/TrashIcon';
 
 // Actions
 import { createSlider } from '@/app/actions/createSlider';

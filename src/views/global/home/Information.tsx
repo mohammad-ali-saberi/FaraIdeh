@@ -7,13 +7,13 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 
 // Components
-import AchievementIcon from '@/component/icons/AchievementIcon';
-import OrderIcon from '@/component/icons/OrderIcon';
-import ProjectIcon from '@/component/icons/ProjectIcon';
+import AchievementIcon from '@/components/icons/AchievementIcon';
+import OrderIcon from '@/components/icons/OrderIcon';
+import ProjectIcon from '@/components/icons/ProjectIcon';
 // import InformationBackdrop from '@/component/icons/SVG/InformationBackdrop';
-import UsersIcon from '@/component/icons/UsersIcon';
-import Line from '@/component/Line';
-import Container from '@/component/Container';
+import Container from '@/components/Container';
+import UsersIcon from '@/components/icons/UsersIcon';
+import Line from '@/components/Line';
 
 // Server Actions
 import { getInformationCounts } from '@/app/actions/information';

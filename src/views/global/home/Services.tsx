@@ -1,16 +1,16 @@
 'use client';
 
 // Components
-import Container from '@/component/Container';
-import SmallLabel from '@/component/SmallLabel';
-import LargeLabel from '@/component/LargeLabel';
-import HomeServicesDecoration from '@/component/icons/SVG/HomeServicesDecoration';
-import WebsiteDesign from './services/WebsiteDesign';
-import StartUp from './services/StartUp';
+import Container from '@/components/Container';
+import LargeLabel from '@/components/LargeLabel';
+import SmallLabel from '@/components/SmallLabel';
+import HomeServicesDecoration from '@/components/icons/SVG/HomeServicesDecoration';
 import ApplicationDesign from './services/ApplicationDesign';
-import InstagramManagement from './services/InstagramManagement';
-import UiUxDesign from './services/UiUxDesign';
 import ContentManagement from './services/ContentManagement';
+import InstagramManagement from './services/InstagramManagement';
+import StartUp from './services/StartUp';
+import UiUxDesign from './services/UiUxDesign';
+import WebsiteDesign from './services/WebsiteDesign';
 
 const Services = () => {
   return (

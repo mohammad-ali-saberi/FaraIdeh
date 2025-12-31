@@ -4,14 +4,14 @@
 import Link from 'next/link';
 
 // Components
-import Container from '@/component/Container';
-import ContentManagementIcon from '@/component/icons/services/ContentManagementIcon';
-import InstagramIcon from '@/component/icons/services/InstagramIcon';
-import PhoneIcon from '@/component/icons/services/PhoneIcon';
-import SiteIcon from '@/component/icons/services/SiteIcon';
-import StartUpIcon from '@/component/icons/services/StartUpIcon';
-import UiUxIcon from '@/component/icons/services/UiUxIcon';
-import AboutServicesDecoration from '@/component/icons/SVG/AboutServicesDecoration';
+import Container from '@/components/Container';
+import ContentManagementIcon from '@/components/icons/services/ContentManagementIcon';
+import InstagramIcon from '@/components/icons/services/InstagramIcon';
+import PhoneIcon from '@/components/icons/services/PhoneIcon';
+import SiteIcon from '@/components/icons/services/SiteIcon';
+import StartUpIcon from '@/components/icons/services/StartUpIcon';
+import UiUxIcon from '@/components/icons/services/UiUxIcon';
+import AboutServicesDecoration from '@/components/icons/SVG/AboutServicesDecoration';
 
 const Services = () => {
   const services = [

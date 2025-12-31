@@ -1,8 +1,8 @@
-import 'server-only';
-import { Prisma } from '@prisma/client';
-import { prisma } from '@/lib/prisma';
-import { unstable_noStore as noStore } from 'next/cache';
+import { prisma } from '@/libs/prisma';
 import { ProjectsType } from '@/types/ProjectsType';
+import { Prisma } from '@prisma/client';
+import { unstable_noStore as noStore } from 'next/cache';
+import 'server-only';
 
 /**
  * Fetch active projects with an optional category filter.

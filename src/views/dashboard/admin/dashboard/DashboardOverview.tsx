@@ -4,21 +4,21 @@
 import Link from 'next/link';
 
 // Components
-import DashboardCircleDecoration from '@/component/icons/SVG/DashboardCircleDecoration';
-import HomeStoryDecoration from '@/component/icons/SVG/HomeStoryDecoration';
-import ThreeWingsSVG from '@/component/icons/SVG/ThreeWingsSVG';
-import BlogsIcon from '@/component/icons/dashboard/BlogsIcon';
-import EyeIcon from '@/component/icons/dashboard/EyeIcon';
-import FeedbackIcon from '@/component/icons/dashboard/FeedbackIcon';
-import OrdersIcon from '@/component/icons/dashboard/OrdersIcon';
-import ProjectsIcon from '@/component/icons/dashboard/ProjectsIcon';
+import DashboardCircleDecoration from '@/components/icons/SVG/DashboardCircleDecoration';
+import HomeStoryDecoration from '@/components/icons/SVG/HomeStoryDecoration';
+import ThreeWingsSVG from '@/components/icons/SVG/ThreeWingsSVG';
+import BlogsIcon from '@/components/icons/dashboard/BlogsIcon';
+import EyeIcon from '@/components/icons/dashboard/EyeIcon';
+import FeedbackIcon from '@/components/icons/dashboard/FeedbackIcon';
+import OrdersIcon from '@/components/icons/dashboard/OrdersIcon';
+import ProjectsIcon from '@/components/icons/dashboard/ProjectsIcon';
 
 // Types
 import { DashboardStats } from '@/types/DashboardStatsType';
 import { NewsletterSubscription } from '@/types/NewsletterSubscriptionType';
 
 // Utils
-import TeamIcon from '@/component/icons/dashboard/TeamIcon';
+import TeamIcon from '@/components/icons/dashboard/TeamIcon';
 import { formatNumberShort } from '@/utils/formatNumber';
 
 interface DashboardOverviewProps {

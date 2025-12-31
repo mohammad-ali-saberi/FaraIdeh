@@ -1,7 +1,7 @@
-import 'server-only';
-import { prisma } from '@/lib/prisma';
-import { unstable_noStore as noStore } from 'next/cache';
+import { prisma } from '@/libs/prisma';
 import { AdminProject } from '@/types/ProjectsType';
+import { unstable_noStore as noStore } from 'next/cache';
+import 'server-only';
 
 /**
  * Fetch all projects for admin dashboard (including inactive ones)

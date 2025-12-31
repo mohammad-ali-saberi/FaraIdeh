@@ -4,8 +4,8 @@
 import Image from 'next/image';
 
 // Components
-import SearchIcon from '@/component/icons/dashboard/SearchIcon';
-import BellIcon from '@/component/icons/dashboard/BellIcon';
+import BellIcon from '@/components/icons/dashboard/BellIcon';
+import SearchIcon from '@/components/icons/dashboard/SearchIcon';
 
 const Header = () => {
   return (

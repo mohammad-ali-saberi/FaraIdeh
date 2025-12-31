@@ -4,15 +4,15 @@
 import { useActionState, useEffect, useState } from 'react';
 
 // Components
-import Container from '@/component/Container';
-import EmailIcon from '@/component/icons/contact/EmailIcon';
-import MessageIcon from '@/component/icons/contact/MessageIcon';
-import PhoneIcon from '@/component/icons/contact/PhoneIcon';
-import UserIcon from '@/component/icons/contact/UserIcon';
-import HomeContactDecoration from '@/component/icons/SVG/HomeContactDecoration';
-import LargeLabel from '@/component/LargeLabel';
-import SmallLabel from '@/component/SmallLabel';
-import Toast from '@/component/Toast';
+import Container from '@/components/Container';
+import EmailIcon from '@/components/icons/contact/EmailIcon';
+import MessageIcon from '@/components/icons/contact/MessageIcon';
+import PhoneIcon from '@/components/icons/contact/PhoneIcon';
+import UserIcon from '@/components/icons/contact/UserIcon';
+import HomeContactDecoration from '@/components/icons/SVG/HomeContactDecoration';
+import LargeLabel from '@/components/LargeLabel';
+import SmallLabel from '@/components/SmallLabel';
+import Toast from '@/components/Toast';
 
 // Utils
 import { normalizePhoneInput } from '@/utils/normalizePhoneInput';

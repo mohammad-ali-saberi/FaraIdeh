@@ -1,15 +1,15 @@
 'use client';
 
 // React Imports
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // Next Imports
 import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
-import CustomIconEmoji from '@/component/icons/CustomIconEmoji';
-import Header from '@/component/Header';
+import Header from '@/components/Header';
+import CustomIconEmoji from '@/components/icons/CustomIconEmoji';
 
 // Images
 import heroImage from '@/assets/images/bg-HeroSection.png';

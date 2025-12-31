@@ -4,9 +4,9 @@
 import { useState } from 'react';
 
 // Components
-import Container from '@/component/Container';
-import AboutServicesDecoration from '@/component/icons/SVG/AboutServicesDecoration';
-import Toast from '@/component/Toast';
+import Container from '@/components/Container';
+import AboutServicesDecoration from '@/components/icons/SVG/AboutServicesDecoration';
+import Toast from '@/components/Toast';
 import FormRequest from './FormRequest';
 import SelectCategory from './SelectCategory';
 

@@ -5,9 +5,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Icons
-import GitHubIcon from '@/component/icons/GitHubIcon';
-import LinkedInIcon from '@/component/icons/LinkedInIcon';
-import InstagramIcon from '@/component/icons/InstagramIcon';
+import GitHubIcon from '@/components/icons/GitHubIcon';
+import InstagramIcon from '@/components/icons/InstagramIcon';
+import LinkedInIcon from '@/components/icons/LinkedInIcon';
 
 // Types
 import { TeamMemberType } from '@/types/TeamMemberType';

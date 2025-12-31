@@ -1,18 +1,18 @@
 'use client';
 
 // Components
-import Footer from '@/component/Footer';
-import HeroSection from './HeroSection';
-import Slider from './Slider';
-import Services from './Services';
-import OurTeam from './OurTeam';
-import Line from '@/component/Line';
+import Footer from '@/components/Footer';
+import Line from '@/components/Line';
 import Achievements from './Achievements';
+import HeroSection from './HeroSection';
+import OurTeam from './OurTeam';
+import Services from './Services';
+import Slider from './Slider';
 
 // Types
+import { AchievementType } from '@/types/AchievementType';
 import { SlidePublic } from '@/types/SlidesType';
 import { TeamMemberType } from '@/types/TeamMemberType';
-import { AchievementType } from '@/types/AchievementType';
 
 const AboutPageWrapper = ({
   slides,

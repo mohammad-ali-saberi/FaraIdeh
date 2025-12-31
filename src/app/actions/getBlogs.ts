@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { BlogPost, GetBlogsParams } from '@/types/BlogsType';
 import { Prisma } from '@prisma/client';
 

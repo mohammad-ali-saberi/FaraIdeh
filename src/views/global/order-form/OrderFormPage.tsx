@@ -1,8 +1,8 @@
 'use client';
 
 // Components
+import Footer from '@/components/Footer';
 import HeroSection from './HeroSection';
-import Footer from '@/component/Footer';
 import SubmitRequest from './SubmitRequest';
 
 const OrderFormPageWrapper = () => {

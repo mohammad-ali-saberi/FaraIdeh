@@ -8,10 +8,10 @@ import Link from 'next/link';
 import Logo from '@/assets/images/Logo.png';
 
 // Components
-import CircleSVG38X39 from '@/component/icons/SVG/login/CircleSVG38X39';
-import CircleSVG66X63 from '@/component/icons/SVG/login/CircleSVG66X63';
-import CircleSVG32X30 from '@/component/icons/SVG/login/CircleSVG32X30';
-import CircleSVG79X75 from '@/component/icons/SVG/login/CircleSVG79X75';
+import CircleSVG32X30 from '@/components/icons/SVG/login/CircleSVG32X30';
+import CircleSVG38X39 from '@/components/icons/SVG/login/CircleSVG38X39';
+import CircleSVG66X63 from '@/components/icons/SVG/login/CircleSVG66X63';
+import CircleSVG79X75 from '@/components/icons/SVG/login/CircleSVG79X75';
 
 const LayoutLoginPage = () => {
   return (

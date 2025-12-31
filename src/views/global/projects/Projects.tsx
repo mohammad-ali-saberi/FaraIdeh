@@ -1,13 +1,13 @@
 'use client';
 
 // Components
-import Container from '@/component/Container';
-import ProjectCard from './ProjectCard';
+import Container from '@/components/Container';
 import Filters from './Filters';
+import ProjectCard from './ProjectCard';
 
 // Types
-import type { ProjectsType } from '@/types/ProjectsType';
 import { ProjectCategory } from '@/features/projects/categories';
+import type { ProjectsType } from '@/types/ProjectsType';
 
 // Utils
 import { columnize } from '@/utils/columnize';

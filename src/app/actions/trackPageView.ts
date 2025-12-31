@@ -1,6 +1,6 @@
 'use server';
+import { prisma } from '@/libs/prisma';
 import { headers } from 'next/headers';
-import { prisma } from '@/lib/prisma';
 
 /**
  * Tracks a new page view based on visitor IP

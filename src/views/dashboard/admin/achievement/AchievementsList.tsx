@@ -9,12 +9,12 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 // Components
-import EditIcon from '@/component/icons/blogs/EditIcon';
-import PlusIcon from '@/component/icons/blogs/PlusIcon';
-import TrashIcon from '@/component/icons/dashboard/TrashIcon';
-import Modal from '@/component/Modal';
-import Toast from '@/component/Toast';
-import WifiLoader from '@/component/WifiLoader';
+import EditIcon from '@/components/icons/blogs/EditIcon';
+import PlusIcon from '@/components/icons/blogs/PlusIcon';
+import TrashIcon from '@/components/icons/dashboard/TrashIcon';
+import Modal from '@/components/Modal';
+import Toast from '@/components/Toast';
+import WifiLoader from '@/components/WifiLoader';
 
 // Types
 import { AchievementType } from '@/types/AchievementType';

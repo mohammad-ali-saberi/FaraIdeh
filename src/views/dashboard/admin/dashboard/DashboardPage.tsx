@@ -1,10 +1,10 @@
 'use client';
 
 // Components
-import Sidebar from '@/component/dashboard/Sidebar';
-import Header from '@/component/dashboard/Header';
+import Footer from '@/components/dashboard/Footer';
+import Header from '@/components/dashboard/Header';
+import Sidebar from '@/components/dashboard/Sidebar';
 import DashboardOverview from './DashboardOverview';
-import Footer from '@/component/dashboard/Footer';
 
 // Types
 import { DashboardStats } from '@/types/DashboardStatsType';
