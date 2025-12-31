@@ -1,8 +1,18 @@
 // Next Imports
+import type { Metadata } from 'next';
 import Link from 'next/link';
 
 // Components
-import NotFoundDecoration from '@/component/icons/SVG/NotFoundDecoration';
+import NotFoundDecoration from '@/components/icons/SVG/NotFoundDecoration';
+
+export const metadata: Metadata = {
+  title: 'صفحه پیدا نشد - 404',
+  description: 'متأسفانه صفحه مورد نظر شما یافت نشد.',
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 const notFound = () => {
   return (
