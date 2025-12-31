@@ -33,6 +33,9 @@ import { formatDate } from '@/utils/formatDate';
 // Types
 import { RelatedBlog } from '@/types/BlogsType';
 
+// Styles
+import styles from './BlogDetailPage.module.css';
+
 interface IBlogDetailPageProps {
   params: Promise<{ slug: string }>;
 }
@@ -299,7 +302,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Content */}
-            <div className="mt-5 md:mt-6 lg:mt-9 font-iranYekan text-[#4C4C4C] text-justify leading-7 lg:leading-8 text-sm md:text-base prose prose-h2:text-2xl prose-h3:text-xl prose-p:leading-7 rtl">
+            <div
+              className={`mt-5 md:mt-6 lg:mt-9 font-iranYekan text-sm md:text-base rtl ${styles.markdown}`}
+            >
               <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
                 {blog.content}
               </ReactMarkdown>
