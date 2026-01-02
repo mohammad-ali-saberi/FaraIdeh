@@ -9,14 +9,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 // Components
-import EditIcon from '@/component/icons/blogs/EditIcon';
-import InformationIcon from '@/component/icons/blogs/InformationIcon';
-import PlusIcon from '@/component/icons/blogs/PlusIcon';
-import TrashIcon from '@/component/icons/dashboard/TrashIcon';
-import Modal from '@/component/Modal';
-import TeamMemberInfoModalContent from '@/component/dashboard/TeamMemberInfoModalContent';
-import Toast from '@/component/Toast';
-import WifiLoader from '@/component/WifiLoader';
+import TeamMemberInfoModalContent from '@/components/dashboard/TeamMemberInfoModalContent';
+import EditIcon from '@/components/icons/blogs/EditIcon';
+import InformationIcon from '@/components/icons/blogs/InformationIcon';
+import PlusIcon from '@/components/icons/blogs/PlusIcon';
+import TrashIcon from '@/components/icons/dashboard/TrashIcon';
+import Modal from '@/components/Modal';
+import Toast from '@/components/Toast';
+import WifiLoader from '@/components/WifiLoader';
 
 // Types
 import { TeamMemberType } from '@/types/TeamMemberType';

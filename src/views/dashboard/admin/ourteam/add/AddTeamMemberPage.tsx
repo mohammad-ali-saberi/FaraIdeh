@@ -1,9 +1,9 @@
 'use client';
 
 // Components
-import Sidebar from '@/component/dashboard/Sidebar';
-import Header from '@/component/dashboard/Header';
-import Footer from '@/component/dashboard/Footer';
+import Footer from '@/components/dashboard/Footer';
+import Header from '@/components/dashboard/Header';
+import Sidebar from '@/components/dashboard/Sidebar';
 import TeamMemberForm from './TeamMemberForm';
 
 // Types

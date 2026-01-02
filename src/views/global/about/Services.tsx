@@ -4,14 +4,14 @@
 import Link from 'next/link';
 
 // Components
-import Container from '@/component/Container';
-import ContentManagementIcon from '@/component/icons/services/ContentManagementIcon';
-import InstagramIcon from '@/component/icons/services/InstagramIcon';
-import PhoneIcon from '@/component/icons/services/PhoneIcon';
-import SiteIcon from '@/component/icons/services/SiteIcon';
-import StartUpIcon from '@/component/icons/services/StartUpIcon';
-import UiUxIcon from '@/component/icons/services/UiUxIcon';
-import AboutServicesDecoration from '@/component/icons/SVG/AboutServicesDecoration';
+import Container from '@/components/Container';
+import ContentManagementIcon from '@/components/icons/services/ContentManagementIcon';
+import InstagramIcon from '@/components/icons/services/InstagramIcon';
+import PhoneIcon from '@/components/icons/services/PhoneIcon';
+import SiteIcon from '@/components/icons/services/SiteIcon';
+import StartUpIcon from '@/components/icons/services/StartUpIcon';
+import UiUxIcon from '@/components/icons/services/UiUxIcon';
+import AboutServicesDecoration from '@/components/icons/SVG/AboutServicesDecoration';
 
 const Services = () => {
   const services = [
@@ -70,7 +70,7 @@ const Services = () => {
                 </button>
               </Link>
 
-              <Link href="/home#contact">
+              <Link href="#contact">
                 <button
                   type="button"
                   className="text-white w-full lg:w-auto font-iranYekan font-semibold cursor-pointer bg-primary rounded-md text-center px-12 py-4 hover:bg-[#00229b] hover:-translate-y-1 transition-all duration-200"
@@ -87,7 +87,7 @@ const Services = () => {
               <p className="font-iranYekan font-semibold text-2xl lg:text-4xl leading-8 lg:leading-14 pt-2">
                 چطور ایده شما را زنده می‌کنیم؟
               </p>
-              <p className="text-text-description font-iranYekan leading-7 text-justify mt-3 lg:mt-5">
+              <p className="text-text-description font-iranYekan leading-7 text-justify mt-3">
                 ما با <span className="font-extrabold">گوش دادن</span> شروع می‌کنیم. مسئله واقعی شما
                 چیست؟ مخاطب‌تان کیست؟ موفقیت برای شما چه معنایی دارد؟
                 <br />

@@ -1,12 +1,12 @@
 'use client';
 
 // Next Imports
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Components
-import CategoryIcon from '@/component/icons/blogs/CategoryIcon';
-import CalendarIcon from '@/component/icons/blogs/CalendarIcon';
+import CalendarIcon from '@/components/icons/blogs/CalendarIcon';
+import CategoryIcon from '@/components/icons/blogs/CategoryIcon';
 
 // Types
 import { BlogPost } from '@/types/BlogsType';

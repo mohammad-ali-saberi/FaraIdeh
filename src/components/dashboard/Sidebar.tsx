@@ -4,21 +4,21 @@
 import { cloneElement } from 'react';
 
 // Next Imports
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // Components
-import HamburgerMenuIcon from '@/component/icons/dashboard/HamburgerMenuIcon';
-import DashboardIcon from '@/component/icons/dashboard/DashboardIcon';
-import ProjectsIcon from '@/component/icons/dashboard/ProjectsIcon';
-import BlogsIcon from '@/component/icons/dashboard/BlogsIcon';
-import SliderIcon from '@/component/icons/dashboard/SliderIcon';
-import TeamIcon from '@/component/icons/dashboard/TeamIcon';
-import OrdersIcon from '@/component/icons/dashboard/OrdersIcon';
-import FeedbackIcon from '@/component/icons/dashboard/FeedbackIcon';
-import LogOutIcon from '@/component/icons/dashboard/LogOutIcon';
-import AchievementIcon from '@/component/icons/dashboard/AchievementIcon';
+import AchievementIcon from '@/components/icons/dashboard/AchievementIcon';
+import BlogsIcon from '@/components/icons/dashboard/BlogsIcon';
+import DashboardIcon from '@/components/icons/dashboard/DashboardIcon';
+import FeedbackIcon from '@/components/icons/dashboard/FeedbackIcon';
+import HamburgerMenuIcon from '@/components/icons/dashboard/HamburgerMenuIcon';
+import LogOutIcon from '@/components/icons/dashboard/LogOutIcon';
+import OrdersIcon from '@/components/icons/dashboard/OrdersIcon';
+import ProjectsIcon from '@/components/icons/dashboard/ProjectsIcon';
+import SliderIcon from '@/components/icons/dashboard/SliderIcon';
+import TeamIcon from '@/components/icons/dashboard/TeamIcon';
 
 // Actions
 import { logoutUser } from '@/app/actions/logout';
@@ -76,7 +76,7 @@ const Sidebar = () => {
     <div className="col-span-2 rtl p-6 px-9 shadow-xl relative">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link href="/home">
+        <Link href="/">
           <Image src={Logo} alt="logo" className="w-5 sm:w-6" />
         </Link>
 

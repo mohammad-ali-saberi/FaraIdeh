@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import StartUpIcon from '@/component/icons/services/StartUpIcon';
+import StartUpIcon from '@/components/icons/services/StartUpIcon';
 
 const StartUp = () => {
   return (

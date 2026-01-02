@@ -17,6 +17,16 @@ export const metadata: Metadata = {
   title: 'پروژه ‌ها',
   description:
     'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',
+  openGraph: {
+    title: 'پروژه‌های فراایده',
+    description:
+      'گزیده‌ای از پروژه‌هایی که با تمرکز بر سرعت، تجربهٔ کاربری و محتوای هدفمند اجرا شده‌اند.اینجا می‌بینید چگونه ایده‌ها به خروجی‌های قابل‌سنجش تبدیل شده‌اند.',
+    url: 'https://fara-ideh.ir/projects',
+    images: ['/images/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://fara-ideh.ir/projects',
+  },
 };
 
 const ProjectsPage = async ({ searchParams }: PageProps) => {

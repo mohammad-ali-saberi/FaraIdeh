@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { NewsletterSubscription } from '@/types/NewsletterSubscriptionType';
 import { formatJalaliDateShort } from '@/utils/formatDate';
 

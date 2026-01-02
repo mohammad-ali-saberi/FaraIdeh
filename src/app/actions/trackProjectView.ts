@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 
 export async function trackProjectView(projectId: number): Promise<boolean> {
   try {

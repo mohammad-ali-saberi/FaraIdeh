@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { AdminTeamMember, TeamMemberType } from '@/types/TeamMemberType';
 import type { TeamMember } from '@prisma/client';
 

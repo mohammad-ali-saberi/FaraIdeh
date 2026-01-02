@@ -1,24 +1,24 @@
 'use client';
 
 // React Imports
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 
 // Swiper Imports
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
+import { Navigation } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Swiper Styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 
 // Components
-import SiteIcon from '@/component/icons/services/SiteIcon';
-import PhoneIcon from '@/component/icons/services/PhoneIcon';
-import StartUpIcon from '@/component/icons/services/StartUpIcon';
-import InstagramIcon from '@/component/icons/services/InstagramIcon';
-import UiUxIcon from '@/component/icons/services/UiUxIcon';
-import ContentManagementIcon from '@/component/icons/services/ContentManagementIcon';
+import ContentManagementIcon from '@/components/icons/services/ContentManagementIcon';
+import InstagramIcon from '@/components/icons/services/InstagramIcon';
+import PhoneIcon from '@/components/icons/services/PhoneIcon';
+import SiteIcon from '@/components/icons/services/SiteIcon';
+import StartUpIcon from '@/components/icons/services/StartUpIcon';
+import UiUxIcon from '@/components/icons/services/UiUxIcon';
 
 interface SelectCategoryProps {
   selectedCategories: string[];

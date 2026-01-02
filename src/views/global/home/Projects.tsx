@@ -1,10 +1,10 @@
 ﻿'use client';
 
 // Components
-import Container from '@/component/Container';
-import LargeLabel from '@/component/LargeLabel';
-import SmallLabel from '@/component/SmallLabel';
-import HomeProjectsDecoration from '@/component/icons/SVG/HomeProjectsDecoration';
+import Container from '@/components/Container';
+import LargeLabel from '@/components/LargeLabel';
+import SmallLabel from '@/components/SmallLabel';
+import HomeProjectsDecoration from '@/components/icons/SVG/HomeProjectsDecoration';
 import ProjectCard from '../projects/ProjectCard';
 
 // Types

@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { BlogPostWithLabels } from '@/types/BlogsType';
 
 export async function getBlogBySlug(slug: string) {

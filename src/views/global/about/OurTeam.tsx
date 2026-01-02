@@ -1,17 +1,17 @@
 'use client';
 
 // Next Imports
-import Link from 'next/link';
 import Image from 'next/image';
+import Link from 'next/link';
 
 // Components
-import Container from '@/component/Container';
-import LargeLabel from '@/component/LargeLabel';
-import SmallLabel from '@/component/SmallLabel';
-import GitHubIcon from '@/component/icons/GitHubIcon';
-import InstagramIcon from '@/component/icons/InstagramIcon';
-import LinkedInIcon from '@/component/icons/LinkedInIcon';
-import AboutOurTeamDecoration from '@/component/icons/SVG/AboutOurTeamDecoration';
+import Container from '@/components/Container';
+import LargeLabel from '@/components/LargeLabel';
+import SmallLabel from '@/components/SmallLabel';
+import GitHubIcon from '@/components/icons/GitHubIcon';
+import InstagramIcon from '@/components/icons/InstagramIcon';
+import LinkedInIcon from '@/components/icons/LinkedInIcon';
+import AboutOurTeamDecoration from '@/components/icons/SVG/AboutOurTeamDecoration';
 
 // Types
 import { TeamMemberType } from '@/types/TeamMemberType';

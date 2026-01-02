@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import ContentManagementIcon from '@/component/icons/services/ContentManagementIcon';
+import ContentManagementIcon from '@/components/icons/services/ContentManagementIcon';
 
 const ContentManagement = () => {
   return (

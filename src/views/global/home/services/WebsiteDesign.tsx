@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import SiteIcon from '@/component/icons/services/SiteIcon';
+import SiteIcon from '@/components/icons/services/SiteIcon';
 
 const WebsiteDesign = () => {
   return (

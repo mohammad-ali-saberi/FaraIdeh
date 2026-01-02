@@ -4,11 +4,11 @@
 import { useState } from 'react';
 
 // Components
-import EmailIcon from '@/component/icons/contact/EmailIcon';
-import MessageIcon from '@/component/icons/contact/MessageIcon';
-import PhoneIcon from '@/component/icons/contact/PhoneIcon';
-import UserIcon from '@/component/icons/contact/UserIcon';
-import HomeContactDecoration from '@/component/icons/SVG/HomeContactDecoration';
+import EmailIcon from '@/components/icons/contact/EmailIcon';
+import MessageIcon from '@/components/icons/contact/MessageIcon';
+import PhoneIcon from '@/components/icons/contact/PhoneIcon';
+import UserIcon from '@/components/icons/contact/UserIcon';
+import HomeContactDecoration from '@/components/icons/SVG/HomeContactDecoration';
 
 interface FormRequestProps {
   onSubmit: (formData: {

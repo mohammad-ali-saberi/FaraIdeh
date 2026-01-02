@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { AchievementType } from '@/types/AchievementType';
 import type { Achievement } from '@prisma/client';
 import { revalidatePath } from 'next/cache';

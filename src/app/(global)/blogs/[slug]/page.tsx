@@ -1,29 +1,31 @@
 // React Imports
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
+import remarkGfm from 'remark-gfm';
 
 // Next Imports
-import { notFound } from 'next/navigation';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
 // Actions
 import { getBlogBySlug, getRelatedBlogs } from '@/app/actions/getBlogs';
 import { trackBlogView } from '@/app/actions/trackBlogViews';
 
 // Components
-import Container from '@/component/Container';
-import Header from '@/component/Header';
-import Footer from '@/component/Footer';
-import CategoryIcon from '@/component/icons/blogs/CategoryIcon';
-import CalendarIcon from '@/component/icons/blogs/CalendarIcon';
-import TimeIcon from '@/component/icons/blogs/TimeIcon';
-import InstagramIcon from '@/component/icons/InstagramIcon';
-import TelegramIcon from '@/component/icons/TelegramIcon';
-import LinkedInIcon from '@/component/icons/LinkedInIcon';
-import FacebookIcon from '@/component/icons/FacebookIcon';
-import EyeStrockIcon from '@/component/icons/blogs/EyeStrockIcon';
+import Container from '@/components/Container';
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+import CalendarIcon from '@/components/icons/blogs/CalendarIcon';
+import CategoryIcon from '@/components/icons/blogs/CategoryIcon';
+import EyeStrockIcon from '@/components/icons/blogs/EyeStrockIcon';
+import TimeIcon from '@/components/icons/blogs/TimeIcon';
+import FacebookIcon from '@/components/icons/FacebookIcon';
+import InstagramIcon from '@/components/icons/InstagramIcon';
+import LinkedInIcon from '@/components/icons/LinkedInIcon';
+import TelegramIcon from '@/components/icons/TelegramIcon';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 // Utils
 import { formatDate } from '@/utils/formatDate';
@@ -31,8 +33,86 @@ import { formatDate } from '@/utils/formatDate';
 // Types
 import { RelatedBlog } from '@/types/BlogsType';
 
+// Styles
+import styles from './BlogDetailPage.module.css';
+
 interface IBlogDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+// Generate metadata for SEO
+export async function generateMetadata({ params }: IBlogDetailPageProps): Promise<Metadata> {
+  const { slug: blogSlug } = await params;
+
+  if (!blogSlug) {
+    return {
+      title: 'مقاله یافت نشد',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const blog = await getBlogBySlug(blogSlug);
+
+  if (!blog) {
+    return {
+      title: 'مقاله یافت نشد',
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  // Parse labels
+  const labels = (() => {
+    try {
+      return typeof blog.labels === 'string' ? JSON.parse(blog.labels) : blog.labels;
+    } catch {
+      return [];
+    }
+  })();
+
+  return {
+    title: blog.title,
+    description: blog.excerpt || blog.content.substring(0, 160),
+    keywords: Array.isArray(labels) ? labels : [],
+    authors: [{ name: blog.author || 'فراایده' }],
+
+    openGraph: {
+      title: blog.title,
+      description: blog.excerpt || blog.content.substring(0, 160),
+      type: 'article',
+      publishedTime: blog.createdAt?.toISOString(),
+      modifiedTime: blog.updatedAt?.toISOString(),
+      authors: [blog.author || 'فراایده'],
+      url: `https://fara-ideh.ir/blogs/${blog.slug}`,
+      images: [
+        {
+          // Using Dynamic OG Image
+          url: `/api/og?title=${encodeURIComponent(blog.title)}&category=${encodeURIComponent(blog.category)}&author=${encodeURIComponent(blog.author || 'فراایده')}`,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+
+    twitter: {
+      card: 'summary_large_image',
+      title: blog.title,
+      description: blog.excerpt || blog.content.substring(0, 160),
+      images: [
+        `/api/og?title=${encodeURIComponent(blog.title)}&category=${encodeURIComponent(blog.category)}&author=${encodeURIComponent(blog.author || 'فراایده')}`,
+      ],
+    },
+
+    alternates: {
+      canonical: `https://fara-ideh.ir/blogs/${blog.slug}`,
+    },
+  };
 }
 
 const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
@@ -65,6 +145,47 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
 
   return (
     <>
+      {/* JSON-LD Structured Data for Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BlogPosting',
+            headline: blog.title,
+            description: blog.excerpt,
+            image: blog.featuredImage || 'https://fara-ideh.ir/images/og-image.png',
+            datePublished: blog.createdAt?.toISOString(),
+            dateModified: blog.updatedAt?.toISOString(),
+            author: {
+              '@type': 'Person',
+              name: blog.author || 'فراایده',
+            },
+            publisher: {
+              '@type': 'Organization',
+              name: 'فراایده',
+              logo: {
+                '@type': 'ImageObject',
+                url: 'https://fara-ideh.ir/images/logo.png',
+              },
+            },
+            mainEntityOfPage: {
+              '@type': 'WebPage',
+              '@id': `https://fara-ideh.ir/blogs/${blog.slug}`,
+            },
+          }),
+        }}
+      />
+
+      {/* Breadcrumb Schema */}
+      <BreadcrumbSchema
+        items={[
+          { name: 'خانه', url: 'https://fara-ideh.ir' },
+          { name: 'بلاگ', url: 'https://fara-ideh.ir/blogs' },
+          { name: blog.title, url: `https://fara-ideh.ir/blogs/${blog.slug}` },
+        ]}
+      />
+
       <Header colorIcon="black" />
 
       <Container>
@@ -181,7 +302,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Content */}
-            <div className="mt-5 md:mt-6 lg:mt-9 font-iranYekan text-[#4C4C4C] text-justify leading-7 lg:leading-8 text-sm md:text-base prose prose-h2:text-2xl prose-h3:text-xl prose-p:leading-7 rtl">
+            <div
+              className={`mt-5 md:mt-6 lg:mt-9 font-iranYekan text-sm md:text-base rtl ${styles.markdown}`}
+            >
               <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
                 {blog.content}
               </ReactMarkdown>
@@ -330,27 +453,3 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
 };
 
 export default BlogDetailPage;
-
-// Generate metadata for SEO
-export async function generateMetadata({ params }: IBlogDetailPageProps) {
-  const { slug: blogSlug } = await params;
-
-  if (!blogSlug) {
-    return { title: 'مقاله یافت نشد' };
-  }
-
-  const blog = await getBlogBySlug(blogSlug);
-  if (!blog) {
-    return { title: 'مقاله یافت نشد' };
-  }
-
-  return {
-    title: blog.title,
-    description: blog.excerpt || blog.title,
-    openGraph: {
-      title: blog.title,
-      description: blog.excerpt || blog.title,
-      images: blog.featuredImage ? [blog.featuredImage] : [],
-    },
-  };
-}

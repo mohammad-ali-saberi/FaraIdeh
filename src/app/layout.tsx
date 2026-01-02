@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import PageViewTracker from '@/component/PageViewTracker';
+import PageViewTracker from '@/components/PageViewTracker';
+import OrganizationSchema from '@/components/OrganizationSchema';
 
 const iranYekan = localFont({
   src: [
@@ -40,11 +41,83 @@ const yekanBakhFaNum = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://fara-ideh.ir'),
   title: {
-    default: 'FaraIdeh | فراایده',
-    template: 'فراایده | %s',
+    default: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
+    template: '%s | فراایده',
   },
-  description: 'فراایده | تیم توسعه نرم افزار و استارتاپی',
+  description:
+    'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام را ارائه می‌دهد.',
+  keywords: [
+    'توسعه نرم افزار',
+    'طراحی وب سایت',
+    'طراحی اپلیکیشن',
+    'استارتاپ',
+    'UI/UX',
+    'فراایده',
+    'فراایده تیم',
+    'تیم فراایده',
+    'مدیریت اینستاگرام',
+    'مدیریت محتوا',
+    'faraideh',
+    'Faraideh',
+    'fara-ideh',
+    'Fara-ideh',
+  ],
+  authors: [{ name: 'فراایده' }],
+  creator: 'فراایده',
+  publisher: 'فراایده',
+
+  // Open Graph
+  openGraph: {
+    type: 'website',
+    locale: 'fa_IR',
+    url: 'https://fara-ideh.ir',
+    siteName: 'فراایده',
+    title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
+    description:
+      'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام را ارائه می‌دهد.',
+    images: [
+      {
+        url: '/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'فراایده',
+      },
+    ],
+  },
+
+  // Twitter Card
+  twitter: {
+    card: 'summary_large_image',
+    title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
+    description:
+      'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام را ارائه می‌دهد.',
+    images: ['/images/og-image.png'],
+  },
+
+  // Robots
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
+  // Verification
+  // verification: {
+  //   google: 'کد تایید گوگل',
+  // },
+
+  // Alternate languages
+  alternates: {
+    canonical: 'https://fara-ideh.ir',
+  },
 };
 
 export default function RootLayout({
@@ -53,9 +126,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${iranYekan.variable} ${yekanBakhFaNum.variable}`}>
+    <html lang="fa" className={`${iranYekan.variable} ${yekanBakhFaNum.variable}`}>
       <body>
         <PageViewTracker />
+        <OrganizationSchema />
         {children}
       </body>
     </html>

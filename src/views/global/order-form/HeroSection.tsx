@@ -1,9 +1,9 @@
 'use client';
 
 // Components
-import Container from '@/component/Container';
-import Header from '@/component/Header';
-import OrderFormHeroDecoration from '@/component/icons/SVG/OrderFormHeroDecoration';
+import Container from '@/components/Container';
+import Header from '@/components/Header';
+import OrderFormHeroDecoration from '@/components/icons/SVG/OrderFormHeroDecoration';
 
 const HeroSection = () => {
   return (

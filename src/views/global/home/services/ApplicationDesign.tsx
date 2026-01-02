@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import PhoneIcon from '@/component/icons/services/PhoneIcon';
+import PhoneIcon from '@/components/icons/services/PhoneIcon';
 
 const ApplicationDesign = () => {
   return (

@@ -4,10 +4,10 @@
 import { useEffect, useRef, useState } from 'react';
 
 // Components
-import Container from '@/component/Container';
-import HomeStoryDecoration from '@/component/icons/SVG/HomeStoryDecoration';
-import LargeLabel from '@/component/LargeLabel';
-import SmallLabel from '@/component/SmallLabel';
+import Container from '@/components/Container';
+import HomeStoryDecoration from '@/components/icons/SVG/HomeStoryDecoration';
+import LargeLabel from '@/components/LargeLabel';
+import SmallLabel from '@/components/SmallLabel';
 import BlogCard from './BlogCard';
 
 // Types

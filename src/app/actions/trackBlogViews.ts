@@ -1,6 +1,6 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 import { headers } from 'next/headers';
 
 export async function trackBlogView(blogId: number) {

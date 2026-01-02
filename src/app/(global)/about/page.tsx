@@ -1,13 +1,13 @@
 // Types
-import type { Metadata } from 'next';
 import type { SlidePublic } from '@/types/SlidesType';
+import type { Metadata } from 'next';
 
 // Libs
-import { prisma } from '@/lib/prisma';
+import { prisma } from '@/libs/prisma';
 
 // Actions
-import { getTeamMembers } from '@/app/actions/getTeamMembers';
 import { getAchievements } from '@/app/actions/getAchievements';
+import { getTeamMembers } from '@/app/actions/getTeamMembers';
 
 // Components
 import AboutPageWrapper from '@/views/global/about/AboutPage';
@@ -16,6 +16,16 @@ export const metadata: Metadata = {
   title: 'درباره ما',
   description:
     'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
+  openGraph: {
+    title: 'درباره فراایده',
+    description:
+      'ما ایده‌ها را به تجربه‌های واقعی کاربر تبدیل می‌کنیم و کنار شما می‌مانیم تا کار کند و دیده شود. تیمی کوچک اما مسئول، برای نتیجه‌های پایدار.',
+    url: 'https://fara-ideh.ir/about',
+    images: ['/images/og-image.png'],
+  },
+  alternates: {
+    canonical: 'https://fara-ideh.ir/about',
+  },
 };
 
 const AboutPage = async () => {

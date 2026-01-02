@@ -1,8 +1,8 @@
 'use server';
 
-import { prisma } from '@/lib/prisma';
-import { revalidatePath } from 'next/cache';
+import { prisma } from '@/libs/prisma';
 import { UpdateBlogInput, UpdateBlogResponse } from '@/types/BlogsType';
+import { revalidatePath } from 'next/cache';
 
 export async function updateBlog(data: UpdateBlogInput): Promise<UpdateBlogResponse> {
   try {

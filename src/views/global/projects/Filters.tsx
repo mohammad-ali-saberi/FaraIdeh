@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // Components
-import CategoryAllIcon from '@/component/icons/CategoryAllIcon';
+import CategoryAllIcon from '@/components/icons/CategoryAllIcon';
 
 // Types
 import type { ProjectCategory } from '@/features/projects/categories';

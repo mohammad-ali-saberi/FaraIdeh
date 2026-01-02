@@ -4,10 +4,10 @@
 import Link from 'next/link';
 
 // Components
-import GitHubIcon from '@/component/icons/GitHubIcon';
-import InstagramIcon from '@/component/icons/InstagramIcon';
-import TelegramIcon from '@/component/icons/TelegramIcon';
-import LinkedInIcon from '@/component/icons/LinkedInIcon';
+import GitHubIcon from '@/components/icons/GitHubIcon';
+import InstagramIcon from '@/components/icons/InstagramIcon';
+import LinkedInIcon from '@/components/icons/LinkedInIcon';
+import TelegramIcon from '@/components/icons/TelegramIcon';
 
 const Footer = () => {
   return (

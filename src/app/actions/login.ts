@@ -1,7 +1,7 @@
 'use server';
 
-import { comparePassword, createToken, setAuthCookie } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
+import { comparePassword, createToken, setAuthCookie } from '@/libs/auth';
+import { prisma } from '@/libs/prisma';
 import { redirect } from 'next/navigation';
 
 interface LoginResponse {

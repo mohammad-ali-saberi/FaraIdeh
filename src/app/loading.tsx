@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import WifiLoader from '@/component/WifiLoader';
+import WifiLoader from '@/components/WifiLoader';
 
 export default function Loader() {
   return (

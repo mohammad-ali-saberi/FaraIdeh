@@ -1,7 +1,7 @@
 export const dynamic = 'force-dynamic';
-import { getAuthUser } from '@/lib/auth';
-import { redirect } from 'next/navigation';
+import { getAuthUser } from '@/libs/auth';
 import { Metadata } from 'next';
+import { redirect } from 'next/navigation';
 
 interface AdminLayoutProps {
   children: React.ReactNode;

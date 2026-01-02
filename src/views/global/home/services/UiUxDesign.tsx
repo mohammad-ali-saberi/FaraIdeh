@@ -1,7 +1,7 @@
 'use client';
 
 // Components
-import UiUxIcon from '@/component/icons/services/UiUxIcon';
+import UiUxIcon from '@/components/icons/services/UiUxIcon';
 
 const UiUxDesign = () => {
   return (

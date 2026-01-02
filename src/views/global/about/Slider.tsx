@@ -4,17 +4,17 @@
 import Image from 'next/image';
 
 // Swiper Imports
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
-import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 // Types
 import { SlidePublic } from '@/types/SlidesType';
 
 // Components
-import Container from '@/component/Container';
+import Container from '@/components/Container';
 
 const Slider = ({ slides }: { slides: SlidePublic[] }) => {
   if (!slides?.length) return null;

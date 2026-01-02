@@ -1,14 +1,14 @@
 'use client';
 
 // React Imports
-import { useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
 
 // Components
-import Input from '@/component/Input';
-import PlusIcon from '@/component/icons/blogs/PlusIcon';
-import ContentEditor from '@/component/ContentEditor';
-import Toast from '@/component/Toast';
+import ContentEditor from '@/components/ContentEditor';
+import Input from '@/components/Input';
+import Toast from '@/components/Toast';
+import PlusIcon from '@/components/icons/blogs/PlusIcon';
 
 // Utils
 import { formatDate } from '@/utils/formatDate';

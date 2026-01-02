@@ -1,13 +1,13 @@
 'use client';
 
 // Components
-import HeroSection from './HeroSection';
-import OurStory from './OurStory';
-import Services from './Services';
-import Projects from './Projects';
+import Footer from '@/components/Footer';
 import Contact from './Contact';
-import Footer from '@/component/Footer';
-import Line from '@/component/Line';
+import HeroSection from './HeroSection';
+import Information from './Information';
+import OurStory from './OurStory';
+import Projects from './Projects';
+import Services from './Services';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
@@ -16,7 +16,7 @@ const LandingPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
   return (
     <>
       <HeroSection />
-      <Line className="mt-56 sm:mt-12 md:mt-14 lg:mt-10" />
+      <Information />
       <OurStory />
       <Services />
       <Projects projects={projects} />
