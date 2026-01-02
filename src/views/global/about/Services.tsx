@@ -70,7 +70,7 @@ const Services = () => {
                 </button>
               </Link>
 
-              <Link href="/home#contact">
+              <Link href="#contact">
                 <button
                   type="button"
                   className="text-white w-full lg:w-auto font-iranYekan font-semibold cursor-pointer bg-primary rounded-md text-center px-12 py-4 hover:bg-[#00229b] hover:-translate-y-1 transition-all duration-200"

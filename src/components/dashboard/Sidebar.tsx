@@ -76,7 +76,7 @@ const Sidebar = () => {
     <div className="col-span-2 rtl p-6 px-9 shadow-xl relative">
       <div className="flex items-center justify-between">
         {/* Logo */}
-        <Link href="/home">
+        <Link href="/">
           <Image src={Logo} alt="logo" className="w-5 sm:w-6" />
         </Link>
 

@@ -15,17 +15,19 @@ import { getProjects } from '@/app/actions/getProjects';
 import type { ProjectsType } from '@/types/ProjectsType';
 
 export const metadata: Metadata = {
-  title: 'تیم توسعه نرم‌افزار و استارتاپی',
+  title: {
+    absolute: 'فراایده | صفحه اصلی',
+  },
   description:
     'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام ارائه می‌دهد.',
   openGraph: {
     title: 'فراایده | تیم توسعه نرم‌افزار و استارتاپی',
     description:
       'فراایده یک تیم کوچک توسعه نرم‌افزار و استارتاپی است که خدمات طراحی و توسعه وب، اپلیکیشن موبایل، UI/UX راه اندازی استارتاپ، مدیریت محتوا و مدیریت صفحه اینستاگرام ارائه می‌دهد.',
-    url: 'https://fara-ideh.ir/home',
+    url: 'https://fara-ideh.ir',
   },
   alternates: {
-    canonical: 'https://fara-ideh.ir/home',
+    canonical: 'https://fara-ideh.ir',
   },
 };
 

@@ -3,16 +3,16 @@ const nextConfig = {
   basePath: process.env.BASEPATH,
 
   // Redirects
-  redirects: async () => {
-    return [
-      {
-        source: '/',
-        destination: '/home',
-        permanent: true,
-        locale: false,
-      },
-    ];
-  },
+  // redirects: async () => {
+  //   return [
+  //     {
+  //       source: '/',
+  //       destination: '/home',
+  //       permanent: true,
+  //       locale: false,
+  //     },
+  //   ];
+  // },
 
   // Image Optimization
   images: {

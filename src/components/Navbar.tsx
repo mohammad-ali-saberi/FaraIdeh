@@ -19,7 +19,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const routeLinks = [
-    { name: 'صفحه نخست', path: '/home' },
+    { name: 'صفحه نخست', path: '/' },
     { name: 'درباره ما', path: '/about' },
     { name: 'پروژه ها', path: '/projects' },
     { name: 'خدمات فراایده', path: '/about#services' },
@@ -55,7 +55,7 @@ const Navbar = () => {
         </button>
 
         {/* Logo */}
-        <Link href="/home">
+        <Link href="/">
           <Image src={Logo} alt="logo" className="w-5 sm:w-6" />
         </Link>
 

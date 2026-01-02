@@ -180,7 +180,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
       {/* Breadcrumb Schema */}
       <BreadcrumbSchema
         items={[
-          { name: 'خانه', url: 'https://fara-ideh.ir/home' },
+          { name: 'خانه', url: 'https://fara-ideh.ir' },
           { name: 'بلاگ', url: 'https://fara-ideh.ir/blogs' },
           { name: blog.title, url: `https://fara-ideh.ir/blogs/${blog.slug}` },
         ]}
