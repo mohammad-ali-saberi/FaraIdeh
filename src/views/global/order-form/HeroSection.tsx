@@ -17,7 +17,7 @@ const HeroSection = () => {
             <OrderFormHeroDecoration className="w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] lg:w-[300px] lg:h-[300px] xl:w-[372px] xl:h-[372px]" />
           </div>
 
-          <div className="w-full rtl mt-32 sm:mt-0">
+          <div className="w-full rtl mt-40 sm:mt-0">
             <p className="font-iranYekan text-text-primary text-lg lg:text-xl">ثبت سفارش</p>
             <p className="font-iranYekan font-semibold text-2xl lg:text-4xl leading-9 lg:leading-11 mt-1 lg:mt-3">
               درخواست پیشنهاد همکاری
