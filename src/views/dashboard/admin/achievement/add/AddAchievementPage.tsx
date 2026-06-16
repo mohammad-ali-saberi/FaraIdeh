@@ -1,9 +1,6 @@
 'use client';
 
 // Components
-import Footer from '@/components/dashboard/Footer';
-import Header from '@/components/dashboard/Header';
-import Sidebar from '@/components/dashboard/Sidebar';
 import AddAchievementForm from './AddAchievementForm';
 
 // Types
@@ -16,16 +13,7 @@ interface AddAchievementsPageWrapperProps {
 const AddAchievementsPageWrapper = ({
   createAchievementAction,
 }: AddAchievementsPageWrapperProps) => {
-  return (
-    <div className="w-full h-screen grid grid-cols-12">
-      <div className="col-span-10 bg-[#F6F7FB] rtl">
-        <Header />
-        <AddAchievementForm createAchievementAction={createAchievementAction} />
-        <Footer />
-      </div>
-      <Sidebar />
-    </div>
-  );
+  return <AddAchievementForm createAchievementAction={createAchievementAction} />;
 };
 
 export default AddAchievementsPageWrapper;

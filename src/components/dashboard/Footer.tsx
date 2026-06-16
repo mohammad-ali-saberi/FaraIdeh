@@ -9,7 +9,16 @@ import InstagramIcon from '@/components/icons/InstagramIcon';
 import LinkedInIcon from '@/components/icons/LinkedInIcon';
 import TelegramIcon from '@/components/icons/TelegramIcon';
 
-const Footer = () => {
+// Types
+import { SocialMediaData } from '@/types/SocialMediaType';
+
+interface FooterProps {
+  socialMedia: SocialMediaData;
+}
+
+const Footer = ({ socialMedia }: FooterProps) => {
+  const { githubLink, linkedinLink, instagramLink, telegramLink } = socialMedia;
+
   return (
     <footer className="px-12 mt-7 flex justify-between">
       <p className="font-iranYekan text-[#767676]">
@@ -18,33 +27,45 @@ const Footer = () => {
 
       {/* Social links */}
       <div className="flex gap-2 sm:gap-3 mb-3 ltr">
-        <Link href="https://github.com/sb878787" className="group">
-          <GitHubIcon
-            size={18}
-            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]`}
-          />
-        </Link>
+        {/* Github Link */}
+        {githubLink && (
+          <Link href={githubLink} className="group" target="_blank">
+            <GitHubIcon
+              size={18}
+              className="text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]"
+            />
+          </Link>
+        )}
 
-        <Link href="https://www.instagram.com/mohammad_ali_saberi87" className="group">
-          <InstagramIcon
-            size={18}
-            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]`}
-          />
-        </Link>
+        {/* Instagram Link */}
+        {instagramLink && (
+          <Link href={instagramLink} className="group" target="_blank">
+            <InstagramIcon
+              size={18}
+              className="text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]"
+            />
+          </Link>
+        )}
 
-        <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
-          <TelegramIcon
-            size="18"
-            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
-          />
-        </Link>
+        {/* Telegram Link */}
+        {telegramLink && (
+          <Link href={telegramLink} className="group" target="_blank">
+            <TelegramIcon
+              size="18"
+              className="text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]"
+            />
+          </Link>
+        )}
 
-        <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
-          <LinkedInIcon
-            size={18}
-            className={`text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
-          />
-        </Link>
+        {/* LinkedIn Link */}
+        {linkedinLink && (
+          <Link href={linkedinLink} className="group" target="_blank">
+            <LinkedInIcon
+              size={18}
+              className="text-[#4C4C4C] transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]"
+            />
+          </Link>
+        )}
       </div>
     </footer>
   );

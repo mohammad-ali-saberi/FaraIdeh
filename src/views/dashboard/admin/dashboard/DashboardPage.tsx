@@ -1,9 +1,6 @@
 'use client';
 
 // Components
-import Footer from '@/components/dashboard/Footer';
-import Header from '@/components/dashboard/Header';
-import Sidebar from '@/components/dashboard/Sidebar';
 import DashboardOverview from './DashboardOverview';
 
 // Types
@@ -16,16 +13,7 @@ interface DashboardPageWrapperProps {
 }
 
 const DashboardPageWrapper = ({ stats, newsletterSubs }: DashboardPageWrapperProps) => {
-  return (
-    <div className="w-full h-screen grid grid-cols-12">
-      <div className="col-span-10 bg-[#F6F7FB] rtl">
-        <Header />
-        <DashboardOverview stats={stats} newsletterSubs={newsletterSubs} />
-        <Footer />
-      </div>
-      <Sidebar />
-    </div>
-  );
+  return <DashboardOverview stats={stats} newsletterSubs={newsletterSubs} />;
 };
 
 export default DashboardPageWrapper;

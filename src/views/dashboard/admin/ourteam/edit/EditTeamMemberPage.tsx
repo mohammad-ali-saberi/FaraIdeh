@@ -1,9 +1,6 @@
 'use client';
 
 // Components
-import Footer from '@/components/dashboard/Footer';
-import Header from '@/components/dashboard/Header';
-import Sidebar from '@/components/dashboard/Sidebar';
 import EditTeamMemberForm from './EditTeamMemberForm';
 
 // Types
@@ -22,16 +19,7 @@ const EditTeamMemberPageWrapper = ({
   member,
   updateTeamMemberAction,
 }: EditTeamMemberPageWrapperProps) => {
-  return (
-    <div className="w-full h-screen grid grid-cols-12">
-      <div className="col-span-10 bg-[#F6F7FB] rtl">
-        <Header />
-        <EditTeamMemberForm member={member} updateTeamMemberAction={updateTeamMemberAction} />
-        <Footer />
-      </div>
-      <Sidebar />
-    </div>
-  );
+  return <EditTeamMemberForm member={member} updateTeamMemberAction={updateTeamMemberAction} />;
 };
 
 export default EditTeamMemberPageWrapper;
