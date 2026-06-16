@@ -156,3 +156,11 @@ model PageView {
   @@index([ipAddress, visitedAt])
   @@index([visitedAt])
 }
+
+model SocialMedia {
+  id            Int     @id @default(autoincrement())
+  githubLink    String  @default("")
+  linkedinLink  String  @default("")
+  instagramLink String  @default("")
+  telegramLink  String  @default("")
+}

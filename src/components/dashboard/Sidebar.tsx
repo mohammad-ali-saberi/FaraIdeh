@@ -19,6 +19,7 @@ import OrdersIcon from '@/components/icons/dashboard/OrdersIcon';
 import ProjectsIcon from '@/components/icons/dashboard/ProjectsIcon';
 import SliderIcon from '@/components/icons/dashboard/SliderIcon';
 import TeamIcon from '@/components/icons/dashboard/TeamIcon';
+import InstagramIcon from '@/components/icons/dashboard/InstagramIcon';
 
 // Actions
 import { logoutUser } from '@/app/actions/logout';
@@ -69,6 +70,11 @@ const Sidebar = () => {
       icon: <AchievementIcon />,
       title: 'دستاوردها',
       link: '/admin/achievement',
+    },
+    {
+      icon: <InstagramIcon />,
+      title: 'شبکه های اجتماعی',
+      link: '/admin/social-media',
     },
   ];
 
