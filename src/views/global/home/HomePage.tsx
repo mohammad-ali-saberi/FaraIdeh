@@ -11,10 +11,20 @@ import Services from './Services';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
+import type { SocialMediaData } from '@/types/SocialMediaType';
 
-const LandingPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
+// Context
+import { SocialMediaProvider } from '@/context/SocialMediaContext';
+
+const LandingPageWrapper = ({
+  projects,
+  socialMedia,
+}: {
+  projects: ProjectsType[];
+  socialMedia: SocialMediaData;
+}) => {
   return (
-    <>
+    <SocialMediaProvider socialMedia={socialMedia}>
       <HeroSection />
       <Information />
       <OurStory />
@@ -22,7 +32,7 @@ const LandingPageWrapper = ({ projects }: { projects: ProjectsType[] }) => {
       <Projects projects={projects} />
       <Contact />
       <Footer />
-    </>
+    </SocialMediaProvider>
   );
 };
 

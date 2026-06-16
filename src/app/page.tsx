@@ -10,6 +10,7 @@ import LandingPageWrapper from '@/views/global/home/HomePage';
 
 // Actions
 import { getProjects } from '@/app/actions/getProjects';
+import { getSocialMedia } from '@/app/actions/getSocialMedia';
 
 // Types
 import type { ProjectsType } from '@/types/ProjectsType';
@@ -46,7 +47,9 @@ function ProjectsSection() {
     category: p.category,
   }));
 
-  return <LandingPageWrapper projects={projects} />;
+  const socialMedia = use(getSocialMedia());
+
+  return <LandingPageWrapper projects={projects} socialMedia={socialMedia} />;
 }
 
 const LandingPage = async () => {
