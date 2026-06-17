@@ -12,7 +12,16 @@ import BellIcon from '@/components/icons/dashboard/BellIcon';
 import SearchIcon from '@/components/icons/dashboard/SearchIcon';
 // import ArrowDownIcon from '@/components/icons/dashboard/ArrowDownIcon';
 
-const Header = () => {
+interface Profile {
+  fullName: string;
+  photo?: string | null;
+}
+
+interface HeaderProps {
+  profile: Profile | null;
+}
+
+const Header = ({ profile }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -38,17 +47,21 @@ const Header = () => {
             onClick={() => setIsOpen((prev) => !prev)}
           >
             <div className="w-10 h-10 bg-black rounded-full border border-primary relative overflow-hidden">
-              <Image
-                src="https://s6.uupload.ir/files/16_(2)_-_copy_uv5q.jpg"
-                fill
-                alt="ProfileImage"
-              />
+              {profile?.photo ? (
+                <Image src={profile.photo} fill alt="ProfileImage" />
+              ) : (
+                <div className="w-full h-full bg-gray-300 flex items-center justify-center">
+                  <span className="text-white font-iranYekan text-sm font-bold">
+                    {profile?.fullName?.charAt(0) ?? 'A'}
+                  </span>
+                </div>
+              )}
             </div>
 
             <div>
               <p className="text-[#767676] font-iranYekan text-xs">خوش آمدید</p>
               <p className="text-[#4C4C4C] font-iranYekan line-clamp-1 font-medium">
-                سید محمد علی صابری
+                {profile?.fullName ?? '---'}
               </p>
             </div>
 

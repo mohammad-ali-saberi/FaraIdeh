@@ -12,6 +12,7 @@ import Sidebar from '@/components/dashboard/Sidebar';
 // Actions
 import { getAuthUser } from '@/libs/auth';
 import { getSocialMedia } from '@/app/actions/getSocialMedia';
+import { getProfile } from '@/app/actions/getProfile';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -28,12 +29,12 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
     redirect('/login');
   }
 
-  const socialMedia = await getSocialMedia();
+  const [socialMedia, profile] = await Promise.all([getSocialMedia(), getProfile()]);
 
   return (
     <div className="w-full h-screen grid grid-cols-12">
       <div className="col-span-10 bg-[#F6F7FB] rtl">
-        <Header />
+        <Header profile={profile} />
         {children}
         <Footer socialMedia={socialMedia} />
       </div>
