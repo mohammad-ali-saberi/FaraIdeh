@@ -11,7 +11,7 @@ import Toast from '@/components/Toast';
 import { updateProfile } from '@/app/actions/updateProfile';
 
 // Types
-import { User } from '@/types/UsersType';
+import { UserType } from '@/types/UsersType';
 
 interface ToastState {
   show: boolean;
@@ -19,7 +19,7 @@ interface ToastState {
   type: 'success' | 'error';
 }
 
-const ProfileEdit = ({ user }: { user: User | null }) => {
+const ProfileEdit = ({ user }: { user: UserType | null }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState<ToastState>({ show: false, message: '', type: 'success' });

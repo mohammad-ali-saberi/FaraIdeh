@@ -16,7 +16,10 @@ export async function getProfile() {
       fullName: true,
       photo: true,
       role: true,
+      isActive: true,
       lastLogin: true,
+      createdAt: true,
+      updatedAt: true,
     },
   });
 }

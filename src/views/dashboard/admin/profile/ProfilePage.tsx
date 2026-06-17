@@ -4,9 +4,9 @@
 import ProfileEdit from './ProfileEdit';
 
 // Types
-import { User } from '@/types/UsersType';
+import { UserType } from '@/types/UsersType';
 
-const ProfilePageWrapper = ({ user }: { user: User | null }) => {
+const ProfilePageWrapper = ({ user }: { user: UserType | null }) => {
   return <ProfileEdit user={user} />;
 };
 

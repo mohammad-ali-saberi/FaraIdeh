@@ -46,7 +46,7 @@ const Header = ({ profile }: HeaderProps) => {
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setIsOpen((prev) => !prev)}
           >
-            <div className="w-10 h-10 bg-black rounded-full border border-primary relative overflow-hidden">
+            <div className="w-10 h-10 bg-transparent rounded-full relative overflow-hidden">
               {profile?.photo ? (
                 <Image src={profile.photo} fill alt="ProfileImage" />
               ) : (

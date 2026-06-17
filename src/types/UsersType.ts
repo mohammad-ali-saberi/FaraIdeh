@@ -1,11 +1,14 @@
-export type User = {
+export type UserType = {
   id: number;
   username: string;
   email?: string | null;
   fullName: string;
   photo?: string | null;
   role: string;
+  isActive: boolean;
   lastLogin?: Date | null;
+  createdAt: Date;
+  updatedAt: Date;
 };
 
 export interface UpdateProfileData {
