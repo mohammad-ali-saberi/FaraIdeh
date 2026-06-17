@@ -1,7 +1,7 @@
 'use client';
 
 // React Imports
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 // Next Imports
 import Image from 'next/image';
@@ -14,13 +14,25 @@ import SearchIcon from '@/components/icons/dashboard/SearchIcon';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   return (
     <>
       <div className="w-full border-b-1 border-[#CCCCCC] bg-white py-5 px-12 flex items-center justify-between">
         <p className="font-iranYekan text-2xl font-semibold">داشبورد</p>
 
-        <div className="flex items-center gap-7 relative">
+        <div ref={dropdownRef} className="flex items-center gap-7 relative">
           <div
             className="flex items-center gap-3 cursor-pointer"
             onClick={() => setIsOpen((prev) => !prev)}
