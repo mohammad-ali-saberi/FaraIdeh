@@ -50,8 +50,8 @@ const Header = ({ profile }: HeaderProps) => {
               {profile?.photo ? (
                 <Image src={profile.photo} fill alt="ProfileImage" />
               ) : (
-                <div className="w-full h-full bg-gray-300 flex items-center justify-center">
-                  <span className="text-white font-iranYekan text-sm font-bold">
+                <div className="w-full h-full bg-gray-400 flex items-center justify-center">
+                  <span className="text-white font-iranYekan text-sm font-semibold">
                     {profile?.fullName?.charAt(0) ?? 'A'}
                   </span>
                 </div>
