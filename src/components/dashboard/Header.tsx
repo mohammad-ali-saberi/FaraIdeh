@@ -58,7 +58,7 @@ const Header = () => {
               isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
             }`}
           >
-            <Link href="/profile">
+            <Link href="/admin/profile">
               <p className="font-iranYekan border-b border-gray-300 py-4 text-[#4C4C4C] hover:text-primary transition-all">
                 ویرایش اطلاعات
               </p>
