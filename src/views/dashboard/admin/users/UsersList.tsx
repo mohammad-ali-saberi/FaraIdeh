@@ -5,6 +5,7 @@ import { useMemo, useState } from 'react';
 
 // Next Imports
 import Image from 'next/image';
+import Link from 'next/link';
 
 // TanStack Table
 import {
@@ -23,6 +24,9 @@ import { UserType } from '@/types/UsersType';
 
 // Utils
 import { formatDate } from '@/utils/formatDate';
+
+// Components
+import SearchIcon from '@/components/icons/dashboard/SearchIcon';
 
 interface UsersListProps {
   users: UserType[];
@@ -44,7 +48,7 @@ const UsersList = ({ users }: UsersListProps) => {
       {
         header: '#',
         accessorKey: 'id',
-        cell: ({ row }) => <span className="text-gray-400">{row.original.id}</span>,
+        cell: ({ row }) => <span className="text-gray-500">{row.original.id}</span>,
         size: 50,
       },
       {
@@ -67,7 +71,7 @@ const UsersList = ({ users }: UsersListProps) => {
             )}
             <div>
               <p className="font-medium text-sm">{row.original.fullName}</p>
-              <p className="text-gray-400 text-xs pt-0.5">{row.original.username}@</p>
+              <p className="text-gray-500 text-xs pt-0.5">{row.original.username}@</p>
             </div>
           </div>
         ),
@@ -76,7 +80,7 @@ const UsersList = ({ users }: UsersListProps) => {
         header: 'ایمیل',
         accessorKey: 'email',
         cell: ({ row }) => (
-          <span className="text-sm text-gray-400">{row.original.email ?? '—'}</span>
+          <span className="text-sm text-gray-500">{row.original.email ?? '—'}</span>
         ),
       },
       {
@@ -120,7 +124,7 @@ const UsersList = ({ users }: UsersListProps) => {
         header: 'آخرین ورود',
         accessorKey: 'lastLogin',
         cell: ({ row }) => (
-          <span className="text-sm text-gray-400">
+          <span className="text-sm text-gray-500">
             {row.original.lastLogin ? formatDate(row.original.lastLogin.toString()) : '—'}
           </span>
         ),
@@ -129,7 +133,7 @@ const UsersList = ({ users }: UsersListProps) => {
         header: 'تاریخ ثبت',
         accessorKey: 'createdAt',
         cell: ({ row }) => (
-          <span className="text-sm text-gray-400">
+          <span className="text-sm text-gray-500">
             {formatDate(row.original.createdAt.toString())}
           </span>
         ),
@@ -152,10 +156,38 @@ const UsersList = ({ users }: UsersListProps) => {
   });
 
   return (
-    <div className="font-iranYekan rtl">
+    <div className="font-iranYekan rtl flex flex-col gap-5">
+      {/* Search Box & Add Bottom */}
+      <div className="w-full flex items-center justify-between px-12 mt-8">
+        <div className="flex w-96 shadow-xs border border-transparent focus-within:border-primary rounded transition-colors">
+          <div className="bg-white pr-4 flex items-center justify-center rounded-r">
+            <SearchIcon className="text-gray-400 pb-0.5" size="28" />
+          </div>
+
+          <input
+            type="text"
+            placeholder="جستجو در کاربران ..."
+            value={globalFilter}
+            onChange={(e) => setGlobalFilter(e.target.value)}
+            className="w-full bg-white rounded-l px-4 py-3 text-gray-600 text-sm outline-none"
+          />
+        </div>
+
+        <div className="w-full flex items-center justify-end">
+          <Link href="/admin/users/add">
+            <button
+              type="button"
+              className="bg-primary text-white px-4 py-2 rounded hover:bg-primary/80 transition-all cursor-pointer"
+            >
+              کاربر جدید
+            </button>
+          </Link>
+        </div>
+      </div>
+
       {/* Table */}
-      <div className="overflow-x-auto p-8">
-        <table className="w-full text-right shadow-md rounded-lg">
+      <div className="overflow-x-auto px-12 pb-4">
+        <table className="w-full text-right shadow rounded-lg overflow-hidden">
           <thead className="bg-white border-b border-gray-300">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -163,7 +195,7 @@ const UsersList = ({ users }: UsersListProps) => {
                   <th
                     key={header.id}
                     onClick={header.column.getToggleSortingHandler()}
-                    className="px-5 py-4 text-sm text-gray-500 font-medium cursor-pointer select-none hover:text-primary transition-colors"
+                    className="px-5 py-4 text-sm text-gray-500 font-semibold cursor-pointer select-none hover:text-primary transition-colors"
                   >
                     <div className="flex items-center">
                       {flexRender(header.column.columnDef.header, header.getContext())}
@@ -179,7 +211,7 @@ const UsersList = ({ users }: UsersListProps) => {
           <tbody>
             {table.getRowModel().rows.length === 0 ? (
               <tr>
-                <td colSpan={columns.length} className="text-center py-12 text-gray-400">
+                <td colSpan={columns.length} className="text-center py-12 text-gray-500">
                   کاربری یافت نشد
                 </td>
               </tr>
@@ -187,7 +219,7 @@ const UsersList = ({ users }: UsersListProps) => {
               table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  className="hover:bg-white/80 transition-all bg-white/1 border-b border-gray-200"
+                  className="hover:bg-white/20 transition-all bg-[#f3f3f3] border-b border-gray-200"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="px-5 py-4">
@@ -202,7 +234,7 @@ const UsersList = ({ users }: UsersListProps) => {
       </div>
 
       {/* Pagination */}
-      <div className="flex flex-col gap-3 items-center justify-center mt-2 text-sm text-gray-500 px-9">
+      <div className="flex flex-col gap-3 items-center justify-center mt-1 text-sm text-gray-500 px-9">
         <div className="flex items-center gap-3">
           <button
             onClick={() => table.previousPage()}
