@@ -29,6 +29,10 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
     redirect('/login');
   }
 
+  if (user.role !== 'admin') {
+    redirect('/login');
+  }
+
   const [socialMedia, profile] = await Promise.all([getSocialMedia(), getProfile()]);
 
   return (

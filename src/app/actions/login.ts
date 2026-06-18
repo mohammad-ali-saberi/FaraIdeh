@@ -12,7 +12,6 @@ interface LoginResponse {
 
 export async function loginUser(username: string, password: string): Promise<LoginResponse> {
   try {
-    // Validate input
     if (!username || !password) {
       return {
         success: false,
@@ -21,7 +20,6 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Find user
     const user = await prisma.user.findUnique({
       where: { username },
     });
@@ -34,7 +32,6 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Check if user is active
     if (!user.isActive) {
       return {
         success: false,
@@ -43,7 +40,6 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Verify password
     const passwordMatch = await comparePassword(password, user.password);
 
     if (!passwordMatch) {
@@ -54,26 +50,29 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Create JWT token
     const token = await createToken({
       id: user.id,
       username: user.username,
       role: user.role,
     });
 
-    // Set auth cookie
     await setAuthCookie(token);
 
-    // Update last login
     await prisma.user.update({
       where: { id: user.id },
       data: { lastLogin: new Date() },
     });
 
-    // Redirect after successful login
-    redirect('/admin/dashboard');
+    const roleDashboards: Record<string, string> = {
+      admin: '/admin/dashboard',
+      writer: '/writer/dashboard',
+      editor: '/editor/dashboard',
+      user: '/user/dashboard',
+    };
+
+    const dashboardPath = roleDashboards[user.role] ?? '/login';
+    redirect(dashboardPath);
   } catch (error) {
-    // Re-throw redirect errors
     if (error instanceof Error && error.message.includes('NEXT_REDIRECT')) {
       throw error;
     }
