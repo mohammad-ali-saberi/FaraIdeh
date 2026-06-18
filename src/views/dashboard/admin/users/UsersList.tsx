@@ -202,7 +202,7 @@ const UsersList = ({ users }: UsersListProps) => {
       </div>
 
       {/* Pagination */}
-      <div className="flex items-center justify-between mt-2 text-sm text-gray-500 px-9">
+      <div className="flex flex-col gap-3 items-center justify-center mt-2 text-sm text-gray-500 px-9">
         <div className="flex items-center gap-3">
           <button
             onClick={() => table.previousPage()}
@@ -225,9 +225,7 @@ const UsersList = ({ users }: UsersListProps) => {
           </button>
         </div>
 
-        <span className="bg-primary text-white px-4 py-2 rounded">
-          نتیجه : {table.getFilteredRowModel().rows.length}
-        </span>
+        <span className="text-gray-400">نتیجه : {table.getFilteredRowModel().rows.length}</span>
       </div>
     </div>
   );

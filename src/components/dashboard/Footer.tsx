@@ -20,7 +20,7 @@ const Footer = ({ socialMedia }: FooterProps) => {
   const { githubLink, linkedinLink, instagramLink, telegramLink } = socialMedia;
 
   return (
-    <footer className="px-12 mt-7 flex justify-between">
+    <footer className="px-12 mt-7 flex justify-between absolute bottom-5 w-full">
       <p className="font-iranYekan text-[#767676]">
         تمامی حقوق مادی و معنوی برای گروه توسعه نرم‌افزار و استارتاپی فراایده محفوظ است.
       </p>

@@ -37,7 +37,7 @@ export default async function AdminLayout({ children }: AdminLayoutProps) {
 
   return (
     <div className="w-full h-screen grid grid-cols-12">
-      <div className="col-span-10 bg-[#F6F7FB] rtl">
+      <div className="col-span-10 bg-[#F6F7FB] rtl relative">
         <Header profile={profile} />
         {children}
         <Footer socialMedia={socialMedia} />
