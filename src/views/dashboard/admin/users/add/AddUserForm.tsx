@@ -14,32 +14,42 @@ import Toast from '@/components/Toast';
 // Features
 import { USER_ROLES, roleLabels, UserRole } from '@/features/users/roles';
 
+// Actions
+import { createUser } from '@/app/actions/createUser';
+
 const AddUserForm = () => {
   const router = useRouter();
   const [isActive, setIsActive] = useState(true);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [toast, setToast] = useState<{
+    show: boolean;
+    message: string;
+    type: 'success' | 'error';
+  }>({ show: false, message: '', type: 'success' });
+
+  const handleCloseToast = () => setToast((prev) => ({ ...prev, show: false }));
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const formData = new FormData(e.currentTarget);
-
-    const payload = {
-      photo: formData.get('photo') as string,
-      fullName: formData.get('fullName') as string,
-      username: formData.get('userName') as string,
-      password: formData.get('password') as string,
-      email: formData.get('email') as string,
-      role: formData.get('role') as UserRole,
-      isActive,
-    };
+    formData.set('isActive', String(isActive));
 
     try {
-      // اینجا بعداً server action یا fetch به API وصل میشه
-      console.log(payload);
+      const result = await createUser(formData);
+
+      if (result.success) {
+        setToast({ show: true, message: result.message, type: 'success' });
+        setTimeout(() => {
+          router.push('/admin/users');
+        }, 1200);
+      } else {
+        setToast({ show: true, message: result.message, type: 'error' });
+      }
     } catch (error) {
       console.error(error);
+      setToast({ show: true, message: 'خطای غیرمنتظره‌ای رخ داد', type: 'error' });
     } finally {
       setIsSubmitting(false);
     }
@@ -48,7 +58,7 @@ const AddUserForm = () => {
   return (
     <>
       {/* Toast Notification */}
-      {/* {toast.show && <Toast message={toast.message} type={toast.type} onClose={handleCloseToast} />} */}
+      {toast.show && <Toast message={toast.message} type={toast.type} onClose={handleCloseToast} />}
 
       <div className="px-12 mt-7 py-5 h-181 overflow-y-scroll">
         <form
@@ -114,7 +124,7 @@ const AddUserForm = () => {
           <div className="flex items-start pr-3 w-full bg-white rounded-lg shadow-md shadow-[#EDEFF1] transition ring-0 focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 focus-within:ring-offset-white focus-within:shadow-lg relative">
             <div className="relative w-full">
               <select
-                className="peer text-text-description font-iranYekan outline-none bg-transparent w-full p-3 pt-4 cursor-pointer appearance-none"
+                className="peer text-text-description font-iranYekan outline-none bg-transparent w-full p-3 pt-5 cursor-pointer appearance-none"
                 name="role"
                 id="role"
                 required
@@ -125,13 +135,13 @@ const AddUserForm = () => {
                 </option>
                 {Object.entries(USER_ROLES).map(([key, value]) => (
                   <option key={key} value={value} className="text-gray-700 font-iranYekan py-2">
-                    {roleLabels[value]}
+                    {roleLabels[value as UserRole]}
                   </option>
                 ))}
               </select>
 
               {/* Custom Dropdown Arrow */}
-              <div className="absolute left-5 top-1/2 -translate-y-2 pointer-events-none">
+              <div className="absolute left-5 top-1/2 -translate-y-1.5 pointer-events-none">
                 <svg
                   className="w-5 h-5 text-[#7D8FB3] transition-transform peer-focus:rotate-180"
                   fill="none"
