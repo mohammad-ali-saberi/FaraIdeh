@@ -6,6 +6,7 @@ import { useMemo, useState } from 'react';
 // Next Imports
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 // TanStack Table
 import {
@@ -27,6 +28,7 @@ import { formatDate } from '@/utils/formatDate';
 
 // Components
 import SearchIcon from '@/components/icons/dashboard/SearchIcon';
+import RowContextMenu from '@/components/dashboard/RowContextMenu';
 
 // Features
 import { roleLabels, UserRole } from '@/features/users/roles';
@@ -36,8 +38,15 @@ interface UsersListProps {
 }
 
 const UsersList = ({ users }: UsersListProps) => {
+  const router = useRouter();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [globalFilter, setGlobalFilter] = useState('');
+
+  const [contextMenu, setContextMenu] = useState<{
+    x: number;
+    y: number;
+    user: UserType;
+  } | null>(null);
 
   const columns = useMemo<ColumnDef<UserType>[]>(
     () => [
@@ -151,6 +160,39 @@ const UsersList = ({ users }: UsersListProps) => {
     initialState: { pagination: { pageSize: 10 } },
   });
 
+  const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement>, user: UserType) => {
+    e.preventDefault();
+
+    // Smart positioning: avoid overflow on edges
+    const menuWidth = 160;
+    const menuHeight = 90;
+    let x = e.clientX;
+    let y = e.clientY;
+
+    if (x + menuWidth > window.innerWidth) {
+      x = window.innerWidth - menuWidth - 10;
+    }
+    if (y + menuHeight > window.innerHeight) {
+      y = window.innerHeight - menuHeight - 10;
+    }
+
+    setContextMenu({ x, y, user });
+  };
+
+  const handleEdit = () => {
+    if (contextMenu) {
+      router.push(`/admin/users/edit/${contextMenu.user.id}`);
+    }
+    setContextMenu(null);
+  };
+
+  const handleDelete = () => {
+    if (contextMenu) {
+      console.log('delete user', contextMenu.user.id);
+    }
+    setContextMenu(null);
+  };
+
   return (
     <div className="font-iranYekan rtl flex flex-col gap-5">
       {/* Search Box & Add Bottom */}
@@ -215,7 +257,8 @@ const UsersList = ({ users }: UsersListProps) => {
               table.getRowModel().rows.map((row) => (
                 <tr
                   key={row.id}
-                  className="hover:bg-white/20 transition-all bg-[#f3f3f3] border-b border-gray-200"
+                  onClick={(e) => handleRowClick(e, row.original)}
+                  className="hover:bg-white/20 transition-all bg-[#f3f3f3] border-b border-gray-200 cursor-pointer"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className="px-5 py-4">
@@ -255,6 +298,16 @@ const UsersList = ({ users }: UsersListProps) => {
 
         <span className="text-gray-400">نتیجه : {table.getFilteredRowModel().rows.length}</span>
       </div>
+
+      {contextMenu && (
+        <RowContextMenu
+          x={contextMenu.x}
+          y={contextMenu.y}
+          onEdit={handleEdit}
+          onDelete={handleDelete}
+          onClose={() => setContextMenu(null)}
+        />
+      )}
     </div>
   );
 };
