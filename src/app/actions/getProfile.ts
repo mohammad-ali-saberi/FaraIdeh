@@ -17,6 +17,7 @@ export async function getProfile() {
       photo: true,
       role: true,
       isActive: true,
+      isProtected: true,
       lastLogin: true,
       createdAt: true,
       updatedAt: true,
