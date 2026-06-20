@@ -208,7 +208,7 @@ const UsersList = ({ users }: UsersListProps) => {
             {table.getRowModel().rows.length === 0 ? (
               <tr>
                 <td colSpan={columns.length} className="text-center py-12 text-gray-500">
-                  کاربری یافت نشد
+                  کاربری یافت نشد!
                 </td>
               </tr>
             ) : (
