@@ -28,16 +28,12 @@ import { formatDate } from '@/utils/formatDate';
 // Components
 import SearchIcon from '@/components/icons/dashboard/SearchIcon';
 
+// Features
+import { roleLabels, UserRole } from '@/features/users/roles';
+
 interface UsersListProps {
   users: UserType[];
 }
-
-const roleLabels: Record<string, string> = {
-  admin: 'مدیر',
-  writer: 'نویسنده',
-  editor: 'ویرایشگر',
-  user: 'کاربر',
-};
 
 const UsersList = ({ users }: UsersListProps) => {
   const [sorting, setSorting] = useState<SortingState>([]);
@@ -100,7 +96,7 @@ const UsersList = ({ users }: UsersListProps) => {
                       : 'bg-gray-500/20 text-gray-500'
               }`}
             >
-              {roleLabels[role] ?? role}
+              {roleLabels[role as UserRole] ?? role}
             </span>
           );
         },
