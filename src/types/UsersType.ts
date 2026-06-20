@@ -6,6 +6,7 @@ export type UserType = {
   photo?: string | null;
   role: string;
   isActive: boolean;
+  isProtected: boolean;
   lastLogin?: Date | null;
   createdAt: Date;
   updatedAt: Date;

@@ -181,6 +181,8 @@ const UsersList = ({ users }: UsersListProps) => {
   const handleRowClick = (e: React.MouseEvent<HTMLTableRowElement>, user: UserType) => {
     e.preventDefault();
 
+    if (user.isProtected) return;
+
     // Smart positioning: avoid overflow on edges
     const menuWidth = 160;
     const menuHeight = 90;
@@ -303,7 +305,11 @@ const UsersList = ({ users }: UsersListProps) => {
                   <tr
                     key={row.id}
                     onClick={(e) => handleRowClick(e, row.original)}
-                    className="hover:bg-white/20 transition-all bg-[#f3f3f3] border-b border-gray-200 cursor-pointer"
+                    className={`transition-all  border-b border-gray-200 ${
+                      row.original.isProtected
+                        ? 'cursor-not-allowed bg-[#000]/9'
+                        : 'hover:bg-white/20 cursor-pointer bg-[#f3f3f3]'
+                    }`}
                   >
                     {row.getVisibleCells().map((cell) => (
                       <td key={cell.id} className="px-5 py-4">

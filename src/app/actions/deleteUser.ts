@@ -9,9 +9,17 @@ interface DeleteUserResponse {
 
 export async function deleteUser(id: number): Promise<DeleteUserResponse> {
   try {
-    await prisma.user.delete({
-      where: { id },
-    });
+    const user = await prisma.user.findUnique({ where: { id } });
+
+    if (!user) {
+      return { success: false, message: 'کاربر یافت نشد' };
+    }
+
+    if (user.isProtected) {
+      return { success: false, message: 'این کاربر قابل حذف نیست' };
+    }
+
+    await prisma.user.delete({ where: { id } });
 
     return { success: true, message: 'کاربر با موفقیت حذف شد' };
   } catch (error) {

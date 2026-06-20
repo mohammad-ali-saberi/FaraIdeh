@@ -8,17 +8,18 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  username  String   @unique
-  email     String?  @unique
-  password  String   // Hashed
-  fullName  String
-  photo     String?
-  role      String   @default("admin")
-  isActive  Boolean  @default(true)
-  lastLogin DateTime?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id           Int      @id @default(autoincrement())
+  username     String   @unique
+  email        String?  @unique
+  password     String
+  fullName     String
+  photo        String?
+  role         String   @default("admin")
+  isActive     Boolean  @default(true)
+  isProtected  Boolean  @default(false)
+  lastLogin    DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 
   @@index([username])
 }

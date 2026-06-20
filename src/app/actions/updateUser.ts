@@ -14,6 +14,16 @@ export async function updateUser(
   rawData: UpdateUserInput,
 ): Promise<UpdateUserResponse> {
   try {
+    const existingTarget = await prisma.user.findUnique({ where: { id } });
+
+    if (!existingTarget) {
+      return { success: false, message: 'کاربر یافت نشد' };
+    }
+
+    if (existingTarget.isProtected) {
+      return { success: false, message: 'این کاربر قابل ویرایش نیست' };
+    }
+
     const parsed = updateUserSchema.safeParse(rawData);
 
     if (!parsed.success) {
