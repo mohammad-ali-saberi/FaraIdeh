@@ -1,6 +1,11 @@
 @import 'tailwindcss';
 
+/* ==========================================================================
+   Theme Tokens
+   Project-wide colors, fonts, breakpoints, and animations
+   ========================================================================== */
 @theme {
+  /* Colors */
   --color-primary: #0a2fb6;
   --color-text-primary: #0217fc;
   --color-orange: #ff6300;
@@ -10,44 +15,71 @@
   --color-text-description: #7d8fb3;
   --color-text-services-about: #16205f;
 
+  /* Fonts */
   --font-iranYekan: var(--font-iranYekan), system-ui, sans-serif;
   --font-yekanBakhFaNum: var(--font-yekanBakhFaNum), system-ui, sans-serif;
 
+  /* Breakpoints */
   --breakpoint-xs: 22.5rem; /* 360px */
 
+  /* Animations (Modal) */
   --animate-modal-backdrop: modalBackdrop 0.2s ease-out;
   --animate-modal-content: modalContent 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* ==========================================================================
+   CSS Variables (Swiper Pagination)
+   ========================================================================== */
 :root {
   --bullet-size: clamp(6px, 1.4vw, 10px);
   --bullet-gap: clamp(2px, 0.6vw, 3px);
   --bullet-border: clamp(1px, 0.25vw, 2px);
+
   --swiper-pagination-color: var(--color-text-primary);
   --swiper-pagination-bullet-inactive-color: var(--color-text-primary);
   --swiper-pagination-bullet-size: var(--bullet-size);
   --swiper-pagination-bullet-horizontal-gap: var(--bullet-gap);
 }
 
-/* Chromium/WebKit (Chrome, Edge, Safari) */
+/* ==========================================================================
+   Base / Global Styles
+   ========================================================================== */
+html {
+  scroll-behavior: smooth;
+}
+
+.rtl {
+  direction: rtl;
+}
+
+.ltr {
+  direction: ltr;
+}
+
+/* ==========================================================================
+   Scrollbar (Chromium / WebKit: Chrome, Edge, Safari)
+   ========================================================================== */
 *::-webkit-scrollbar {
   width: 5px;
   height: 5px; /* for horizontal bars */
 }
+
 *::-webkit-scrollbar-track {
-  /* background: var(--sb-track, #111827); */
   background: transparent;
 }
+
 *::-webkit-scrollbar-thumb {
   background: var(--sb-thumb, var(--color-orange));
-  /* border-radius: 8px; */
-  /* border: 2px solid var(--sb-track, #111827); */ /* creates a gap look */
 }
+
 *::-webkit-scrollbar-thumb:hover {
   background: #6b7280;
   cursor: pointer;
 }
 
+/* ==========================================================================
+   Swiper Pagination Bullets
+   ========================================================================== */
 .swiper-pagination-bullet {
   width: var(--bullet-size);
   height: var(--bullet-size);
@@ -66,19 +98,9 @@
   transform: scale(1.15);
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-.rtl {
-  direction: rtl;
-}
-
-.ltr {
-  direction: ltr;
-}
-
-/* ==== WiFi Loader keyframes ==== */
+/* ==========================================================================
+   WiFi Loader
+   ========================================================================== */
 @keyframes circle-outer135 {
   0% {
     stroke-dashoffset: 25;
@@ -173,7 +195,9 @@ html {
   left: 0;
 }
 
-/* Toast Animation */
+/* ==========================================================================
+   Toast Notification
+   ========================================================================== */
 @keyframes slideFromRight {
   from {
     opacity: 0;
@@ -189,6 +213,9 @@ html {
   animation: slideFromRight 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+/* ==========================================================================
+   Modal
+   ========================================================================== */
 @keyframes modalBackdrop {
   from {
     opacity: 0;
