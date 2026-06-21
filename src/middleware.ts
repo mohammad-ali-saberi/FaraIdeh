@@ -1,12 +1,12 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { jwtVerify } from 'jose';
+import { JWT_SECRET } from '@/libs/jwtSecret';
 
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production',
-);
-
-// Roll route
+/**
+ * Maps a protected route prefix to the role required to access it.
+ * Example: anyone visiting /admin/* must have role === 'admin'.
+ */
 const roleRoutes: Record<string, string> = {
   '/admin': 'admin',
   '/writer': 'writer',
@@ -14,7 +14,10 @@ const roleRoutes: Record<string, string> = {
   '/user': 'user',
 };
 
-// Roll Dashboard route
+/**
+ * Maps each role to its own dashboard, used to redirect a user
+ * who tries to access a route that doesn't match their role.
+ */
 const roleDashboards: Record<string, string> = {
   admin: '/admin/dashboard',
   writer: '/writer/dashboard',
@@ -26,7 +29,7 @@ export async function middleware(request: NextRequest) {
   const token = request.cookies.get('auth_token')?.value;
   const { pathname } = request.nextUrl;
 
-  // If there is no token, send it to login.
+  // No token at all -> not logged in, send to login page.
   if (!token) {
     return NextResponse.redirect(new URL('/login', request.url));
   }
@@ -35,10 +38,10 @@ export async function middleware(request: NextRequest) {
     const verified = await jwtVerify(token, JWT_SECRET);
     const role = verified.payload.role as string;
 
-    // Check which root the user is trying to access.
+    // Check whether the requested route belongs to a role-protected area.
     for (const [route, requiredRole] of Object.entries(roleRoutes)) {
       if (pathname.startsWith(route) && role !== requiredRole) {
-        // If the role doesn't match, send it to its own dashboard.
+        // Role mismatch -> redirect to that role's own dashboard.
         const redirectPath = roleDashboards[role] ?? '/login';
         return NextResponse.redirect(new URL(redirectPath, request.url));
       }
@@ -46,7 +49,7 @@ export async function middleware(request: NextRequest) {
 
     return NextResponse.next();
   } catch {
-    // token is not valid.
+    // Token is invalid or expired.
     return NextResponse.redirect(new URL('/login', request.url));
   }
 }
