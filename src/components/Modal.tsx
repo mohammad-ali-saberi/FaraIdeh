@@ -90,7 +90,7 @@ const Modal: React.FC<ModalProps> = ({
       />
 
       {/* Modal */}
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4" onClick={onClose}>
         <div
           className={`${sizeClasses[size]} bg-white rounded-2xl shadow-2xl shadow-black/10 max-h-[85vh] overflow-y-auto transition-all duration-200 ${
             isClosing ? 'opacity-0 scale-95 translate-y-2' : 'opacity-100 animate-modal-content'
