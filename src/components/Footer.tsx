@@ -12,24 +12,26 @@ import LogoType from '@/assets/images/LogoType.png';
 
 // Components
 import Container from './Container';
-import GitHubIcon from './icons/GitHubIcon';
-import InstagramIcon from './icons/InstagramIcon';
-import TelegramIcon from './icons/TelegramIcon';
-import LinkedInIcon from './icons/LinkedInIcon';
 import ArrNewsletterIcon from './icons/ArrNewsletterIcon';
 import Decoration from './icons/SVG/FooterDecoration';
 import FooterRightDecoration from './icons/SVG/FooterRightDecoration';
 import FooterShapeDecoration from './icons/SVG/FooterShapeDecoration';
 import ArrToTopIcon from './icons/ArrToTopIcon';
 import Toast from './Toast';
+import SocialLinks from './SocialLinks';
 
 // Actions
 import { createNewsletterSubscription } from '@/app/actions/createNewsletterSubscription';
+
+// Contexts
+import { useSocialMedia } from '@/context/SocialMediaContext';
 
 const Footer = () => {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const socialMedia = useSocialMedia();
 
   const handleScrollTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -132,85 +134,25 @@ const Footer = () => {
                 </ul>
               </div>
 
-              <ul className="flex flex-col items-center lg:gap-5 gap-4 lg:hidden">
-                <li>
-                  <Link href="https://github.com/sb878787" className="group">
-                    <GitHubIcon
-                      size={30}
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="https://www.instagram.com/mohammad_ali_saberi87" className="group">
-                    <InstagramIcon
-                      size={30}
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
-                    <TelegramIcon
-                      size="30"
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
-                    <LinkedInIcon
-                      size={30}
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-              </ul>
+              {/* Social media */}
+              <SocialLinks
+                socialMedia={socialMedia}
+                size={30}
+                colorClass="text-white transition-all duration-200"
+                direction="col"
+                className="lg:hidden"
+              />
             </div>
 
             {/* Newsletter */}
             <div>
               {/* Social media */}
-              <ul className="lg:flex items-center gap-5 hidden">
-                <li>
-                  <Link href="https://github.com/sb878787" className="group">
-                    <GitHubIcon
-                      size={40}
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="https://www.instagram.com/mohammad_ali_saberi87" className="group">
-                    <InstagramIcon
-                      size={40}
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
-                    <TelegramIcon
-                      size="40"
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-
-                <li>
-                  <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
-                    <LinkedInIcon
-                      size={40}
-                      className="text-white transition-all duration-200 group-hover:-translate-y-2"
-                    />
-                  </Link>
-                </li>
-              </ul>
+              <SocialLinks
+                socialMedia={socialMedia}
+                size={40}
+                colorClass="text-white transition-all duration-200 group-hover:-translate-y-2"
+                className="hidden lg:flex mb-4"
+              />
 
               <div className="md:mt-4">
                 <p className="text-white font-iranYekan font-semibold text-xl">خبرنامه</p>

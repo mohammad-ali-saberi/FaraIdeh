@@ -1,10 +1,7 @@
 import { SignJWT, jwtVerify } from 'jose';
 import { cookies } from 'next/headers';
 import bcryptjs from 'bcryptjs';
-
-const JWT_SECRET = new TextEncoder().encode(
-  process.env.JWT_SECRET || 'your-super-secret-jwt-key-change-this-in-production',
-);
+import { JWT_SECRET } from './jwtSecret';
 
 export interface JWTPayload {
   id: number;
@@ -13,18 +10,26 @@ export interface JWTPayload {
   [key: string]: string | number;
 }
 
-// Hash password
+// ---------------------------------------------------------------------------
+// Password Hashing
+// ---------------------------------------------------------------------------
+
+/** Hash a plain-text password before storing it in the database. */
 export async function hashPassword(password: string): Promise<string> {
   const salt = await bcryptjs.genSalt(10);
   return bcryptjs.hash(password, salt);
 }
 
-// Compare password
+/** Compare a plain-text password against a stored bcrypt hash. */
 export async function comparePassword(password: string, hashedPassword: string): Promise<boolean> {
   return bcryptjs.compare(password, hashedPassword);
 }
 
-// Create JWT Token
+// ---------------------------------------------------------------------------
+// JWT Tokens
+// ---------------------------------------------------------------------------
+
+/** Create a signed JWT for an authenticated user (valid for 7 days). */
 export async function createToken(payload: JWTPayload): Promise<string> {
   return new SignJWT(payload as Record<string, string | number>)
     .setProtectedHeader({ alg: 'HS256' })
@@ -32,7 +37,7 @@ export async function createToken(payload: JWTPayload): Promise<string> {
     .sign(JWT_SECRET);
 }
 
-// Verify JWT Token
+/** Verify a JWT and return its payload, or null if invalid/expired. */
 export async function verifyToken(token: string): Promise<JWTPayload | null> {
   try {
     const verified = await jwtVerify(token, JWT_SECRET);
@@ -46,7 +51,11 @@ export async function verifyToken(token: string): Promise<JWTPayload | null> {
   }
 }
 
-// Set auth token in cookie
+// ---------------------------------------------------------------------------
+// Auth Cookie Management
+// ---------------------------------------------------------------------------
+
+/** Store the JWT in an httpOnly cookie after a successful login. */
 export async function setAuthCookie(token: string): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.set('auth_token', token, {
@@ -58,19 +67,23 @@ export async function setAuthCookie(token: string): Promise<void> {
   });
 }
 
-// Remove auth token from cookie
+/** Remove the auth cookie (used on logout). */
 export async function removeAuthCookie(): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.delete('auth_token');
 }
 
-// Get auth token from cookie
+/** Read the raw auth token from the cookie, if present. */
 export async function getAuthCookie(): Promise<string | undefined> {
   const cookieStore = await cookies();
   return cookieStore.get('auth_token')?.value;
 }
 
-// Get authenticated user from cookie
+// ---------------------------------------------------------------------------
+// Current User Helper
+// ---------------------------------------------------------------------------
+
+/** Get the currently authenticated user from the request cookies, if any. */
 export async function getAuthUser(): Promise<JWTPayload | null> {
   const token = await getAuthCookie();
   if (!token) return null;

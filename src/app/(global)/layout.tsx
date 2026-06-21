@@ -1,11 +1,8 @@
-export const dynamic = 'force-dynamic';
-export const revalidate = 0;
-export const fetchCache = 'force-no-store';
+import { getSocialMedia } from '@/app/actions/getSocialMedia';
+import { SocialMediaProvider } from '@/context/SocialMediaContext';
 
-interface GlobalLayoutProps {
-  children: React.ReactNode;
-}
+export default async function GlobalLayout({ children }: { children: React.ReactNode }) {
+  const socialMedia = await getSocialMedia();
 
-export default function GlobalLayout({ children }: GlobalLayoutProps) {
-  return <>{children}</>;
+  return <SocialMediaProvider socialMedia={socialMedia}>{children}</SocialMediaProvider>;
 }

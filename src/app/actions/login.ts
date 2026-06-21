@@ -2,6 +2,7 @@
 
 import { comparePassword, createToken, setAuthCookie } from '@/libs/auth';
 import { prisma } from '@/libs/prisma';
+import { checkRateLimit, recordFailedAttempt, clearFailedAttempts } from '@/libs/rateLimit';
 import { redirect } from 'next/navigation';
 
 interface LoginResponse {
@@ -12,7 +13,6 @@ interface LoginResponse {
 
 export async function loginUser(username: string, password: string): Promise<LoginResponse> {
   try {
-    // Validate input
     if (!username || !password) {
       return {
         success: false,
@@ -21,12 +21,22 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Find user
+    // Check rate limit before anything else
+    const rateLimitCheck = checkRateLimit(username);
+    if (!rateLimitCheck.allowed) {
+      return {
+        success: false,
+        message: rateLimitCheck.message ?? 'تعداد تلاش‌های شما بیش از حد مجاز است',
+        error: 'RATE_LIMITED',
+      };
+    }
+
     const user = await prisma.user.findUnique({
       where: { username },
     });
 
     if (!user) {
+      recordFailedAttempt(username);
       return {
         success: false,
         message: 'نام کاربری یا رمز عبور اشتباه است',
@@ -34,7 +44,6 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Check if user is active
     if (!user.isActive) {
       return {
         success: false,
@@ -43,10 +52,10 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Verify password
     const passwordMatch = await comparePassword(password, user.password);
 
     if (!passwordMatch) {
+      recordFailedAttempt(username);
       return {
         success: false,
         message: 'نام کاربری یا رمز عبور اشتباه است',
@@ -54,26 +63,32 @@ export async function loginUser(username: string, password: string): Promise<Log
       };
     }
 
-    // Create JWT token
+    // Successful login -> clear any previous failed attempts
+    clearFailedAttempts(username);
+
     const token = await createToken({
       id: user.id,
       username: user.username,
       role: user.role,
     });
 
-    // Set auth cookie
     await setAuthCookie(token);
 
-    // Update last login
     await prisma.user.update({
       where: { id: user.id },
       data: { lastLogin: new Date() },
     });
 
-    // Redirect after successful login
-    redirect('/admin/dashboard');
+    const roleDashboards: Record<string, string> = {
+      admin: '/admin/dashboard',
+      writer: '/writer/dashboard',
+      editor: '/editor/dashboard',
+      user: '/user/dashboard',
+    };
+
+    const dashboardPath = roleDashboards[user.role] ?? '/login';
+    redirect(dashboardPath);
   } catch (error) {
-    // Re-throw redirect errors
     if (error instanceof Error && error.message.includes('NEXT_REDIRECT')) {
       throw error;
     }

@@ -1,7 +1,18 @@
 export const dynamic = 'force-dynamic';
-import { getAuthUser } from '@/libs/auth';
+
+// Next Imports
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
+
+// Components
+import Header from '@/components/dashboard/Header';
+import Footer from '@/components/dashboard/Footer';
+import Sidebar from '@/components/dashboard/Sidebar';
+
+// Actions
+import { getAuthUser } from '@/libs/auth';
+import { getSocialMedia } from '@/app/actions/getSocialMedia';
+import { getProfile } from '@/app/actions/getProfile';
 
 interface AdminLayoutProps {
   children: React.ReactNode;
@@ -14,10 +25,24 @@ export const metadata: Metadata = {
 export default async function AdminLayout({ children }: AdminLayoutProps) {
   const user = await getAuthUser();
 
-  // Redirect to login if not authenticated
   if (!user) {
     redirect('/login');
   }
 
-  return <>{children}</>;
+  if (user.role !== 'admin') {
+    redirect('/login');
+  }
+
+  const [socialMedia, profile] = await Promise.all([getSocialMedia(), getProfile()]);
+
+  return (
+    <div className="w-full h-screen grid grid-cols-12">
+      <div className="col-span-10 bg-[#F6F7FB] rtl relative">
+        <Header profile={profile} />
+        {children}
+        <Footer socialMedia={socialMedia} />
+      </div>
+      <Sidebar />
+    </div>
+  );
 }

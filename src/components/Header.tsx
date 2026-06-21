@@ -3,25 +3,28 @@
 // React Imports
 import { useState, useEffect } from 'react';
 
-// Next Imports
-import Link from 'next/link';
-
 // Components
-import GitHubIcon from './icons/GitHubIcon';
-import InstagramIcon from './icons/InstagramIcon';
-import TelegramIcon from './icons/TelegramIcon';
-import LinkedInIcon from './icons/LinkedInIcon';
 import Navbar from './Navbar';
+import SocialLinks from './SocialLinks';
+
+// Types
+import { SocialMediaData } from '@/types/SocialMediaType';
+
+// Contexts
+import { useSocialMedia } from '@/context/SocialMediaContext';
 
 interface IHeaderProps {
   colorIcon: 'white' | 'black';
   heroSectionHeight?: number;
+  socialMedia: SocialMediaData;
 }
 
-const Header = ({ colorIcon, heroSectionHeight = 600 }: IHeaderProps) => {
+const Header = ({ colorIcon, heroSectionHeight = 600 }: Omit<IHeaderProps, 'socialMedia'>) => {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolledPastHero, setIsScrolledPastHero] = useState(false);
+
+  const socialMedia = useSocialMedia();
 
   useEffect(() => {
     const controlHeader = () => {
@@ -61,35 +64,12 @@ const Header = ({ colorIcon, heroSectionHeight = 600 }: IHeaderProps) => {
     >
       <div className="pt-4 sm:pt-6 md:pt-8 px-4 sm:px-6 md:px-8 lg:px-10 max-w-7xl mx-auto">
         {/* Social links */}
-        <div className="flex gap-2 sm:gap-3 mb-3">
-          <Link href="https://github.com/sb878787" className="group">
-            <GitHubIcon
-              size={18}
-              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]`}
-            />
-          </Link>
-
-          <Link href="https://www.instagram.com/mohammad_ali_saberi87" className="group">
-            <InstagramIcon
-              size={18}
-              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[22px] md:h-[22px]`}
-            />
-          </Link>
-
-          <Link href="https://web.telegram.org/k/#@M_sb87_Developer" className="group">
-            <TelegramIcon
-              size="18"
-              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
-            />
-          </Link>
-
-          <Link href="https://linkedin.com/in/mohammad-ali-saberi" className="group">
-            <LinkedInIcon
-              size={18}
-              className={`${currentColorClass} transition-colors duration-300 group-hover:text-primary sm:w-5 sm:h-5 md:w-[21px] md:h-[21px]`}
-            />
-          </Link>
-        </div>
+        <SocialLinks
+          socialMedia={socialMedia}
+          size={24}
+          colorClass={`${currentColorClass} transition-colors duration-300 group-hover:text-primary`}
+          className="mb-3 ltr sm:gap-3"
+        />
 
         <Navbar />
       </div>
