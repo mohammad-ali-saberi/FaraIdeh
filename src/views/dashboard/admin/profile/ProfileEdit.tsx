@@ -6,6 +6,7 @@ import { useState } from 'react';
 // Components
 import Input from '@/components/Input';
 import Toast from '@/components/Toast';
+import PasswordToggle from '@/components/PasswordToggle';
 
 // Actions
 import { updateProfile } from '@/app/actions/updateProfile';
@@ -23,6 +24,7 @@ const ProfileEdit = ({ user }: { user: UserType | null }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState<ToastState>({ show: false, message: '', type: 'success' });
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState({
     photo: user?.photo ?? '',
@@ -111,7 +113,7 @@ const ProfileEdit = ({ user }: { user: UserType | null }) => {
 
           {/* Password */}
           <Input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             id="password"
             placeholder=" "
@@ -120,6 +122,13 @@ const ProfileEdit = ({ user }: { user: UserType | null }) => {
             value={formData.password}
             onChange={handleChange}
             disabled={!isEditing}
+            icon={
+              <PasswordToggle
+                show={showPassword}
+                onToggle={() => setShowPassword((prev) => !prev)}
+                disabled={!isEditing}
+              />
+            }
           />
 
           {/* Email */}

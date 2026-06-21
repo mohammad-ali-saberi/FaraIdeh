@@ -11,6 +11,7 @@ interface InputProps {
   disabled?: boolean;
   value?: string | number;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  icon?: React.ReactNode;
 }
 
 const Input = ({
@@ -24,6 +25,7 @@ const Input = ({
   disabled,
   value,
   onChange,
+  icon,
 }: InputProps) => {
   return (
     <div
@@ -35,6 +37,7 @@ const Input = ({
       <div className="relative w-full pr-3">
         <input
           className={`peer ${type === 'number' ? 'font-yekanBakhFaNum' : 'font-iranYekan'} outline-none bg-transparent w-full p-3 py-5
+            ${icon ? 'pl-10' : ''}
             ${disabled ? 'cursor-not-allowed text-[#7D8FB3]' : 'text-text-description placeholder:text-text-description'}
           `}
           type={type}
@@ -61,6 +64,8 @@ const Input = ({
         >
           {label}
         </label>
+
+        {icon && <div className="absolute left-5 top-1/2 -translate-y-3">{icon}</div>}
       </div>
     </div>
   );
