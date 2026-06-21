@@ -8,6 +8,8 @@ import Image from 'next/image';
 
 // Components
 import Input from '@/components/Input';
+import Modal from '@/components/Modal';
+import Toast from '@/components/Toast';
 import LockIcon from '@/components/icons/blogs/LockIcon';
 import UnlockIcon from '@/components/icons/blogs/UnlockIcon';
 import TrashIcon from '@/components/icons/dashboard/TrashIcon';
@@ -28,6 +30,17 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
   const [photo, setPhoto] = useState('');
   const [sliders, setSliders] = useState<Slide[]>(initialSliders);
   const [isPending, startTransition] = useTransition();
+  const [deleteModal, setDeleteModal] = useState<{ open: boolean; id: number | null }>({
+    open: false,
+    id: null,
+  });
+  const [toast, setToast] = useState<{
+    show: boolean;
+    message: string;
+    type: 'success' | 'error';
+  }>({ show: false, message: '', type: 'success' });
+
+  const handleCloseToast = () => setToast((prev) => ({ ...prev, show: false }));
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -40,22 +53,39 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
       if (result.success && result.data) {
         setSliders((prev) => [...prev, result.data as Slide]);
         setPhoto('');
+        setToast({ show: true, message: 'تصویر با موفقیت اضافه شد', type: 'success' });
       } else {
-        alert(result.error || 'خطا در ایجاد اسلایدر');
+        setToast({
+          show: true,
+          message: result.error || 'خطا در ایجاد تصویر',
+          type: 'error',
+        });
       }
     });
   };
 
-  const handleDelete = async (id: number) => {
-    if (!confirm('آیا از حذف این اسلایدر اطمینان دارید؟')) return;
+  const handleDeleteClick = (id: number) => {
+    setDeleteModal({ open: true, id });
+  };
+
+  const handleConfirmDelete = async () => {
+    if (!deleteModal.id) return;
+
+    const id = deleteModal.id;
+    setDeleteModal({ open: false, id: null });
 
     startTransition(async () => {
       const result = await deleteSlider(id);
 
       if (result.success) {
         setSliders((prev) => prev.filter((slider) => slider.id !== id));
+        setToast({ show: true, message: 'تصویر با موفقیت حذف شد', type: 'success' });
       } else {
-        alert(result.error || 'خطا در حذف اسلایدر');
+        setToast({
+          show: true,
+          message: result.error || 'خطا در حذف تصویر',
+          type: 'error',
+        });
       }
     });
   };
@@ -70,19 +100,31 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
             slider.id === id ? { ...slider, isActive: !currentStatus } : slider,
           ),
         );
+        setToast({
+          show: true,
+          message: !currentStatus ? 'تصویر فعال شد' : 'تصویر غیرفعال شد',
+          type: 'success',
+        });
       } else {
-        alert(result.error || 'خطا در تغییر وضعیت اسلایدر');
+        setToast({
+          show: true,
+          message: result.error || 'خطا در تغییر وضعیت تصویر',
+          type: 'error',
+        });
       }
     });
   };
 
   return (
     <>
+      {/* Toast Notification */}
+      {toast.show && <Toast message={toast.message} type={toast.type} onClose={handleCloseToast} />}
+
       <div className="px-12 mt-7 py-5 h-181 overflow-y-scroll">
         {/* Form */}
         <form onSubmit={handleSubmit} className="grid grid-cols-12 rtl w-full gap-x-5">
           {/* Photo */}
-          <div className="col-span-10">
+          <div className="col-span-11">
             <Input
               type="text"
               name="photo"
@@ -101,9 +143,9 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
           <button
             type="submit"
             disabled={isPending || !photo.trim()}
-            className="col-span-2 py-3 bg-orange font-iranYekan outline-none text-lg text-white rounded-lg cursor-pointer border-b-4 border-[#a33f00] hover:border-transparent hover:translate-y-1 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="col-span-1 py-3 bg-orange font-iranYekan outline-none text-lg text-white rounded-lg cursor-pointer border-b-4 border-[#a33f00] hover:border-transparent hover:translate-y-1 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {isPending ? 'در حال ثبت...' : 'ثبت اطلاعات'}
+            {isPending ? 'در حال...' : 'افزودن'}
           </button>
         </form>
 
@@ -132,7 +174,7 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
                 <div className="absolute top-3 left-3 flex items-center gap-3">
                   <button
                     type="button"
-                    onClick={() => handleDelete(slider.id)}
+                    onClick={() => handleDeleteClick(slider.id)}
                     disabled={isPending}
                     className="bg-primary rounded-lg p-2 border border-white cursor-pointer group hover:bg-white hover:border-primary transition-all duration-200 disabled:opacity-50"
                   >
@@ -169,6 +211,29 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
           )}
         </div>
       </div>
+
+      {/* Deleted Modal */}
+      <Modal
+        isOpen={deleteModal.open}
+        onClose={() => setDeleteModal({ open: false, id: null })}
+        title="حذف تصویر"
+        size="sm"
+        actions={[
+          {
+            label: 'انصراف',
+            variant: 'secondary',
+            onClick: () => setDeleteModal({ open: false, id: null }),
+          },
+          {
+            label: isPending ? 'در حال حذف...' : 'بله، حذف شود',
+            variant: 'danger',
+            onClick: handleConfirmDelete,
+          },
+        ]}
+      >
+        <p>آیا از حذف این تصویر مطمئن هستید؟</p>
+        <p className="text-sm text-red-500 mt-2">این عملیات غیرقابل بازگشت است.</p>
+      </Modal>
     </>
   );
 };
