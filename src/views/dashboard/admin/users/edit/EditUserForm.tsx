@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import Input from '@/components/Input';
 import Switch from '@/components/Switch';
 import Toast from '@/components/Toast';
+import PasswordToggle from '@/components/PasswordToggle';
 
 // Types
 import { UserType } from '@/types/UsersType';
@@ -29,7 +30,6 @@ interface EditUserFormProps {
 
 const EditUserForm = ({ user }: EditUserFormProps) => {
   const router = useRouter();
-
   const [photo, setPhoto] = useState(user.photo ?? '');
   const [fullName, setFullName] = useState(user.fullName);
   const [username, setUsername] = useState(user.username);
@@ -37,13 +37,13 @@ const EditUserForm = ({ user }: EditUserFormProps) => {
   const [email, setEmail] = useState(user.email ?? '');
   const [role, setRole] = useState<UserRole>(user.role as UserRole);
   const [isActive, setIsActive] = useState(user.isActive);
-
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [toast, setToast] = useState<{
     show: boolean;
     message: string;
     type: 'success' | 'error';
   }>({ show: false, message: '', type: 'success' });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleCloseToast = () => setToast((prev) => ({ ...prev, show: false }));
 
@@ -130,7 +130,7 @@ const EditUserForm = ({ user }: EditUserFormProps) => {
 
           {/* Password */}
           <Input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             id="password"
             placeholder=" "
@@ -138,6 +138,12 @@ const EditUserForm = ({ user }: EditUserFormProps) => {
             htmlFor="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            icon={
+              <PasswordToggle
+                show={showPassword}
+                onToggle={() => setShowPassword((prev) => !prev)}
+              />
+            }
           />
 
           {/* Email */}

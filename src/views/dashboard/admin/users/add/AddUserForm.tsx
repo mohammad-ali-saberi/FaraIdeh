@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import Input from '@/components/Input';
 import Switch from '@/components/Switch';
 import Toast from '@/components/Toast';
+import PasswordToggle from '@/components/PasswordToggle';
 
 // Features
 import { USER_ROLES, roleLabels, UserRole } from '@/features/users/roles';
@@ -26,6 +27,7 @@ const AddUserForm = () => {
     message: string;
     type: 'success' | 'error';
   }>({ show: false, message: '', type: 'success' });
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleCloseToast = () => setToast((prev) => ({ ...prev, show: false }));
 
@@ -101,13 +103,19 @@ const AddUserForm = () => {
 
           {/* Password */}
           <Input
-            type="password"
+            type={showPassword ? 'text' : 'password'}
             name="password"
             id="password"
             placeholder=" "
             required={true}
             label="رمز عبور"
             htmlFor="password"
+            icon={
+              <PasswordToggle
+                show={showPassword}
+                onToggle={() => setShowPassword((prev) => !prev)}
+              />
+            }
           />
 
           {/* Email */}
