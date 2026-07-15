@@ -64,7 +64,7 @@ const ProjectsList = ({ projects }: ProjectsListProps) => {
           {projects.length === 0 ? (
             <div className="col-span-3 flex flex-col items-center justify-center h-full">
               <Image
-                src="https://s6.uupload.ir/files/image_8_mict-removebg-preview_kxug.png"
+                src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/image_8_mict-removebg-preview_kxug_bxigvx"
                 alt="EmptyImage"
                 width={300}
                 height={300}
@@ -74,7 +74,9 @@ const ProjectsList = ({ projects }: ProjectsListProps) => {
           ) : (
             projectList.map((project) => {
               const photos = Array.isArray(project.photos) ? project.photos : [];
-              const mainPhoto = photos[0] || 'https://s6.uupload.ir/files/images_eusf.png';
+              const mainPhoto =
+                photos[0] ||
+                'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob';
 
               return (
                 <div key={project.id} className="bg-white shadow rounded-xl h-130 relative">

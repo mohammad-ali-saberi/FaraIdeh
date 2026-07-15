@@ -49,7 +49,7 @@ const LoginForm = () => {
       {/* Login Image */}
       <div className="relative overflow-hidden w-190 h-170 rounded-xl">
         <Image
-          src="https://s6.uupload.ir/files/newletter-join-us-sign-up_l8df.png"
+          src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/newletter-join-us-sign-up_l8df_dj1quo"
           alt="ImageLogin"
           fill
         />

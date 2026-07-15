@@ -19,7 +19,7 @@ const OrdersList = ({ orders }: OrdersListProps) => {
       <div className="px-12 mt-12">
         <div className="bg-white border border-[#D7D7D7] px-16 rounded-3xl h-176 flex flex-col gap-3 items-center justify-center">
           <Image
-            src="https://s6.uupload.ir/files/image_8_mict.png"
+            src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/image_8_mict-removebg-preview_kxug_bxigvx"
             alt="EmptyImage"
             width={300}
             height={300}

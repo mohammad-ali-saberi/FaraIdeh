@@ -154,7 +154,7 @@ const SliderManagement = ({ initialSliders }: SliderManagementProps) => {
           {sliders.length === 0 ? (
             <div className="col-span-3 flex flex-col items-center justify-center gap-3 py-12">
               <Image
-                src="https://s6.uupload.ir/files/image_8_mict-removebg-preview_kxug.png"
+                src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/image_8_mict-removebg-preview_kxug_bxigvx"
                 alt="EmptyImage"
                 width={300}
                 height={300}

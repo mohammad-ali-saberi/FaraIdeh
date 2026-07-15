@@ -232,7 +232,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
               <div className="flex gap-3 items-center">
                 <div className="rounded-full border-2 border-text-primary">
                   <Image
-                    src="https://s6.uupload.ir/files/16_(2)_-_copy_ztvp.jpg"
+                    src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
                     alt="AuthorImage"
                     width={25}
                     height={25}
@@ -280,7 +280,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
               <div className="flex gap-2 items-center">
                 <div className="rounded-full border-2 border-text-primary w-[25px] h-[25px]">
                   <Image
-                    src="https://s6.uupload.ir/files/16_(2)_-_copy_ztvp.jpg"
+                    src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
                     alt="AuthorImage"
                     width={25}
                     height={25}
@@ -294,7 +294,10 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Image */}
             <div className="w-full h-52 md:h-72 lg:h-115 overflow-hidden relative rounded-2xl lg:mt-6 mt-2 sm:mt-3">
               <Image
-                src={blog.featuredImage || 'https://s6.uupload.ir/files/images_eusf.png'}
+                src={
+                  blog.featuredImage ||
+                  'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob'
+                }
                 alt="BlogImage"
                 fill
                 className="object-cover object-center"
@@ -327,7 +330,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                         <Image
                           src={
                             relatedBlog.featuredImage ||
-                            'https://s6.uupload.ir/files/images_eusf.png'
+                            'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob'
                           }
                           alt={relatedBlog.title}
                           fill

@@ -26,11 +26,7 @@ const nextConfig = {
       // },
       {
         protocol: 'https',
-        hostname: 'cdn.imgurl.ir',
-      },
-      {
-        protocol: 'https',
-        hostname: 's6.uupload.ir',
+        hostname: 'res.cloudinary.com',
       },
     ],
   },
