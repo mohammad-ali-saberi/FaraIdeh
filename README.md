@@ -499,7 +499,7 @@ Your contribution to improving this project is valuable! To contribute:
 - **📦 Repository**: [github.com/mohammad-ali-saberi/FaraIdeh](https://github.com/mohammad-ali-saberi/FaraIdeh)
 - **💼 LinkedIn**: [mohammad-ali-saberi](https://linkedin.com/in/mohammad-ali-saberi)
 - **📸 Instagram**: [@mohammad_ali_saberi87](https://www.instagram.com/mohammad_ali_saberi87)
-- **💬 Telegram**: [@M_sb87_Developer](https://web.telegram.org/k/#@M_sb87_Developer)
+- **💬 Telegram**: [@FaraidehSupport](https://t.me/FaraidehSupport)
 - **📝 Blog**: [fara-ideh.ir/blogs](https://fara-ideh.ir/blogs)
 - **💼 Projects**: [fara-ideh.ir/projects](https://fara-ideh.ir/projects)
 
