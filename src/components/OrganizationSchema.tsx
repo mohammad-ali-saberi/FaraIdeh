@@ -34,7 +34,7 @@ export default function OrganizationSchema() {
       'https://www.instagram.com/mohammad_ali_saberi87', // Instagram
       'https://linkedin.com/in/mohammad-ali-saberi', // LinkedIn
       'https://github.com/mohammad-ali-saberi', // Github
-      'https://t.me/M_sb87_Developer', // Telegram
+      'https://t.me/FaraidehSupport', // Telegram
     ],
 
     address: {
