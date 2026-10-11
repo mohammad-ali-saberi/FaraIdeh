@@ -23,24 +23,45 @@ interface IHeroSectionProps {
   latestBlogs: BlogPost[];
 }
 
+const navButtonClass =
+  'flex h-11 w-11 lg:h-12 lg:w-12 items-center justify-center rounded-full border border-[#e9eef7] bg-white text-[#16205f] shadow-[0_10px_24px_-18px_rgba(16,24,40,0.6)] cursor-pointer transition-all duration-300 ease-out hover:border-primary hover:bg-primary hover:text-white hover:shadow-[0_12px_28px_-12px_rgba(10,47,182,0.7)] active:scale-95 disabled:pointer-events-none disabled:border-[#e9eef7] disabled:bg-white disabled:text-[#adb8cc] disabled:shadow-none disabled:opacity-50';
+
+const NavChevron = ({ direction }: { direction: 'prev' | 'next' }) => (
+  <svg
+    className="h-5 w-5"
+    fill="none"
+    stroke="currentColor"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path d={direction === 'prev' ? 'M9 19l7-7-7-7' : 'M15 19l-7-7 7-7'} />
+  </svg>
+);
+
 const HeroSection = ({ latestBlogs }: IHeroSectionProps) => {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef<SwiperType | null>(null);
+
+  const trackState = (swiper: SwiperType) => {
+    setIsBeginning(swiper.isBeginning);
+    setIsEnd(swiper.isEnd);
+    setActiveIndex(swiper.activeIndex);
+  };
 
   return (
     <div className="relative w-full pt-4 sm:pt-6 md:pt-8">
       <Header colorIcon="black" />
 
-      {/*
-        The design opens straight into the slider with no visible page title, so
-        this stays visually hidden while still giving the page a single H1.
-      */}
       <h1 className="sr-only">وبلاگ فراایده | مقالات طراحی سایت، اپلیکیشن، UI/UX و رشد کسب‌وکار</h1>
 
       {/* Hero Section */}
       {latestBlogs.length !== 0 ? (
         <div className="relative w-full mt-32 sm:mt-36 lg:mt-44 pr-4 lg:pr-10 xl:pr-20">
+          {/* Slider */}
           <Swiper
             modules={[Navigation]}
             dir="rtl"
@@ -62,13 +83,9 @@ const HeroSection = ({ latestBlogs }: IHeroSectionProps) => {
             }}
             onSwiper={(swiper) => {
               swiperRef.current = swiper;
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
+              trackState(swiper);
             }}
-            onSlideChange={(swiper) => {
-              setIsBeginning(swiper.isBeginning);
-              setIsEnd(swiper.isEnd);
-            }}
+            onSlideChange={trackState}
             className="!pl-4 lg:!pl-10 xl:!pl-20"
           >
             {latestBlogs.map((blog) => (
@@ -79,96 +96,35 @@ const HeroSection = ({ latestBlogs }: IHeroSectionProps) => {
           </Swiper>
 
           {/* Navigation Buttons */}
-          {/* Desktop */}
-          {/* Prev Button */}
-          {!isBeginning && (
+          <div className="rtl flex items-center justify-start gap-3 mt-5 lg:mt-7">
+            {/* Previous Button */}
             <button
               type="button"
               onClick={() => swiperRef.current?.slidePrev()}
-              className="absolute top-1/2 -translate-y-1/2 right-5 xl:right-14 z-10 bg-[#E3E3E3] text-black w-12 h-12 rounded-full items-center justify-center cursor-pointer border-4 border-white hover:scale-90 transition-all duration-200 hidden lg:flex"
-              aria-label="Prev Button"
+              disabled={isBeginning}
+              className={navButtonClass}
+              aria-label="اسلاید قبلی"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M9 19l7-7-7-7"></path>
-              </svg>
+              <NavChevron direction="prev" />
             </button>
-          )}
 
-          {/* Next Button */}
-          {!isEnd && (
+            {/* Next Button */}
             <button
               type="button"
               onClick={() => swiperRef.current?.slideNext()}
-              className="absolute top-1/2 -translate-y-1/2 left-4 z-10 bg-[#E3E3E3] text-black w-12 h-12 rounded-full items-center justify-center cursor-pointer border-4 border-white hover:scale-90 transition-all duration-200 hidden lg:flex"
-              aria-label="Next Button"
+              disabled={isEnd}
+              className={navButtonClass}
+              aria-label="اسلاید بعدی"
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.5"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path d="M15 19l-7-7 7-7"></path>
-              </svg>
+              <NavChevron direction="next" />
             </button>
-          )}
 
-          {/* Mobile */}
-          <div className="flex flex-row-reverse items-center justify-end gap-2 mt-2 ml-3 lg:hidden">
-            {/* Prev Button */}
-            {!isBeginning && (
-              <button
-                type="button"
-                onClick={() => swiperRef.current?.slidePrev()}
-                className="bg-[#f1f1f1] text-black w-10 h-10 rounded-full flex items-center justify-center cursor-pointer border-2 border-[#c4c4c4] hover:scale-90 transition-all duration-200"
-                aria-label="Prev Button"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M9 19l7-7-7-7"></path>
-                </svg>
-              </button>
-            )}
-
-            {/* Next Button */}
-            {!isEnd && (
-              <button
-                type="button"
-                onClick={() => swiperRef.current?.slideNext()}
-                className="bg-[#f1f1f1] text-black w-10 h-10 rounded-full flex items-center justify-center cursor-pointer border-2 border-[#c4c4c4] hover:scale-90 transition-all duration-200"
-                aria-label="Next Button"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2.5"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path d="M15 19l-7-7 7-7"></path>
-                </svg>
-              </button>
-            )}
+            {/* Page Indicator */}
+            <p className="font-yekanBakhFaNum mr-1 text-sm font-semibold text-[#adb8cc]">
+              <span className="text-[#16205f]">{String(activeIndex + 1).padStart(2, '0')}</span>
+              <span className="mx-1.5 text-[#e9eef7]">/</span>
+              <span>{String(latestBlogs.length).padStart(2, '0')}</span>
+            </p>
           </div>
         </div>
       ) : (
