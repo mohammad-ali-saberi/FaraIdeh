@@ -213,102 +213,49 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
           {/* Content */}
           <div className="w-full">
             {/* Title */}
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl leading-11 lg:leading-normal xl:text-[47px] font-semibold font-iranYekan">
+            <div className="bg-orange mb-4 h-1 w-12 rounded-full lg:mb-5" />
+
+            <h1 className="font-iranYekan text-2xl leading-[1.7] font-bold text-balance text-[#16205f] sm:text-3xl lg:text-4xl lg:leading-[1.5]">
               {blog.title}
             </h1>
 
-            {/* Desktop Detail */}
-            <div className="hidden lg:flex mt-3 gap-8">
+            {/* Meta — one responsive row instead of duplicated desktop/mobile blocks */}
+            <div className="mt-4 flex flex-wrap items-center gap-x-3.5 gap-y-2.5 sm:mt-5">
               {/* Category */}
-              <div className="flex gap-2 items-center">
-                <CategoryIcon className="text-black" />
-                <p className="font-iranYekan">{blog.category}</p>
-              </div>
+              <span className="font-iranYekan inline-flex items-center gap-1.5 rounded-full border border-[#dbe6ff] bg-[#f0f5ff] px-3 py-1.5 text-xs font-bold text-primary">
+                <CategoryIcon size="15" className="shrink-0" />
+                {blog.category}
+              </span>
 
               {/* Date */}
-              <div className="flex gap-2 items-center">
-                <CalendarIcon size="21" className="text-black" />
-                <p className="font-iranYekan pt-0.5">{formatDate(blog.createdAt)}</p>
-              </div>
+              <span className="font-iranYekan inline-flex items-center gap-1.5 text-sm text-[#6B7A99]">
+                <CalendarIcon size="18" className="shrink-0 text-[#adb8cc]" />
+                <span className="font-yekanBakhFaNum">{formatDate(blog.createdAt)}</span>
+              </span>
 
               {/* Reading Time */}
-              <div className="flex gap-2 items-center">
-                <TimeIcon size="25" className="text-black" />
-                <p className="font-iranYekan">
-                  مطالعه <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span>{' '}
-                  دقیقه
-                </p>
-              </div>
+              <span className="font-iranYekan inline-flex items-center gap-1.5 text-sm text-[#6B7A99]">
+                <TimeIcon size="20" className="shrink-0 text-[#adb8cc]" />
+                مطالعه <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span> دقیقه
+              </span>
 
-              {/* Views */}
-              <div className="flex gap-2 items-center">
-                <EyeStrockIcon size="25" className="text-black" />
-                <p className="font-iranYekan">
-                  <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
-                </p>
-              </div>
+              {/* Views — the least important of the four, so it waits for width */}
+              <span className="font-iranYekan hidden items-center gap-1.5 text-sm text-[#6B7A99] sm:inline-flex">
+                <EyeStrockIcon size="21" className="shrink-0 text-[#adb8cc]" />
+                <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
+              </span>
 
               {/* Author */}
-              <div className="flex gap-3 items-center">
-                <div className="rounded-full border-2 border-text-primary">
-                  <Image
-                    src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
-                    alt={blog.author}
-                    width={25}
-                    height={25}
-                    className="rounded-full object-cover object-center"
-                  />
-                </div>
-                <p className="font-iranYekan">{blog.author}</p>
-              </div>
-            </div>
-
-            {/* Mobile Detail */}
-            <div className="flex mt-2 sm:mt-3 pb-3 gap-4 lg:hidden w-full max-sm:overflow-x-auto max-sm:[--webkit-overflow-scrolling:touch]">
-              {/* Category */}
-              <div className="flex gap-2 items-center">
-                <CategoryIcon size="17" className="text-black" />
-                <p className="font-iranYekan text-sm">{blog.category}</p>
-              </div>
-
-              {/* Date */}
-              <div className="flex gap-2 items-center">
-                <CalendarIcon size="20" className="text-black" />
-                <p className="font-iranYekan pt-0.5 text-sm text-nowrap">
-                  {formatDate(blog.createdAt)}
-                </p>
-              </div>
-
-              {/* Reading Time */}
-              <div className="flex gap-2 items-center">
-                <TimeIcon size="20" className="text-black" />
-                <p className="font-iranYekan text-sm text-nowrap">
-                  مطالعه <span className="font-yekanBakhFaNum">{blog.readingTimeMinutes}</span>{' '}
-                  دقیقه
-                </p>
-              </div>
-
-              {/* Views */}
-              <div className="flex gap-2 items-center">
-                <EyeStrockIcon size="20" className="text-black" />
-                <p className="font-iranYekan text-sm text-nowrap">
-                  <span className="font-yekanBakhFaNum">{blog.views}</span> بازدید
-                </p>
-              </div>
-
-              {/* Author */}
-              <div className="flex gap-2 items-center">
-                <div className="rounded-full border-2 border-text-primary w-[25px] h-[25px]">
-                  <Image
-                    src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
-                    alt={blog.author}
-                    width={25}
-                    height={25}
-                    className="rounded-full object-cover object-center"
-                  />
-                </div>
-                <p className="font-iranYekan text-sm text-nowrap">{blog.author}</p>
-              </div>
+              <span className="font-iranYekan inline-flex items-center gap-2 text-sm font-extrabold text-[#16205f]">
+                <Image
+                  src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
+                  alt={blog.author}
+                  width={30}
+                  height={30}
+                  className="h-[30px] w-[30px] rounded-full object-cover object-center ring-2 ring-[#e9eef7]"
+                />
+                {blog.author}
+              </span>
             </div>
 
             {/* Image */}
@@ -347,133 +294,140 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
           {/* Related Articles & Labels & Share */}
           <div className="w-full xl:w-3/5">
             {/* Related Articles Title */}
-            <h2 className="font-iranYekan font-medium text-2xl mt-10 xl:mt-0">مقاله های مرتبط</h2>
+            <h2 className="font-iranYekan text-2xl font-bold text-[#16205f] mt-10 xl:mt-0">
+              مقاله های مرتبط
+            </h2>
 
             {/* Related Articles */}
-            <div className="lg:mt-8 mt-6 flex flex-col gap-y-5 lg:max-xl:grid lg:max-xl:grid-cols-2 lg:max-xl:gap-x-7 lg:max-xl:gap-y-3">
+            <div className="mt-4 flex flex-col gap-3 lg:max-xl:grid lg:max-xl:grid-cols-2">
               {relatedBlogs.length > 0 ? (
                 relatedBlogs.map((relatedBlog: RelatedBlog) => (
-                  <Link key={relatedBlog.id} href={`/blogs/${relatedBlog.slug}`}>
-                    <div className="flex items-center gap-x-5 rounded-xl pb-1.5 px-1.5 border-b-2 border-transparent hover:border-text-primary hover:-translate-y-1 transition-all duration-200">
-                      {/* Image */}
-                      <div className="relative w-full sm:w-3/4 h-38 sm:h-32 rounded-xl overflow-hidden">
-                        <Image
-                          src={
-                            relatedBlog.featuredImage ||
-                            'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob'
-                          }
-                          alt={relatedBlog.title}
-                          fill
-                          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 30vw, 20vw"
-                          className="object-cover object-center"
-                        />
+                  <Link
+                    key={relatedBlog.id}
+                    href={`/blogs/${relatedBlog.slug}`}
+                    className="group flex items-center gap-4 rounded-2xl border border-transparent p-2.5 transition-all duration-300 ease-out hover:border-[#e9eef7] hover:bg-white hover:shadow-[0_14px_32px_-24px_rgba(16,24,40,0.55)]"
+                  >
+                    {/* Image */}
+                    <div className="relative h-20 w-24 shrink-0 overflow-hidden rounded-xl sm:h-28 sm:w-40">
+                      <Image
+                        src={
+                          relatedBlog.featuredImage ||
+                          'https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/images_eusf_eshcob'
+                        }
+                        alt={relatedBlog.title}
+                        fill
+                        sizes="(max-width: 640px) 96px, 160px"
+                        className="object-cover object-center transition-transform duration-500 ease-out group-hover:scale-105"
+                      />
+
+                      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-black/5" />
+                    </div>
+
+                    {/* Detail */}
+                    <div className="min-w-0 flex-1">
+                      {/* Category & Reading Time */}
+                      <div className="flex flex-wrap items-center gap-x-3 gap-y-1.5">
+                        <span className="font-iranYekan inline-flex items-center gap-1.5 text-[11px] font-bold text-primary">
+                          <CategoryIcon size="14" className="shrink-0" />
+                          {relatedBlog.category}
+                        </span>
+
+                        <span className="font-iranYekan inline-flex items-center gap-1.5 text-[11px] text-[#adb8cc]">
+                          <TimeIcon size="16" className="shrink-0" />
+                          <span className="font-yekanBakhFaNum">
+                            {relatedBlog.readingTimeMinutes}
+                          </span>
+                          دقیقه
+                        </span>
                       </div>
 
-                      {/* Detail */}
-                      <div className="w-full mt-1.5">
-                        {/* Category & Reading Time */}
-                        <div className="w-full flex flex-col sm:flex-row gap-x-4 gap-y-2">
-                          {/* Category */}
-                          <div className="flex gap-2">
-                            <CategoryIcon size="17" className="text-black" />
-                            <p className="font-iranYekan text-sm">{relatedBlog.category}</p>
-                          </div>
+                      {/* Title */}
+                      <h3 className="font-iranYekan mt-2 line-clamp-2 text-sm font-bold text-[#16205f] transition-colors duration-300 group-hover:text-primary sm:text-base">
+                        {relatedBlog.title}
+                      </h3>
 
-                          {/* Reading Time */}
-                          <div className="flex gap-2 items-center">
-                            <TimeIcon size="20" className="text-black" />
-                            <p className="font-iranYekan text-sm">
-                              مطالعه{' '}
-                              <span className="font-yekanBakhFaNum">
-                                {relatedBlog.readingTimeMinutes}
-                              </span>{' '}
-                              دقیقه
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Title */}
-                        <h3 className="font-iranYekan line-clamp-1 font-semibold text-xl mt-4">
-                          {relatedBlog.title}
-                        </h3>
-
-                        {/* Excerpt */}
-                        <p className="font-iranYekan text-[#4C4C4C] line-clamp-2 text-sm text-justify leading-6 mt-2 font-medium">
-                          {relatedBlog.excerpt}
-                        </p>
-                      </div>
+                      {/* Excerpt */}
+                      <p className="font-iranYekan mt-1.5 line-clamp-2 text-xs leading-6 font-medium text-[#7d8fb3]">
+                        {relatedBlog.excerpt}
+                      </p>
                     </div>
                   </Link>
                 ))
               ) : (
-                <p className="text-center bg-text-description font-iranYekan rtl text-white rounded-lg py-4 px-6">
+                <p className="text-center bg-text-description font-iranYekan rtl text-white rounded-xl py-4 px-6">
                   در این دسته‌بندی مقاله دیگری نیست.
                 </p>
               )}
             </div>
 
             {/* Labels Title */}
-            <h2 className="font-iranYekan font-medium text-2xl mt-5 lg:mt-8 xl:mt-12">برچسب ها</h2>
+            <h2 className="font-iranYekan text-2xl font-bold text-[#16205f] mt-5 lg:mt-8 xl:mt-12">
+              برچسب ها
+            </h2>
 
             {/* Labels */}
-            <div className="flex flex-wrap gap-3 mt-3 lg:mt-5">
+            <div className="flex flex-wrap gap-2.5 mt-3 lg:mt-5">
               {Array.isArray(labels) && labels.length > 0 ? (
                 labels.map((label, index) => (
-                  <div
+                  <span
                     key={index}
-                    className="border-r-3 border-orange rounded-lg px-4 py-2 md:px-6 md:py-3 shadow-md text-sm md:text-base"
+                    className="font-iranYekan rounded-full border border-[#e8eef8] bg-[#f5f8fd] px-4 py-2 text-sm font-semibold text-[#6B7A99] transition-colors duration-300 hover:border-primary/40 hover:bg-white hover:text-primary"
                   >
-                    <span className="font-iranYekan">{label}</span>
-                  </div>
+                    {label}
+                  </span>
                 ))
               ) : (
-                <p className="text-center bg-text-description font-iranYekan rtl text-white rounded w-full py-2">
+                <p className="text-center bg-text-description font-iranYekan rtl text-white rounded-xl w-full py-2">
                   برچسبی وجود ندارد
                 </p>
               )}
             </div>
 
             {/* Share */}
-            <div className="w-full flex flex-col items-center justify-center mt-10 sm:mt-12 lg:mt-16">
+            <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#e9eef7] bg-[#f9fbfe] px-5 py-4 sm:mt-12 lg:mt-16">
               {/* Share Title */}
-              <h2 className="font-iranYekan font-medium text-lg">اشتراک گذاری</h2>
+              <h2 className="font-iranYekan text-sm font-bold text-[#16205f]">اشتراک گذاری</h2>
 
               {/* Share Icons */}
-              <div className="flex items-center mt-1">
+              <div className="flex items-center gap-1">
                 <Link
                   href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
+                  aria-label="اشتراک‌گذاری در لینکدین"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#6B7A99] transition-all duration-300 ease-out hover:bg-white hover:text-primary hover:shadow-[0_10px_22px_-14px_rgba(16,24,40,0.6)]"
                 >
-                  <LinkedInIcon className="text-[#383838]" size={24} />
+                  <LinkedInIcon size={20} />
                 </Link>
 
                 <Link
                   href={`https://t.me/share/url?url=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}&text=${encodeURIComponent(blog.title)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
+                  aria-label="اشتراک‌گذاری در تلگرام"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#6B7A99] transition-all duration-300 ease-out hover:bg-white hover:text-primary hover:shadow-[0_10px_22px_-14px_rgba(16,24,40,0.6)]"
                 >
-                  <TelegramIcon className="text-[#383838]" size="24" />
+                  <TelegramIcon size="20" />
                 </Link>
 
                 <Link
                   href={`https://www.instagram.com/`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
+                  aria-label="اینستاگرام فراایده"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#6B7A99] transition-all duration-300 ease-out hover:bg-white hover:text-primary hover:shadow-[0_10px_22px_-14px_rgba(16,24,40,0.6)]"
                 >
-                  <InstagramIcon className="text-[#383838]" size={25} />
+                  <InstagramIcon size={21} />
                 </Link>
 
                 <Link
                   href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`${SITE_URL}/blogs/${blog.slug}`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-full p-3 hover:bg-[#EDEDED] hover:scale-110 transition-all duration-200"
+                  aria-label="اشتراک‌گذاری در فیسبوک"
+                  className="flex h-10 w-10 items-center justify-center rounded-full text-[#6B7A99] transition-all duration-300 ease-out hover:bg-white hover:text-primary hover:shadow-[0_10px_22px_-14px_rgba(16,24,40,0.6)]"
                 >
-                  <FacebookIcon className="text-[#383838]" size={29} />
+                  <FacebookIcon size={24} />
                 </Link>
               </div>
             </div>
