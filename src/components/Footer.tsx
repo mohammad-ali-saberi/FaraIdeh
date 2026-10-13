@@ -12,19 +12,37 @@ import LogoType from '@/assets/images/LogoType.png';
 
 // Components
 import Container from './Container';
-import ArrNewsletterIcon from './icons/ArrNewsletterIcon';
+import ArrToTopIcon from './icons/ArrToTopIcon';
 import Decoration from './icons/SVG/FooterDecoration';
 import FooterRightDecoration from './icons/SVG/FooterRightDecoration';
-import FooterShapeDecoration from './icons/SVG/FooterShapeDecoration';
-import ArrToTopIcon from './icons/ArrToTopIcon';
-import Toast from './Toast';
 import SocialLinks from './SocialLinks';
+import Toast from './Toast';
 
 // Actions
 import { createNewsletterSubscription } from '@/app/actions/createNewsletterSubscription';
 
 // Contexts
 import { useSocialMedia } from '@/context/SocialMediaContext';
+
+const quickLinks = [
+  { name: 'صفحه نخست', path: '/' },
+  { name: 'درباره ما', path: '/about' },
+  { name: 'پروژه ها', path: '/projects' },
+  { name: 'خدمات فراایده', path: '/about#services' },
+  { name: 'وبلاگ', path: '/blogs' },
+];
+
+const socialChipClass =
+  'flex-wrap [&_li>a]:flex [&_li>a]:h-11 [&_li>a]:w-11 [&_li>a]:items-center [&_li>a]:justify-center [&_li>a]:rounded-full [&_li>a]:border [&_li>a]:border-white/15 [&_li>a]:bg-white/10 [&_li>a]:text-white [&_li>a]:backdrop-blur-md [&_li>a]:transition-all [&_li>a]:duration-300 [&_li>a]:ease-out [&_li>a:hover]:-translate-y-1 [&_li>a:hover]:border-white/40 [&_li>a:hover]:bg-white [&_li>a:hover]:text-[#16205f]';
+
+const columnTitleClass = 'font-iranYekan relative pb-3 text-lg font-extrabold text-white';
+
+const ColumnTitle = ({ children }: { children: React.ReactNode }) => (
+  <h3 className={columnTitleClass}>
+    {children}
+    <span className="bg-orange absolute bottom-0 right-0 h-0.5 w-8 rounded-full" />
+  </h3>
+);
 
 const Footer = () => {
   const [email, setEmail] = useState('');
@@ -76,93 +94,82 @@ const Footer = () => {
         <Toast message={message.text} type={message.type} onClose={() => setMessage(null)} />
       )}
 
-      <div className="bg-primary w-full lg:mt-32 mt-16 lg:pt-16 pt-8 pb-4 relative">
-        <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-9 rtl items-end">
-            {/* Bio */}
-            <div>
-              <Image src={LogoType} alt="فراایده" className="w-60" />
+      <div className="relative w-full lg:mt-32 mt-16">
+        {/* Back to top */}
+        <button
+          type="button"
+          onClick={handleScrollTop}
+          aria-label="بازگشت به بالای صفحه"
+          className="group absolute -top-6 right-6 z-20 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full bg-white text-primary shadow-[0_16px_32px_-16px_rgba(4,10,30,0.85)] transition-all duration-300 ease-out hover:-translate-y-1 hover:bg-orange hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:outline-none lg:-top-7 lg:right-14 lg:h-14 lg:w-14"
+        >
+          <ArrToTopIcon size="20" />
+        </button>
 
-              <p className="text-white font-iranYekan text-justify leading-8 mt-5">
-                اینجا جایی‌ست که ایده‌ها جان می‌گیرند. ما کنار شماییم تا مسیر را کوتاه، شفاف و
-                هیجان‌انگیز کنیم. با حساسیت به جزئیات در کمترین زمان ایده های شما را اجرایی می‌کنیم.
-                نتیجه برای ما فقط تحویل پروژه نیست؛ تجربه‌ای است کارآمد و خاطره انگیز.
-              </p>
-            </div>
+        <div className="relative w-full overflow-hidden rounded-t-[32px] bg-[linear-gradient(165deg,#0c38d0_0%,#08227f_45%,#04103b_100%)] pt-10 pb-5 lg:rounded-t-[44px] lg:pt-16 lg:pb-7">
+          {/* Light and brand colour, kept faint so the text never fights them */}
+          <div className="pointer-events-none absolute -top-24 right-1/4 h-72 w-72 rounded-full bg-orange/20 blur-[110px]" />
+          <div className="pointer-events-none absolute -bottom-28 left-1/4 h-72 w-72 rounded-full bg-white/10 blur-[110px]" />
 
-            {/* Site sections */}
-            <div className="flex items-start justify-between lg:items-center lg:justify-center">
-              <div>
-                <p className="text-white font-iranYekan font-semibold text-xl">بخش های سایت</p>
+          {/* Hairline that picks the top edge out of the page */}
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-[linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent)]" />
 
-                <ul className="mt-4 space-y-2">
-                  <li>
-                    <Link
-                      className="text-white font-iranYekan border-b-2 pb-1 border-transparent hover:border-white transition-all"
-                      href="/about"
-                    >
-                      درباره ما
-                    </Link>
-                  </li>
+          <div className="pointer-events-none absolute -top-10 left-0 hidden opacity-70 xl:block">
+            <Decoration />
+          </div>
 
-                  <li>
-                    <Link
-                      className="text-white font-iranYekan border-b-2 pb-1 border-transparent hover:border-white transition-all"
-                      href="/blogs"
-                    >
-                      وبلاگ
-                    </Link>
-                  </li>
+          <div className="pointer-events-none absolute bottom-0 right-0 hidden opacity-70 xl:block">
+            <FooterRightDecoration />
+          </div>
 
-                  <li>
-                    <Link
-                      className="text-white font-iranYekan border-b-2 pb-1 border-transparent hover:border-white transition-all"
-                      href="/projects"
-                    >
-                      پروژه ها
-                    </Link>
-                  </li>
+          <Container>
+            <div className="rtl relative z-10 grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-8">
+              {/* Bio */}
+              <div className="lg:col-span-5">
+                <Image src={LogoType} alt="فراایده" className="w-44 lg:w-52" />
 
-                  <li>
-                    <Link
-                      className="text-white font-iranYekan border-b-2 pb-1 border-transparent hover:border-white transition-all"
-                      href="/about#services"
-                    >
-                      خدمات فراایده
-                    </Link>
-                  </li>
+                <p className="text-white/70 font-iranYekan leading-7 mt-5 text-sm lg:text-base lg:leading-8">
+                  اینجا جایی‌ست که ایده‌ها جان می‌گیرند. ما کنار شماییم تا مسیر را کوتاه، شفاف و
+                  هیجان‌انگیز کنیم. با حساسیت به جزئیات در کمترین زمان ایده های شما را اجرایی
+                  می‌کنیم. نتیجه برای ما فقط تحویل پروژه نیست؛ تجربه‌ای است کارآمد و خاطره انگیز.
+                </p>
+
+                <SocialLinks
+                  socialMedia={socialMedia}
+                  size={20}
+                  colorClass="text-inherit"
+                  className={`mt-7 ${socialChipClass}`}
+                />
+              </div>
+
+              {/* Site sections */}
+              <div className="lg:col-span-3">
+                <ColumnTitle>دسترسی سریع</ColumnTitle>
+
+                <ul className="mt-5 space-y-3.5">
+                  {quickLinks.map((link) => (
+                    <li key={link.path}>
+                      <Link
+                        href={link.path}
+                        className="group font-iranYekan flex items-center gap-2.5 text-sm text-white/70 transition-colors duration-300 hover:text-white"
+                      >
+                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-white/25 transition-colors duration-300 group-hover:bg-orange" />
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
 
-              {/* Social media */}
-              <SocialLinks
-                socialMedia={socialMedia}
-                size={30}
-                colorClass="text-white transition-all duration-200"
-                direction="col"
-                className="lg:hidden"
-              />
-            </div>
+              {/* Newsletter */}
+              <div className="lg:col-span-4">
+                <ColumnTitle>خبرنامه</ColumnTitle>
 
-            {/* Newsletter */}
-            <div>
-              {/* Social media */}
-              <SocialLinks
-                socialMedia={socialMedia}
-                size={40}
-                colorClass="text-white transition-all duration-200 group-hover:-translate-y-2"
-                className="hidden lg:flex mb-4"
-              />
-
-              <div className="md:mt-4">
-                <p className="text-white font-iranYekan font-semibold text-xl">خبرنامه</p>
-
-                <p className="rtl text-white font-iranYekan mt-2">
+                <p className="rtl text-white/70 font-iranYekan mt-5 text-sm leading-7">
                   عضو خبرنامه فراایده شوید و از جدیدترین مطالب و خدمات ویژه با خبر شوید!
                 </p>
 
                 <form onSubmit={handleNewsletterSubmit} className="mt-5">
-                  <div className="bg-white rounded overflow-hidden flex items-center">
+                  <div className="flex items-center gap-2 rounded-full border border-white/15 bg-white/10 p-1.5 pr-5 backdrop-blur-md transition-colors duration-300 focus-within:border-white/40 focus-within:bg-white/15">
                     <input
                       type="email"
                       name="email"
@@ -170,72 +177,35 @@ const Footer = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="لطفا ایمیل خود را وارد کنید..."
+                      aria-label="ایمیل برای عضویت در خبرنامه"
                       disabled={isLoading}
-                      className="placeholder:text-[#b1b1b1] font-iranYekan rtl outline-none bg-white w-full p-5 disabled:opacity-50"
+                      className="placeholder:text-white/40 font-iranYekan rtl min-w-0 flex-1 bg-transparent py-2 text-sm text-white outline-none disabled:opacity-60"
                     />
 
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="w-20 h-16 flex items-center justify-center cursor-pointer group hover:bg-gray-200 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="font-iranYekan shrink-0 cursor-pointer rounded-full bg-orange px-5 py-2.5 text-sm font-bold whitespace-nowrap text-white transition-all duration-300 ease-out hover:shadow-[0_12px_26px_-12px_rgba(255,99,0,0.9)] hover:brightness-110 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60 sm:px-6"
                     >
-                      <ArrNewsletterIcon
-                        className={`transition-all duration-200 ${
-                          isLoading ? 'animate-pulse' : 'group-hover:-translate-x-2'
-                        }`}
-                      />
+                      {isLoading ? 'در حال ارسال…' : 'عضویت'}
                     </button>
                   </div>
                 </form>
               </div>
             </div>
-          </div>
 
-          {/* Copyright */}
-          <div className="flex items-center justify-center lg:mt-24 mt-10">
-            <p className="text-white font-iranYekan rtl text-xs md:text-base leading-6 text-center">
-              تمامی حقوق مادی و معنوی برای گروه توسعه نرم‌افزار و استارتاپی فراایده محفوظ است.
-            </p>
-          </div>
-        </Container>
+            {/* Copyright */}
+            <div className="relative z-10 mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 lg:mt-16 lg:flex-row">
+              <p className="font-iranYekan rtl text-center text-xs leading-6 text-white/60 md:text-sm">
+                تمامی حقوق مادی و معنوی برای گروه توسعه نرم‌افزار و استارتاپی فراایده محفوظ است.
+              </p>
 
-        {/* SVGs */}
-        <div className="absolute top-0 left-0 hidden xl:block">
-          <Decoration />
+              <p className="font-iranYekan rtl text-center text-xs leading-6 text-white/40 md:text-sm">
+                طراحی و توسعه: تیم فراایده
+              </p>
+            </div>
+          </Container>
         </div>
-
-        <div className="absolute bottom-0 right-0 hidden xl:block">
-          <FooterRightDecoration />
-        </div>
-
-        <div className="absolute top-2 right-60 hidden xl:block">
-          <FooterShapeDecoration />
-        </div>
-
-        <div className="absolute bottom-0 left-96 hidden xl:block">
-          <FooterShapeDecoration />
-        </div>
-
-        {/* Desktop Scroll to Top */}
-        <button
-          type="button"
-          onClick={handleScrollTop}
-          className="lg:flex items-center justify-center bg-primary p-4 border-4 border-white rounded-full absolute -top-10 right-12 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group hidden"
-        >
-          <ArrToTopIcon className="text-white transition-colors duration-200 group-hover:text-primary" />
-        </button>
-
-        {/* Mobile Scroll to Top */}
-        <button
-          type="button"
-          onClick={handleScrollTop}
-          className="flex items-center justify-center bg-primary p-3 border-4 border-white rounded-full absolute -top-8 left-8 cursor-pointer transition-all duration-200 hover:-translate-y-1 hover:border-primary hover:bg-white group lg:hidden"
-        >
-          <ArrToTopIcon
-            size="30"
-            className="text-white transition-colors duration-200 group-hover:text-primary"
-          />
-        </button>
       </div>
     </>
   );
