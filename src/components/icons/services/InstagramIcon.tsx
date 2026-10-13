@@ -21,7 +21,12 @@ const InstagramIcon = ({ fill = '#16205F', height = '33', width = '33' }: IInsta
       </g>
       <defs>
         <clipPath id="clip0_510_980">
-          <rect width={width} height={height} fill="white" />
+          {/*
+           * The clip has to match the 33x33 viewBox, not the rendered size.
+           * Sizing it from `width`/`height` clips the artwork to that many
+           * user units, so any size below 33 cut the glyph off at the corner.
+           */}
+          <rect width="33" height="33" fill="white" />
         </clipPath>
       </defs>
     </svg>
