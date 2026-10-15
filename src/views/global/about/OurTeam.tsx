@@ -11,6 +11,7 @@ import GitHubIcon from '@/components/icons/GitHubIcon';
 import InstagramIcon from '@/components/icons/InstagramIcon';
 import LinkedInIcon from '@/components/icons/LinkedInIcon';
 import AboutOurTeamDecoration from '@/components/icons/SVG/AboutOurTeamDecoration';
+import TeamMemberCardDecoration from '@/components/icons/SVG/TeamMemberCardDecoration';
 
 // Types
 import { TeamMemberType } from '@/types/TeamMemberType';
@@ -31,7 +32,7 @@ const TeamMemberCard = ({ member, priority }: { member: TeamMemberType; priority
   const jobTitles = member.jobTitles?.length ? member.jobTitles.join(' • ') : 'عضو تیم فراایده';
 
   return (
-    <div className="group relative flex h-full flex-col rounded-[26px] border border-[#e9eef7] bg-white p-3 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_14px_34px_-20px_rgba(16,24,40,0.25)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_30px_55px_-26px_rgba(10,47,182,0.4)]">
+    <div className="group relative flex h-full flex-col overflow-hidden rounded-[26px] border border-[#e9eef7] bg-white p-3 shadow-[0_1px_2px_rgba(16,24,40,0.04),0_14px_34px_-20px_rgba(16,24,40,0.25)] transition-all duration-500 ease-out hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-[0_1px_2px_rgba(16,24,40,0.04),0_30px_55px_-26px_rgba(10,47,182,0.4)]">
       {/* Portrait */}
       <div className="relative aspect-[4/5] w-full shrink-0 overflow-hidden rounded-[18px] bg-[#eef4ff]">
         <Image
@@ -83,8 +84,13 @@ const TeamMemberCard = ({ member, priority }: { member: TeamMemberType; priority
         )}
       </div>
 
+      {/* Corner motif, sitting in the empty left side of the right-aligned body */}
+      <div className="pointer-events-none absolute -bottom-3 -left-3">
+        <TeamMemberCardDecoration className="h-24 w-24 sm:h-32 sm:w-32" />
+      </div>
+
       {/* Info */}
-      <div className="rtl flex flex-1 flex-col px-2 pt-5 pb-3">
+      <div className="rtl relative flex flex-1 flex-col px-2 pt-5 pb-3">
         <div className="bg-orange h-1 w-9 rounded-full" />
 
         <h3 className="font-iranYekan mt-3 text-lg font-extrabold text-[#16205f] transition-colors duration-300 group-hover:text-primary sm:text-xl">
