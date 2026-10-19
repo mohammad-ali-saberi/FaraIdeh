@@ -85,7 +85,7 @@ const Services = () => {
                 مشاهده نمونه کار ها
               </Link>
 
-              <Link href="/#contact" className={primaryCtaClass}>
+              <Link href="/contact" className={primaryCtaClass}>
                 در تماس باشید
               </Link>
             </div>

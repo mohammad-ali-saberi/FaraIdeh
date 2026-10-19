@@ -20,17 +20,14 @@ import { normalizePhoneInput } from '@/utils/normalizePhoneInput';
 // Actions
 import { createContact } from '@/app/actions/createContact';
 
+// Libs
+import { CONTACT_MESSAGE_MAX_LENGTH } from '@/libs/contactInfo';
+
 const Contact = () => {
   const [state, formAction] = useActionState(createContact, null);
   const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
   const contactRef = useRef<HTMLDivElement>(null);
 
-  /**
-   * The landing page streams in behind a Suspense boundary, so a link from
-   * another page to /#contact arrives before this section exists in the DOM and
-   * the browser's native hash scroll finds nothing. Handle it here instead,
-   * where the section is guaranteed to be mounted.
-   */
   useEffect(() => {
     if (window.location.hash !== '#contact') return;
 
@@ -187,6 +184,7 @@ const Contact = () => {
                   name="phone"
                   id="phone"
                   placeholder=" "
+                  required
                   inputMode="numeric"
                   pattern="[0-9]*"
                   autoComplete="tel"
@@ -276,6 +274,7 @@ const Contact = () => {
                   id="message"
                   placeholder=" "
                   required
+                  maxLength={CONTACT_MESSAGE_MAX_LENGTH}
                   aria-invalid={!!state?.fieldErrors?.message}
                 />
 

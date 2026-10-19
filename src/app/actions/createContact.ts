@@ -1,5 +1,6 @@
 'use server';
 
+import { CONTACT_MESSAGE_MAX_LENGTH } from '@/libs/contactInfo';
 import { prisma } from '@/libs/prisma';
 import { unstable_noStore as noStore } from 'next/cache';
 import { z } from 'zod';
@@ -10,10 +11,17 @@ const contactSchema = z.object({
   email: z.string().email('ایمیل نامعتبر است.').optional().or(z.literal('')),
   phone: z
     .string()
-    .regex(/^[\d+\-\s()]*$/, 'شماره نامعتبر است.')
-    .optional()
-    .or(z.literal('')),
-  message: z.string().min(5, 'متن پیام خیلی کوتاه است.'),
+    .trim()
+    .min(1, 'شماره تماس الزامی است.')
+    .regex(/^[\d+\-\s()]+$/, 'شماره تماس نامعتبر است.')
+    .refine((value) => {
+      const digits = value.replace(/\D/g, '');
+      return digits.length >= 10 && digits.length <= 13;
+    }, 'شماره تماس معتبر وارد کنید.'),
+  message: z
+    .string()
+    .min(5, 'متن پیام خیلی کوتاه است.')
+    .max(CONTACT_MESSAGE_MAX_LENGTH, 'متن پیام نباید بیشتر از ۱۰۰۰ کاراکتر باشد.'),
 });
 
 export type ContactActionState = {
@@ -47,15 +55,24 @@ export async function createContact(
 
   const { firstName, lastName, email, phone, message } = parsed.data;
 
-  await prisma.contact.create({
-    data: {
-      firstName,
-      lastName,
-      email: email || null,
-      phone: phone || null,
-      message,
-    },
-  });
+  try {
+    await prisma.contact.create({
+      data: {
+        firstName,
+        lastName,
+        email: email || null,
+        phone: phone || null,
+        message,
+      },
+    });
+  } catch (error) {
+    console.error('Failed to save contact message:', error);
+
+    return {
+      ok: false,
+      message: 'ارسال پیام با خطا مواجه شد. لطفاً چند لحظه بعد دوباره تلاش کنید.',
+    };
+  }
 
   return { ok: true, message: 'پیام شما با موفقیت ثبت شد.' };
 }
