@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 // Components
 import Container from '@/components/Container';
-import SmallLabel from '@/components/SmallLabel';
 import TickCircleIcon from '@/components/icons/blogs/TickCircleIcon';
 import ContentManagementIcon from '@/components/icons/services/ContentManagementIcon';
 import InstagramIcon from '@/components/icons/services/InstagramIcon';
@@ -49,7 +48,7 @@ const Services = () => {
 
       <Container>
         <div className="flex flex-col items-start">
-          <h2 className="font-iranYekan text-2xl font-extrabold text-[#16205f] sm:text-3xl lg:text-4xl">
+          <h2 className="font-iranYekan text-2xl font-extrabold text-text-services-about sm:text-3xl lg:text-4xl">
             خدمات فراایده
           </h2>
 
@@ -66,11 +65,11 @@ const Services = () => {
                   className="group relative flex items-center gap-3.5 overflow-hidden rounded-[22px] border border-[#e9eef7] bg-white p-3.5 pr-5 shadow-[0_1px_2px_rgba(16,24,40,0.04)] transition-all duration-500 ease-out hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_24px_45px_-30px_rgba(10,47,182,0.6)] sm:p-4 sm:pr-6"
                 >
                   {/* Icon tile */}
-                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f0f5ff] text-[#16205f] transition-colors duration-500 ease-out group-hover:bg-primary group-hover:text-white">
+                  <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#f0f5ff] text-text-services-about transition-colors duration-500 ease-out group-hover:bg-primary group-hover:text-white">
                     <Icon width="24" height="24" fill="currentColor" />
                   </span>
 
-                  <p className="font-iranYekan text-base font-extrabold text-[#16205f] sm:text-lg">
+                  <p className="font-iranYekan text-base font-extrabold text-text-services-about sm:text-lg">
                     {title}
                   </p>
 
@@ -99,46 +98,47 @@ const Services = () => {
                 <p className="font-iranYekan text-sm font-bold text-primary">آنچه انجام می‌دهیم</p>
               </div>
 
-              <h3 className="font-iranYekan mt-2.5 text-xl font-extrabold text-[#16205f] sm:text-2xl lg:leading-[1.6]">
+              <h3 className="font-iranYekan mt-2.5 text-xl font-extrabold text-text-services-about sm:text-2xl lg:leading-[1.6]">
                 چطور ایده شما را زنده می‌کنیم؟
               </h3>
 
-              <div className="font-iranYekan mt-3.5 space-y-3 text-sm leading-7 text-[#7d8fb3] lg:text-base">
+              <div className="font-iranYekan mt-3.5 space-y-3 text-sm leading-7 text-text-description lg:text-base">
                 <p>
-                  ما با <span className="font-extrabold text-[#16205f]">گوش دادن</span> شروع
-                  می‌کنیم. مسئله واقعی شما چیست؟ مخاطب‌تان کیست؟ موفقیت برای شما چه معنایی دارد؟
+                  ما با <span className="font-extrabold text-text-services-about">گوش دادن</span>{' '}
+                  شروع می‌کنیم. مسئله واقعی شما چیست؟ مخاطب‌تان کیست؟ موفقیت برای شما چه معنایی
+                  دارد؟
                 </p>
 
                 <p>
-                  سپس با <span className="font-extrabold text-[#16205f]">طراحی هوشمند</span> و
+                  سپس با{' '}
+                  <span className="font-extrabold text-text-services-about">طراحی هوشمند</span> و
                   آزمون‌های واقعی، نمونه‌ای می‌سازیم که احساس و عملکرد محصول نهایی را نشان دهد.
                 </p>
 
                 <p>
                   بعد از تأیید شما، وارد مرحله{' '}
-                  <span className="font-extrabold text-[#16205f]">توسعه</span> می‌شویم: کدی تمیز،
-                  سریع و مقیاس‌پذیر که هم امروز و هم فردا پاسخگوی نیازهای شماست.
+                  <span className="font-extrabold text-text-services-about">توسعه</span> می‌شویم:
+                  کدی تمیز، سریع و مقیاس‌پذیر که هم امروز و هم فردا پاسخگوی نیازهای شماست.
                 </p>
 
                 <p>
                   اما کار ما اینجا تمام نمی‌شود. با{' '}
-                  <span className="font-extrabold text-[#16205f]">
+                  <span className="font-extrabold text-text-services-about">
                     تست، بهینه‌سازی و پایش مستمر
                   </span>{' '}
                   اطمینان می‌دهیم که محصول شما بهترین نتیجه را می‌دهد.
                 </p>
               </div>
 
-              <p className="font-iranYekan mt-4 text-sm font-extrabold text-[#16205f] lg:text-base">
+              <p className="font-iranYekan mt-4 text-sm font-extrabold text-text-services-about lg:text-base">
                 در نهایت، محصولی تحویل می‌دهیم که:
               </p>
 
-              {/* Was three bare "- item" lines inside a paragraph */}
               <ul className="mt-2.5 space-y-2">
                 {deliverables.map((item) => (
                   <li
                     key={item}
-                    className="font-iranYekan flex items-center gap-2.5 text-sm text-[#7d8fb3] lg:text-base"
+                    className="font-iranYekan flex items-center gap-2.5 text-sm text-text-description lg:text-base"
                   >
                     <TickCircleIcon size="18" className="shrink-0 text-orange" />
                     {item}
@@ -146,10 +146,10 @@ const Services = () => {
                 ))}
               </ul>
 
-              <p className="font-iranYekan mt-4 border-t border-dashed border-[#e6ecf5] pt-4 text-sm leading-7 text-[#7d8fb3] lg:text-base">
-                همراه با <span className="font-extrabold text-[#16205f]">مستندات</span> کامل و{' '}
-                <span className="font-extrabold text-[#16205f]">پشتیبانی</span>، تا مطمئن شویم شما
-                برای قدم بعدی آماده‌اید.
+              <p className="font-iranYekan mt-4 border-t border-dashed border-[#e6ecf5] pt-4 text-sm leading-7 text-text-description lg:text-base">
+                همراه با <span className="font-extrabold text-text-services-about">مستندات</span>{' '}
+                کامل و <span className="font-extrabold text-text-services-about">پشتیبانی</span>، تا
+                مطمئن شویم شما برای قدم بعدی آماده‌اید.
               </p>
             </div>
           </div>

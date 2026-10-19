@@ -38,7 +38,7 @@ const Header = ({ profile }: HeaderProps) => {
 
   return (
     <>
-      <div className="w-full border-b-1 border-[#CCCCCC] bg-white py-5 px-12 flex items-center justify-between">
+      <div className="w-full border-b border-[#CCCCCC] bg-white py-5 px-12 flex items-center justify-between">
         <p className="font-iranYekan text-2xl font-semibold">داشبورد</p>
 
         <div ref={dropdownRef} className="flex items-center gap-7 relative">
@@ -98,7 +98,7 @@ const Header = ({ profile }: HeaderProps) => {
                 شبکه های اجتماعی
               </p>
             </Link>
-            <Link href="#">
+            <Link href="/admin/terms">
               <p className="font-iranYekan py-4 text-[#4C4C4C] hover:text-primary transition-all">
                 قوانین و مقررات
               </p>
