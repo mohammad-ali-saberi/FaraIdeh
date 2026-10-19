@@ -166,3 +166,10 @@ model SocialMedia {
   instagramLink String  @default("")
   telegramLink  String  @default("")
 }
+
+model TermsPage {
+  id        Int      @id @default(autoincrement())
+  title     String   @default("قوانین و مقررات")
+  content   String   @default("")
+  updatedAt DateTime @updatedAt
+}

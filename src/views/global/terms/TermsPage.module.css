@@ -1,0 +1,205 @@
+.markdown {
+  direction: rtl;
+  color: var(--color-text-link);
+  line-height: 2;
+  font-size: 1rem;
+  overflow-wrap: anywhere;
+}
+
+.markdown > *:first-child {
+  margin-top: 0;
+}
+
+.markdown > *:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== Headings ===== */
+.markdown h1,
+.markdown h2 {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 1.8;
+  margin: 2.25rem 0 0.85rem;
+  padding-right: 1rem;
+  color: var(--color-text-services-about);
+}
+
+.markdown h1::before,
+.markdown h2::before {
+  content: '';
+  position: absolute;
+  top: 0.4em;
+  right: 0;
+  width: 0.25rem;
+  height: 1em;
+  border-radius: 999px;
+  background-color: var(--color-orange);
+}
+
+.markdown h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.8;
+  margin: 1.75rem 0 0.6rem;
+  color: var(--color-text-services-about);
+}
+
+.markdown h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.8;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--color-text-services-about);
+}
+
+/* ===== Paragraph ===== */
+.markdown p {
+  margin: 0.8rem 0;
+  text-align: start;
+}
+
+.markdown > p:first-of-type {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--color-text-services-about);
+}
+
+.markdown strong {
+  color: var(--color-text-services-about);
+  font-weight: 600;
+}
+
+/* ===== Links ===== */
+.markdown a {
+  color: var(--color-orange);
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px dashed color-mix(in srgb, var(--color-orange) 50%, transparent);
+  transition: opacity 0.2s ease;
+}
+
+.markdown a:hover {
+  opacity: 0.8;
+}
+
+/* ===== Lists ===== */
+.markdown ul,
+.markdown ol {
+  margin: 1rem 0;
+  padding-right: 1.35rem;
+}
+
+.markdown ul {
+  list-style-type: disc;
+}
+
+.markdown ol {
+  list-style-type: decimal;
+}
+
+.markdown li {
+  margin: 0.45rem 0;
+  line-height: 1.9;
+}
+
+.markdown li::marker {
+  color: var(--color-orange);
+}
+
+.markdown li > p {
+  margin: 0.35rem 0;
+}
+
+/* ===== Blockquote ===== */
+.markdown blockquote {
+  margin: 1.5rem 0;
+  padding: 1rem 1.15rem;
+  background-color: color-mix(in srgb, var(--color-primary) 4%, white);
+  border-right: 3px solid var(--color-orange);
+  border-radius: 0.9rem;
+  color: var(--color-text-services-about);
+}
+
+.markdown blockquote p {
+  margin: 0.25rem 0;
+}
+
+/* ===== Code ===== */
+.markdown code {
+  background-color: color-mix(in srgb, var(--color-text-services-about) 7%, white);
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  direction: ltr;
+}
+
+.markdown pre {
+  background-color: var(--color-text-services-about);
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  overflow-x: auto;
+  direction: ltr;
+  margin: 1.5rem 0;
+}
+
+.markdown pre code {
+  background: none;
+  padding: 0;
+  font-size: 0.9rem;
+  color: inherit;
+}
+
+/* ===== Images ===== */
+.markdown img {
+  max-width: 100%;
+  border-radius: 1rem;
+  margin: 1.5rem auto;
+  display: block;
+}
+
+/* ===== Tables (GFM) ===== */
+.markdown table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.95rem;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid color-mix(in srgb, var(--color-text-services-about) 12%, white);
+  padding: 0.75rem;
+  text-align: right;
+}
+
+.markdown th {
+  background-color: color-mix(in srgb, var(--color-primary) 4%, white);
+  font-weight: 600;
+  color: var(--color-text-services-about);
+}
+
+/* ===== Horizontal Rule ===== */
+.markdown hr {
+  border: none;
+  border-top: 1px solid color-mix(in srgb, var(--color-text-services-about) 12%, white);
+  margin: 2rem 0;
+}
+
+/* ===== Small screens ===== */
+@media (max-width: 640px) {
+  .markdown h1,
+  .markdown h2 {
+    font-size: 1.1rem;
+  }
+
+  .markdown h3 {
+    font-size: 1rem;
+  }
+
+  .markdown > p:first-of-type {
+    font-size: 1rem;
+  }
+}
