@@ -79,23 +79,23 @@ const ContactMethods = () => {
               {icon}
             </span>
 
-            <div className="min-w-0 flex-1 flex items-center justify-between gap-3.5">
-              <div className="flex flex-col">
-                <span className="font-iranYekan block text-[11px] font-extrabold text-text-description">
+            <div className="flex min-w-0 flex-1 flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3.5">
+              <div className="flex min-w-0 flex-col gap-1">
+                <span className="font-iranYekan block text-xs font-extrabold text-text-description">
                   {label}
                 </span>
 
-                <span className="font-iranYekan mt-1 block text-[11px] text-[#9aa8c2]">{hint}</span>
-              </div>
-
-              <div>
-                <span
-                  className="font-iranYekan mt-0.5 block truncate text-sm font-extrabold text-text-services-about transition-colors duration-300 group-hover:text-primary"
-                  dir="ltr"
-                >
-                  {value}
+                <span className="font-iranYekan block text-xs leading-5 text-[#9aa8c2]">
+                  {hint}
                 </span>
               </div>
+
+              <span
+                className="font-iranYekan block wrap-break-word text-right text-sm font-extrabold text-text-services-about transition-colors duration-300 group-hover:text-primary sm:truncate"
+                dir="ltr"
+              >
+                {value}
+              </span>
             </div>
           </Link>
         ))}
