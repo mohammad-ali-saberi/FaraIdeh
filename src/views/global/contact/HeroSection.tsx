@@ -21,12 +21,12 @@ const HeroSection = () => {
               ارتباط با فراایده
             </h1>
 
-            <h2 className="font-iranYekan mt-1 text-2xl leading-9 font-semibold lg:mt-2 lg:text-3xl lg:leading-11 lg:font-bold">
+            <h2 className="font-iranYekan mt-1 text-2xl leading-9 font-semibold lg:mt-4 lg:text-3xl lg:leading-11 lg:font-bold">
               بیایید درباره ایده‌تان
               <br className="hidden sm:block" /> گفت‌وگو کنیم
             </h2>
 
-            <p className="text-text-description font-iranYekan mt-2 max-w-xl text-justify text-sm leading-7 lg:mt-4 lg:text-base lg:leading-8">
+            <p className="text-text-description font-iranYekan mt-3 max-w-xl text-justify text-sm leading-7 lg:mt-5 lg:text-base lg:leading-8">
               از یک سؤال کوچک تا شروع یک پروژه بزرگ، تیم فراایده آماده شنیدن است. فرم را پر کنید یا
               از راه‌های ارتباطی زیر با ما در تماس باشید؛ در{' '}
               <span className="font-extrabold text-text-link">{CONTACT_INFO.responseTime}</span>{' '}
