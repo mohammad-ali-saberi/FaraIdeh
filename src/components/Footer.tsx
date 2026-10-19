@@ -30,6 +30,8 @@ const quickLinks = [
   { name: 'پروژه ها', path: '/projects' },
   { name: 'خدمات فراایده', path: '/about#services' },
   { name: 'وبلاگ', path: '/blogs' },
+  { name: 'تماس با ما', path: '/contact' },
+  { name: 'قوانین و مقررات', path: '/terms' },
 ];
 
 const socialChipClass =

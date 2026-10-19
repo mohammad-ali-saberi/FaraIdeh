@@ -1,4 +1,5 @@
 import { categoryLabels, PROJECT_CATEGORIES } from '@/features/projects/categories';
+import { CONTACT_INFO } from '@/libs/contactInfo';
 import { SITE_URL } from '@/libs/siteConfig';
 
 /** Persian service labels, reused from the project category source of truth. */
@@ -14,6 +15,7 @@ export default function OrganizationSchema() {
     name: 'فراایده',
     alternateName: 'FaraIdeh',
     url: SITE_URL,
+    email: CONTACT_INFO.email,
     logo: `${SITE_URL}/images/logo.png`,
     image: `${SITE_URL}/images/og-image.png`,
     description: 'تیم توسعه نرم‌افزار و استارتاپی فراایده',
@@ -25,7 +27,8 @@ export default function OrganizationSchema() {
 
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: '+989335942415',
+      telephone: CONTACT_INFO.phoneHref,
+      email: CONTACT_INFO.email,
       contactType: 'customer service',
       availableLanguage: ['Persian', 'fa'],
     },

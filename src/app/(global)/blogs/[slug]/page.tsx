@@ -215,7 +215,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Title */}
             <div className="bg-orange mb-4 h-1 w-12 rounded-full lg:mb-5" />
 
-            <h1 className="font-iranYekan text-2xl leading-[1.7] font-bold text-balance text-[#16205f] sm:text-3xl lg:text-4xl lg:leading-[1.5]">
+            <h1 className="font-iranYekan text-2xl leading-[1.7] font-bold text-balance text-text-services-about sm:text-3xl lg:text-4xl lg:leading-normal">
               {blog.title}
             </h1>
 
@@ -246,7 +246,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
               </span>
 
               {/* Author */}
-              <span className="font-iranYekan inline-flex items-center gap-2 text-sm font-extrabold text-[#16205f]">
+              <span className="font-iranYekan inline-flex items-center gap-2 text-sm font-extrabold text-text-services-about">
                 <Image
                   src="https://res.cloudinary.com/ye11utoz/image/upload/f_auto,q_auto/16_2_-_Copy_wf5qco"
                   alt={blog.author}
@@ -294,7 +294,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
           {/* Related Articles & Labels & Share */}
           <div className="w-full xl:w-3/5">
             {/* Related Articles Title */}
-            <h2 className="font-iranYekan text-2xl font-bold text-[#16205f] mt-10 xl:mt-0">
+            <h2 className="font-iranYekan text-2xl font-bold text-text-services-about mt-10 xl:mt-0">
               مقاله های مرتبط
             </h2>
 
@@ -342,12 +342,12 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
                       </div>
 
                       {/* Title */}
-                      <h3 className="font-iranYekan mt-2 line-clamp-2 text-sm font-bold text-[#16205f] transition-colors duration-300 group-hover:text-primary sm:text-base">
+                      <h3 className="font-iranYekan mt-2 line-clamp-2 text-sm font-bold text-text-services-about transition-colors duration-300 group-hover:text-primary sm:text-base">
                         {relatedBlog.title}
                       </h3>
 
                       {/* Excerpt */}
-                      <p className="font-iranYekan mt-1.5 line-clamp-2 text-xs leading-6 font-medium text-[#7d8fb3]">
+                      <p className="font-iranYekan mt-1.5 line-clamp-2 text-xs leading-6 font-medium text-text-description">
                         {relatedBlog.excerpt}
                       </p>
                     </div>
@@ -361,7 +361,7 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             </div>
 
             {/* Labels Title */}
-            <h2 className="font-iranYekan text-2xl font-bold text-[#16205f] mt-5 lg:mt-8 xl:mt-12">
+            <h2 className="font-iranYekan text-2xl font-bold text-text-services-about mt-5 lg:mt-8 xl:mt-12">
               برچسب ها
             </h2>
 
@@ -386,7 +386,9 @@ const BlogDetailPage = async ({ params }: IBlogDetailPageProps) => {
             {/* Share */}
             <div className="mt-10 flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#e9eef7] bg-[#f9fbfe] px-5 py-4 sm:mt-12 lg:mt-16">
               {/* Share Title */}
-              <h2 className="font-iranYekan text-sm font-bold text-[#16205f]">اشتراک گذاری</h2>
+              <h2 className="font-iranYekan text-sm font-bold text-text-services-about">
+                اشتراک گذاری
+              </h2>
 
               {/* Share Icons */}
               <div className="flex items-center gap-1">
