@@ -28,10 +28,8 @@ const quickLinks = [
   { name: 'صفحه نخست', path: '/' },
   { name: 'درباره ما', path: '/about' },
   { name: 'پروژه ها', path: '/projects' },
-  { name: 'خدمات فراایده', path: '/about#services' },
   { name: 'وبلاگ', path: '/blogs' },
   { name: 'تماس با ما', path: '/contact' },
-  { name: 'قوانین و مقررات', path: '/terms' },
 ];
 
 const socialChipClass =
@@ -193,18 +191,47 @@ const Footer = () => {
                     </button>
                   </div>
                 </form>
+
+                {/* eNamad trust seal */}
+                <div className="mt-6 flex justify-end">
+                  <a
+                    href="https://trustseal.enamad.ir/?id=8271671&Code=qAjp1nmcMtm3NPKnZY9ScDXyEhWClEfC"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    referrerPolicy="origin"
+                    aria-label="نماد اعتماد الکترونیکی فراایده"
+                    className="inline-block transition-transform duration-300 ease-out hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:ring-white/60 focus-visible:outline-none"
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element -- third-party seal served by enamad */}
+                    <img
+                      src="https://trustseal.enamad.ir/logo.aspx?id=8271671&Code=qAjp1nmcMtm3NPKnZY9ScDXyEhWClEfC"
+                      alt="نماد اعتماد الکترونیکی فراایده"
+                      referrerPolicy="origin"
+                      className="w-28 h-28 cursor-pointer"
+                    />
+                  </a>
+                </div>
               </div>
             </div>
 
             {/* Copyright */}
-            <div className="relative z-10 mt-12 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 lg:mt-16 lg:flex-row">
+            <div className="relative z-10 mt-8 flex flex-col items-center justify-between gap-3 border-t border-white/10 pt-6 lg:mt-10 lg:flex-row">
               <p className="font-iranYekan rtl text-center text-xs leading-6 text-white/60 md:text-sm">
                 تمامی حقوق مادی و معنوی برای گروه توسعه نرم‌افزار و استارتاپی فراایده محفوظ است.
               </p>
 
-              <p className="font-iranYekan rtl text-center text-xs leading-6 text-white/40 md:text-sm">
-                طراحی و توسعه: تیم فراایده
-              </p>
+              <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2">
+                <Link
+                  href="/terms"
+                  className="font-iranYekan rtl text-xs leading-6 text-white/50 underline-offset-4 transition-colors duration-300 hover:text-white hover:underline md:text-sm"
+                >
+                  قوانین و مقررات
+                </Link>
+
+                <p className="font-iranYekan rtl text-center text-xs leading-6 text-white/40 md:text-sm">
+                  طراحی و توسعه: تیم فراایده
+                </p>
+              </div>
             </div>
           </Container>
         </div>
